@@ -8,6 +8,8 @@ class YmTextField extends StatelessWidget {
   final Function(String text) onTextChanged;
   final String text;
   final double fontSize;
+  final double height;
+  final String hintText;
   late OutlineInputBorder outlineInputBorder;
   late OutlineInputBorder focusedBorder;
   final TextEditingController controller = TextEditingController();
@@ -16,6 +18,8 @@ class YmTextField extends StatelessWidget {
   YmTextField(this.inputFormatters,this.text,this.onTextChanged,
       {
         this.fontSize = 30,
+        this.height = 30,
+        this.hintText = "",
         this.outlineInputBorder = const OutlineInputBorder(),
         this.focusedBorder = const OutlineInputBorder()
       }
@@ -32,22 +36,29 @@ class YmTextField extends StatelessWidget {
     this.controller.text = text;
 
     return Theme(
-      data: new ThemeData(primaryColor:Color(0x003446F2), hintColor: Colors.black45),
-      child: TextField(
-        controller: controller,
-        autofocus: true,
-        textAlign: TextAlign.left,//文本对齐方式
-        maxLines: 1,//最大行数
-        style: TextStyle(fontSize: fontSize, color: Colors.black87,fontWeight:FontWeight.w500),//输入文本的样式
-        inputFormatters: this.inputFormatters,   //允许的输入格式
-        onChanged: (text) {
-          onTextChanged(text);
-        },
-        decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
-            border: outlineInputBorder,
-            focusedBorder: focusedBorder,
-        ),
+      data: new ThemeData(primaryColor:Color(0xFF3446F2), hintColor: Colors.black45),
+      child: ConstrainedBox(
+          constraints: BoxConstraints(
+              maxHeight: height,
+          ),
+          child:TextField(
+            controller: controller,
+            autofocus: true,
+            textAlign: TextAlign.left,//文本对齐方式
+            maxLines: 1,//最大行数
+            style: TextStyle(fontSize: fontSize, color: Colors.black87,fontWeight:FontWeight.w500),//输入文本的样式
+            inputFormatters: this.inputFormatters,   //允许的输入格式
+            onChanged: (text) {
+              onTextChanged(text);
+            },
+            decoration: InputDecoration(
+              hintText: hintText,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 5,vertical: 0),
+              border: outlineInputBorder,
+              enabledBorder: outlineInputBorder,
+              focusedBorder: focusedBorder,
+            ),
+          ),
       ),
     );
   }
