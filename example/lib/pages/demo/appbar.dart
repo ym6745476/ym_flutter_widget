@@ -10,10 +10,10 @@ class AppBarPage extends StatefulWidget {
   final String title = "AppBar自定义";
 
   @override
-  _AppBarState createState() => _AppBarState();
+  _AppBarPageState createState() => _AppBarPageState();
 }
 
-class _AppBarState extends State<AppBarPage> {
+class _AppBarPageState extends State<AppBarPage> {
 
   //和Native进行通信
   static const flutterChannel = const MethodChannel("sample.flutter.io/flutter");

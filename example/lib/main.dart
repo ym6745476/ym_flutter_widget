@@ -1,4 +1,6 @@
 import 'package:example/pages/demo/appbar.dart';
+import 'package:example/pages/demo/button.dart';
+import 'package:example/pages/demo/cascader.dart';
 import 'package:example/pages/demo/http.dart';
 import 'package:example/pages/demo/native.dart';
 import 'package:example/pages/demo/searchbar.dart';
@@ -35,6 +37,8 @@ class MyRouter {
   static final httpPage = '/demo/http';
   static final appbarPage = '/demo/appbar';
   static final searchbarPage = '/demo/searchbar';
+  static final buttonPage = '/demo/button';
+  static final cascaderPage = '/demo/cascader';
 
   static final Map<String, WidgetBuilder> routes = {
     helloPage: (ctx) => HelloPage(),
@@ -42,6 +46,8 @@ class MyRouter {
     httpPage: (ctx) => HttpPage(),
     appbarPage: (ctx) => AppBarPage(),
     searchbarPage: (ctx) => SearchBarPage(),
+    buttonPage: (ctx) => ButtonPage(),
+    cascaderPage: (ctx) => CascaderPage(),
   };
 }
 

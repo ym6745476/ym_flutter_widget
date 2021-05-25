@@ -2,26 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
-import 'package:ym_flutter_widget/widgets/SearchBar/ym_search_bar.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 
-class SearchBarPage extends StatefulWidget {
+class TextFieldPage extends StatefulWidget {
 
-  SearchBarPage({Key? key}) : super(key: key);
+  TextFieldPage({Key? key}) : super(key: key);
 
-  final String title = "SearchBar";
+  final String title = "Button";
 
   @override
-  _SearchBarPageState createState() => _SearchBarPageState();
+  _TextFieldPageState createState() => _TextFieldPageState();
 }
 
-class _SearchBarPageState extends State<SearchBarPage> {
+class _TextFieldPageState extends State<TextFieldPage> {
 
   //和Native进行通信
   static const flutterChannel = const MethodChannel("sample.flutter.io/flutter");
   static const nativeChannel = const MethodChannel("sample.flutter.io/native");
 
   bool _isRouteFromFlutter = false;
-  String _searchTextValue = "";
 
   @override
   void initState() {
@@ -82,40 +81,43 @@ class _SearchBarPageState extends State<SearchBarPage> {
             Positioned(
               top: 80,
               left:0,
-              height: 100 ,
               width:  MediaQuery.of(context).size.width,
               child:Padding(
-                padding: EdgeInsets.only(top: 0, left: 15, right: 15, bottom: 0),
-                child: YmSearchBar(
-                    hint: "请输入关键词",
-                    width: MediaQuery.of(context).size.width - 40,
-                    onSubmitted: (text){
-                      print("搜索$text");
-                      setState(() {
-                        _searchTextValue = text;
-                      });
+                padding: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 16),
+                child:Wrap(
+                    spacing: 5,
+                    runSpacing: 5,
+                    children: [
 
-                    },
-                    clearCallback:(){
-                      setState(() {
-                        _searchTextValue = "";
-                      });
-                    },
-                    onBackCallback: () {
+                      YmTextButton("Stadium", Color(0xFFFFFFFF), (){
+                        print("Button Pressed");
+                      },outlinedBorder: StadiumBorder(),),
 
-                    }
-                ),
+                      YmTextButton("Circle", Color(0xFFFFFFFF), (){
+                        print("Button Pressed");
+                      },outlinedBorder:CircleBorder()),
+
+                      YmTextButton("RoundedRectangle", Color(0xFFFFFFFF), (){
+                        print("Button Pressed");
+                      },outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+
+                      YmTextButton("BeveledRectangle", Color(0xFFFFFFFF), (){
+                        print("Button Pressed");
+                      },outlinedBorder:BeveledRectangleBorder(borderRadius: BorderRadius.circular(10))),
+
+                      YmTextButton("Outlined", Color(0xFF3446F2), (){
+                        print("Button Pressed");
+                      },isOutlined: true,),
+
+                      YmTextButton("Outlined", Color(0xFF3446F2), (){
+                        print("Button Pressed");
+                      },isOutlined: true,borderColor:Color(0xFFCCCCCC),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+
+                    ]
+                )
               ),
             ),
 
-            Positioned(
-              top: 300,
-              left:0,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Text(_searchTextValue),
-              ),
-            ),
           ],
         ),
       ),

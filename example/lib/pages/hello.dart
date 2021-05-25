@@ -17,6 +17,37 @@ class _HelloPageState extends State<HelloPage> {
     super.initState();
   }
 
+  List<Widget>  getListWidget(){
+
+    List<Map> buttons = [
+      {'text':'调用Native','path':'/demo/native'},
+      {'text':'Http','path':'/demo/http'},
+      {'text':'AppBar','path':'/demo/appbar'},
+      {'text':'SearchBar','path':'/demo/searchbar'},
+      {'text':'Button','path':'/demo/button'},
+      {'text':'TextField','path':'/demo/textfield'},
+      {'text':'Dialog','path':'/demo/dialog'},
+      {'text':'Toast','path':'/demo/toast'},
+      {'text':'Loading','path':'/demo/loading'},
+      {'text':'Empty','path':'/demo/empty'},
+      {'text':'Html','path':'/demo/html'},
+      {'text':'Image','path':'/demo/image'},
+      {'text':'Video','path':'/demo/video'},
+      {'text':'Cascader','path':'/demo/cascader'},
+      {'text':'String工具类','path':'/demo/stringutil'},
+      {'text':'UI工具类','path':'/demo/uiutil'},
+    ];
+    return List.generate(buttons.length, (index) {
+      return ElevatedButton(
+        child: Text(buttons[index]['text']),
+        onPressed:(){
+          Navigator.of(context).pushNamed(buttons[index]['path'],arguments: {'flutter':true});
+        },
+      );
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -35,110 +66,7 @@ class _HelloPageState extends State<HelloPage> {
               child: Wrap(
                     spacing: 5,
                     runSpacing: 5,
-                    children: [
-                      ElevatedButton(
-                        child: Text('调用Native'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/native',arguments: {'flutter':true});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Http'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/http',arguments: {'flutter':true});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('AppBar'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/appbar',arguments: {'flutter':true});
-                        },
-                      ),
-                      ElevatedButton(
-                        child: Text('SearchBar'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/searchbar',arguments: {'flutter':true});
-                        },
-                      ),
-                      ElevatedButton(
-                        child: Text('Button'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/button',arguments: {'flutter':true});
-                        },
-                      ),
-                      ElevatedButton(
-                        child: Text('TextField'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/textfield',arguments: {'flutter':true});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Dialog'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/dialog',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Toast'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/toast',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Loading'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/loading',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Empty'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/empty',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Html'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/html',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Image'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/image',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('Video'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/video',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('字符串工具类'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/stringutil',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                      ElevatedButton(
-                        child: Text('UI工具类'),
-                        onPressed:(){
-                          Navigator.of(context).pushNamed('/demo/uiutil',arguments: {'flutter':true,'orderId':0});
-                        },
-                      ),
-
-                    ],
+                    children: getListWidget(),
                   ),
               )
           ],
