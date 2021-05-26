@@ -31,7 +31,7 @@ class _CascaderPageState extends State<CascaderPage> {
 
   //计算拼接地址字符串的
   List<int> _pickerSelected = [0,0,0];
-  String  _address3 = "请选择地址";
+  String  _address3 = "请选择";
 
   //{"label": "请选择", "value": ""},
   List<List<Map>> _regionData = [[],[],[]];    //数据
@@ -179,7 +179,7 @@ class _CascaderPageState extends State<CascaderPage> {
                       child: Padding(
                           padding: EdgeInsets.only(top:0,left: 16,bottom: 0),
                           child:Text(
-                            "所在地区",
+                            "级联组件",
                             textAlign:TextAlign.left,
                             style: const TextStyle(
                               color: Colors.black,

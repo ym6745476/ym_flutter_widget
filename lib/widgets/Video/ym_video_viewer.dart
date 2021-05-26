@@ -5,30 +5,23 @@ import 'package:video_player/video_player.dart';
 
 ///
 /// Navigator.push(context, YmDialogRouter(
-///     YmVideoViewer(context, posterPath, false,videoController:_videoPlayerController)));
+///     YmVideoViewer(context, posterPath, false,controller)));
 ///
 class YmVideoViewer extends Dialog {
 
   ///点击背景是否能够退出
   final BuildContext context;
   final bool canceledOnTouchOutside;
-  String mediaUrl;
-  late VideoPlayerController controller;
+  final String mediaUrl;
+  final VideoPlayerController controller;
 
-  YmVideoViewer(this.context,this.mediaUrl,this.canceledOnTouchOutside,{VideoPlayerController? videoController}){
+  YmVideoViewer(this.context,this.mediaUrl,this.canceledOnTouchOutside,this.controller){
 
-    if(videoController!=null){
-      this.controller = videoController;
-    }
-    //this.mediaUrl = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
-    if(this.mediaUrl.indexOf(".mp4")!=-1){
-        print("video:" + this.mediaUrl);
+      print("video:" + this.mediaUrl);
+      Future.delayed(Duration(seconds: 1), () {
+        this.controller.play();
+      });
 
-        Future.delayed(Duration(seconds: 1), () {
-          this.controller.play();
-        });
-
-    }
   }
 
   @override

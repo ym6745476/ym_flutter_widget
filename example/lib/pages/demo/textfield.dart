@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
-import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
+import 'package:ym_flutter_widget/widgets/TextField/ym_text_field.dart';
 
 class TextFieldPage extends StatefulWidget {
 
   TextFieldPage({Key? key}) : super(key: key);
 
-  final String title = "Button";
+  final String title = "TextField";
 
   @override
   _TextFieldPageState createState() => _TextFieldPageState();
@@ -21,6 +21,8 @@ class _TextFieldPageState extends State<TextFieldPage> {
   static const nativeChannel = const MethodChannel("sample.flutter.io/native");
 
   bool _isRouteFromFlutter = false;
+
+  String _name = "";
 
   @override
   void initState() {
@@ -37,6 +39,7 @@ class _TextFieldPageState extends State<TextFieldPage> {
         }
       }
     });
+
 
   }
 
@@ -55,6 +58,11 @@ class _TextFieldPageState extends State<TextFieldPage> {
         print("Failed: '${e.message}'.");
       }
     }
+  }
+
+  void onNameTextChange(text){
+    print("onTextChange:$text");
+    this._name = text;
   }
 
   @override
@@ -81,43 +89,66 @@ class _TextFieldPageState extends State<TextFieldPage> {
             Positioned(
               top: 80,
               left:0,
-              width:  MediaQuery.of(context).size.width,
-              child:Padding(
-                padding: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 16),
-                child:Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    children: [
+              width: MediaQuery.of(context).size.width,
+              height:MediaQuery.of(context).size.height - 80,
+              child:Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                    Padding(
+                        padding: EdgeInsets.only(top:10,left:16,right: 16,bottom: 10),
+                        child:YmTextField([NumberTextInputFormatter()],_name,onNameTextChange,
+                          fontSize: 15,
+                          height: 35,
+                          hintText:"基本输入框" ,
+                          outlineInputBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(0),
+                              borderSide: BorderSide(color: Color(0x00606FFF))
+                          ),
+                          focusedBorder:  OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(0),
+                              borderSide: BorderSide(color: Color(0x003446F2))
+                          ),
+                        ),
+                    ),
 
-                      YmTextButton("Stadium", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder: StadiumBorder(),),
+                    Padding(
+                      padding: EdgeInsets.only(top:10,left:16,right: 16,bottom: 0),
+                      child:YmTextField([],_name,onNameTextChange,
+                        fontSize: 15,
+                        height: 80,
+                        hintText:"多行文本框" ,
+                        outlineInputBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(0),
+                            borderSide: BorderSide(color: Color(0xFFCCCCCC))
+                        ),
+                        focusedBorder:  OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(0),
+                            borderSide: BorderSide(color: Color(0x803446F2))
+                        ),
+                        maxLines: 5,
+                      ),
+                    ),
 
-                      YmTextButton("Circle", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder:CircleBorder()),
-
-                      YmTextButton("RoundedRectangle", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-
-                      YmTextButton("BeveledRectangle", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder:BeveledRectangleBorder(borderRadius: BorderRadius.circular(10))),
-
-                      YmTextButton("Outlined", Color(0xFF3446F2), (){
-                        print("Button Pressed");
-                      },isOutlined: true,),
-
-                      YmTextButton("Outlined", Color(0xFF3446F2), (){
-                        print("Button Pressed");
-                      },isOutlined: true,borderColor:Color(0xFFCCCCCC),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-
-                    ]
-                )
+                    Padding(
+                      padding: EdgeInsets.only(top:10,left:16,right: 16,bottom: 0),
+                      child:YmTextField([FilteringTextInputFormatter.allow(RegExp("[0-9.]")),NumberTextInputFormatter()],_name,onNameTextChange,
+                        fontSize: 15,
+                        height: 35,
+                        hintText:"数值文本框" ,
+                        outlineInputBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(0),
+                            borderSide: BorderSide(color: Color(0xFFCCCCCC))
+                        ),
+                        focusedBorder:  OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(0),
+                            borderSide: BorderSide(color: Color(0x803446F2))
+                        ),
+                        maxLines: 1,
+                      ),
+                    ),
+                ],
               ),
-            ),
-
+            )
           ],
         ),
       ),

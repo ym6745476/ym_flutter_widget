@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:html/dom.dart' as dom;
 
-class YmHtmlWidget extends StatelessWidget {
+class YmHtml extends StatelessWidget {
 
   String html;
   final double width;
   final List<HtmlTag> tagList = [];
 
-  YmHtmlWidget(this.html,this.width);
+  YmHtml(this.html,this.width);
 
   @override
   Widget build(BuildContext context) {

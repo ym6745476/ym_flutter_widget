@@ -30,6 +30,7 @@ class _HelloPageState extends State<HelloPage> {
       {'text':'Toast','path':'/demo/toast'},
       {'text':'Loading','path':'/demo/loading'},
       {'text':'Empty','path':'/demo/empty'},
+      {'text':'Error','path':'/demo/error'},
       {'text':'Html','path':'/demo/html'},
       {'text':'Image','path':'/demo/image'},
       {'text':'Video','path':'/demo/video'},

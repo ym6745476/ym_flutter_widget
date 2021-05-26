@@ -6,19 +6,11 @@ class YmLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Center(
-      ///弹框大小
-      child: new SizedBox(
-        width: 120,
-        height: 120,
-        child: new Container(
-          ///弹框背景和圆角
+    return Container(
           decoration: ShapeDecoration(
-            color: Color(0xffffffff),
+            color: Color(0xFFFFFFFF),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
-              ),
+              borderRadius: BorderRadius.all(Radius.zero),
             ),
           ),
           child: new Column(
@@ -32,13 +24,14 @@ class YmLoading extends StatelessWidget {
                 ),
                 child: new Text(
                   "加载中...",
-                  style: new TextStyle(fontSize: 14),
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF606FFF)
+                  ),
                 ),
               ),
             ],
           ),
-        ),
-      ),
     );
   }
 

@@ -1,9 +1,18 @@
 import 'package:example/pages/demo/appbar.dart';
 import 'package:example/pages/demo/button.dart';
 import 'package:example/pages/demo/cascader.dart';
+import 'package:example/pages/demo/dialog.dart';
+import 'package:example/pages/demo/empty.dart';
+import 'package:example/pages/demo/error.dart';
+import 'package:example/pages/demo/html.dart';
 import 'package:example/pages/demo/http.dart';
+import 'package:example/pages/demo/image.dart';
+import 'package:example/pages/demo/loading.dart';
 import 'package:example/pages/demo/native.dart';
 import 'package:example/pages/demo/searchbar.dart';
+import 'package:example/pages/demo/textfield.dart';
+import 'package:example/pages/demo/toast.dart';
+import 'package:example/pages/demo/video.dart';
 import 'package:flutter/material.dart';
 import 'pages/hello.dart';
 
@@ -39,6 +48,15 @@ class MyRouter {
   static final searchbarPage = '/demo/searchbar';
   static final buttonPage = '/demo/button';
   static final cascaderPage = '/demo/cascader';
+  static final textFieldPage = '/demo/textfield';
+  static final dialogPage = '/demo/dialog';
+  static final toastPage = '/demo/toast';
+  static final loadingPage = '/demo/loading';
+  static final emptyPage = '/demo/empty';
+  static final errorPage = '/demo/error';
+  static final htmlPage = '/demo/html';
+  static final imagePage = '/demo/image';
+  static final videoPage = '/demo/video';
 
   static final Map<String, WidgetBuilder> routes = {
     helloPage: (ctx) => HelloPage(),
@@ -48,6 +66,15 @@ class MyRouter {
     searchbarPage: (ctx) => SearchBarPage(),
     buttonPage: (ctx) => ButtonPage(),
     cascaderPage: (ctx) => CascaderPage(),
+    textFieldPage: (ctx) => TextFieldPage(),
+    dialogPage: (ctx) => DialogPage(),
+    toastPage: (ctx) => ToastPage(),
+    loadingPage: (ctx) => LoadingPage(),
+    emptyPage: (ctx) => EmptyPage(),
+    errorPage: (ctx) => ErrorPage(),
+    htmlPage: (ctx) => HtmlPage(),
+    imagePage: (ctx) => ImagePage(),
+    videoPage: (ctx) => VideoPage(),
   };
 }
 

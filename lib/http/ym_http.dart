@@ -116,9 +116,10 @@ class YmHttp {
       if (error.response != null) {
         String dataStr = json.encode(error.response!.data);
         Map<String, dynamic> dataMap = json.decode(dataStr);
-        errorCallBack('错误码：' + dataMap['errorCode'].toString() + '，' + response.data.toString());
+        print("Http请求出错：" + dataMap.toString());
+        errorCallBack({'errorCode':dataMap['status'],'errorMessage':dataMap['message'].toString()});
       }else{
-        errorCallBack(errorMessage);
+        errorCallBack({'errorCode':600,'errorMessage':errorMessage});
       }
 
     }
