@@ -8,7 +8,7 @@ A Light Weight Flutter Widget
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.0.1
+  ym_flutter_widget: ^0.0.2
 ```
 
 ![Image text](http://ymbok.com/upload/images/2021-05-27/20210527083503jtW9wW.png)
