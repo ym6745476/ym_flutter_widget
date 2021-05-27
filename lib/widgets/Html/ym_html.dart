@@ -89,9 +89,7 @@ class YmHtml extends StatelessWidget {
       if(element.localName == "p"){
         tag.name = element.localName!;
         tag.text = element.innerHtml;
-        if(tag.text != ""){
-          tagList.add(tag);
-        }
+        tagList.add(tag);
       }else if(element.localName == "img"){
         tag.name = element.localName!;
         tag.src = element.attributes['src']!;

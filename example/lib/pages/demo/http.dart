@@ -66,9 +66,9 @@ class _HttpPageState extends State<HttpPage> {
             });
           }
         },(error) {
-          print("失败：" + error);
+          print("失败：" + error.toString());
           YmUiUtil.hideLoading(context);
-          YmUiUtil.showToast(context,error);
+          YmUiUtil.showToast(context,error['errorMessage']);
         }
     );
   }

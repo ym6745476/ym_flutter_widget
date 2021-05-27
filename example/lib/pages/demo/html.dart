@@ -14,7 +14,7 @@ class HtmlPage extends StatefulWidget {
 
   HtmlPage({Key? key}) : super(key: key);
 
-  final String title = "Error Page";
+  final String title = "Html Page";
 
   @override
   _HtmlPageState createState() => _HtmlPageState();
@@ -55,7 +55,7 @@ class _HtmlPageState extends State<HtmlPage> {
       if (_controller.offset > 100) {
         setState(() {
           _backButtonColor = Color(0xffffffff);
-          _titleText = "风雨战国";
+          _titleText = "Html Page";
         });
       } else {
         setState(() {
@@ -88,7 +88,7 @@ class _HtmlPageState extends State<HtmlPage> {
   @override
   Widget build(BuildContext context) {
 
-    String html = "<html><head></head><body><p>角色</p><p><img src=\"http://ymbok.com/upload/images/2021-05-26/20210526114911Hz3jwL.jpg\"></p><p>灵宠</p><p><img src=\"http://ymbok.com/upload/images/2021-05-26/20210526114917M1zV1W.jpg\"></p><p>神兵</p><p><img src=\"http://ymbok.com/upload/images/2021-05-26/20210526114923RC1KrP.jpg\"></p><p>法宝</p><p><img src=\"http://ymbok.com/upload/images/2021-05-26/20210526114927IUK9mj.jpg\"></p></body></html>";
+    String html = "<html><head></head><body><p>关于：Ym Flutter Widget</p><p>A Light Weight Flutter Widget (Including Http,JsonToBean,AppBar,Dialog,Toast,Cascader,Loading,Button,SearchBar,Html,Image,Video and so on).</p><p>学习Flutter最好的资源，新手友好，尽量纯Dart源码实现，避免依赖太多第三方导致维护困难。来源于实际项目，具有高度可定制性。</p><p></p><p><img src=\"http://ymbok.com/upload/images/2021-05-27/20210527084021Pwkc1R.png\"></p><p></p><p><img src=\"http://ymbok.com/upload/images/2021-05-27/20210527084021Pwkc1R.png\"></p><p></p><p><img src=\"http://ymbok.com/upload/images/2021-05-27/20210527084021Pwkc1R.png\"></p></body></html>";
     return MaterialApp(
         home: Scaffold(
           body: Stack(
@@ -135,7 +135,7 @@ class _HtmlPageState extends State<HtmlPage> {
                               child: Padding(
                                 padding: EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 0),
                                 child: Image.network(
-                                  "http://ymbok.com/upload/images/2021-05-26/20210526114853Ns08g1.jpg",
+                                  "http://ymbok.com/upload/images/2021-05-27/20210527084021Pwkc1R.png",
                                   fit: BoxFit.fitWidth,
                                   width: MediaQuery.of(context).size.width,
                                   height: 150,
@@ -151,7 +151,7 @@ class _HtmlPageState extends State<HtmlPage> {
                               delegate: SliverChildListDelegate(
                                 <Widget>[
                                   Container(
-                                      margin: EdgeInsets.all(0),
+                                      margin: EdgeInsets.all(16),
                                       decoration: BoxDecoration(
                                         color: Color(0xFFFFFFFF),
                                       ),

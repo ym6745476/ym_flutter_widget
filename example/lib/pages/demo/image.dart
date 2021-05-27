@@ -102,15 +102,14 @@ class _ImagePageState extends State<ImagePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network(
-                              "http://ymbok.com/upload/images/2021-05-22/202105221146294nVtMc.png",
+                              "http://ymbok.com/upload/images/sample/20210527085005NyPU23.png",
                               fit:BoxFit.fitWidth,
                               width:(MediaQuery.of(context).size.width - 30)/3,
-                              height:(MediaQuery.of(context).size.width - 30)/3 * 2,
                             ),
                           ],
                         ),
                         onTap: (){
-                          this._itemOnClick("http://ymbok.com/upload/images/2021-05-22/202105221146294nVtMc.png");
+                          this._itemOnClick("http://ymbok.com/upload/images/sample/20210527085005NyPU23.png");
                         }
                       ),
                     ]

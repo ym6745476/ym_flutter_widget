@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
 class MyRouter {
 
   //Name 路由的时候都是routeFromFlutter为false  只能用于从Native路由进来
-  static final helloPage = '/hello';
+  static final helloPage = '/';
   static final nativePage = '/demo/native';
   static final httpPage = '/demo/http';
   static final appbarPage = '/demo/appbar';

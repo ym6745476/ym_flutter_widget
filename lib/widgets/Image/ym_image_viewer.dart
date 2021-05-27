@@ -49,8 +49,8 @@ class YmImageViewer extends Dialog {
     return Image.network(
       mediaUrl,
       fit:BoxFit.contain,
-      width:MediaQuery.of(context).size.width * 0.9,
-      height: MediaQuery.of(context).size.height - 200,
+      width:MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.6,
       loadingBuilder:(BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
            if (loadingProgress == null){
              return child;
