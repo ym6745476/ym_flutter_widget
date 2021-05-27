@@ -1,6 +1,6 @@
 name: ym_flutter_widget
 description: A Light Weight Flutter Widget (Including Http,JsonToBean,AppBar,Dialog,Toast,Cascader,Loading,Button,SearchBar,Html,Image,Video and so on).
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/ym6745476/ym_flutter_widget
 
 environment:

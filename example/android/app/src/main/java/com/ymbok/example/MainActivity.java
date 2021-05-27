@@ -30,7 +30,7 @@ public class MainActivity extends FlutterActivity {
         //从Intent里获取route 路径
         String route = getIntent().getStringExtra("route");
         if(route == null || route == ""){
-            route = "/hello";
+            route = "/";
         }
 
         //InitialRoute

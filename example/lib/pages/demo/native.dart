@@ -1,3 +1,4 @@
+import 'package:example/base/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -25,8 +26,21 @@ class _NativePageState extends State<NativePage> {
   @override
   void initState() {
     super.initState();
+
     //传值 设置监听
     nativeChannel.setMethodCallHandler(nativeCallHandler);
+
+    //获取name路由过来的参数
+    Future.delayed(Duration.zero, () {
+      dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
+      print("路由传递过来的参数：" + arguments.toString());
+      if (arguments != null) {
+        _isRouteFromFlutter = arguments["flutter"];
+        if(Config.isWeb || _isRouteFromFlutter){
+           //加载数据
+        }
+      }
+    });
   }
 
   ///原生调用Flutter
@@ -39,6 +53,9 @@ class _NativePageState extends State<NativePage> {
         setState(() {
           _resultMessage = arguments;
         });
+        Config.isWeb = false;
+        Config.isTest = false;
+        //加载数据
         break;
     }
   }

@@ -16,6 +16,11 @@ import 'package:example/pages/demo/video.dart';
 import 'package:flutter/material.dart';
 import 'pages/hello.dart';
 
+///
+/// 全部Widget的示例代码
+/// Pub没法显示图片，所以请到github查看演示效果
+/// https://github.com/ym6745476/ym_flutter_widget
+///
 void main(){
   runApp(MyApp());
 }
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
 
 class MyRouter {
 
-  //Name 路由的时候都是routeFromFlutter为false  只能用于从Native路由进来
+  //Name方式路由页面
   static final helloPage = '/';
   static final nativePage = '/demo/native';
   static final httpPage = '/demo/http';
@@ -58,6 +63,10 @@ class MyRouter {
   static final imagePage = '/demo/image';
   static final videoPage = '/demo/video';
 
+  //
+  // 路由代码
+  // Navigator.of(context).pushNamed('/demo/native', arguments: {'flutter': true});
+  //
   static final Map<String, WidgetBuilder> routes = {
     helloPage: (ctx) => HelloPage(),
     nativePage: (ctx) => NativePage(),

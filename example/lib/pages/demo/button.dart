@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_check_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 
 class ButtonPage extends StatefulWidget {
@@ -21,6 +22,7 @@ class _ButtonPageState extends State<ButtonPage> {
   static const nativeChannel = const MethodChannel("sample.flutter.io/native");
 
   bool _isRouteFromFlutter = false;
+  List<bool> _isChecked = [true,false];
 
   @override
   void initState() {
@@ -55,6 +57,19 @@ class _ButtonPageState extends State<ButtonPage> {
         print("Failed: '${e.message}'.");
       }
     }
+  }
+
+  void _checkedButton(int index){
+
+    setState(() {
+       for(int i = 0;i<_isChecked.length;i++){
+          if(i==index){
+            _isChecked[i] = true;
+          }else{
+            _isChecked[i] = false;
+          }
+       }
+    });
   }
 
   @override
@@ -112,6 +127,9 @@ class _ButtonPageState extends State<ButtonPage> {
                       YmTextButton("Outlined", Color(0xFF3446F2), (){
                         print("Button Pressed");
                       },isOutlined: true,borderColor:Color(0xFFCCCCCC),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+
+                      YmCheckButton(_isChecked[0],(){ _checkedButton(0);},text: "不选中",),
+                      YmCheckButton(_isChecked[1],(){_checkedButton(1);},text: "选中",),
 
                     ]
                 )

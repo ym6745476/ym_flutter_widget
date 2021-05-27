@@ -45,8 +45,6 @@ class _VideoPageState extends State<VideoPage> {
       }
     });
 
-
-
   }
 
   ///Flutter调用原生
