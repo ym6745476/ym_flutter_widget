@@ -10,6 +10,7 @@ export 'widgets/Dialog/ym_dialog_router.dart';
 export 'widgets/Dialog/ym_loading_dialog.dart';
 export 'widgets/Empty/ym_empty.dart';
 export 'widgets/Cascader/ym_cascader.dart';
+export 'widgets/TextField/ym_text_marquee.dart';
 export 'widgets/Html/ym_html.dart';
 export 'widgets/Error/ym_error.dart';
 export 'widgets/Loading/ym_loading.dart';

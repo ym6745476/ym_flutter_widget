@@ -1,6 +1,10 @@
 package com.ymbok.example;
 
 import android.os.Bundle;
+import android.util.Log;
+
+import org.json.JSONStringer;
+
 import java.util.HashMap;
 
 import io.flutter.embedding.android.FlutterActivity;
@@ -57,18 +61,21 @@ public class MainActivity extends FlutterActivity {
      * 调用Flutter
      */
     public void callFlutter(){
-        HashMap<String,Object> arguments = new HashMap<>();
-        arguments.put(" ","Native发送消息");
+        Log.e("MainActivity","调用Flutter start");
+
+        String arguments = "{\"text\":\"Native发送的消息\"}";
 
         MethodChannel methodChannel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), NATIVE_CHANNEL);
         methodChannel.invokeMethod(NATIVE_METHOD, arguments, new MethodChannel.Result() {
 
             @Override
             public void success(Object o) {
+                Log.e("MainActivity","调用Flutter success");
             }
 
             @Override
             public void error(String s, String s1, Object o) {
+                Log.e("MainActivity","调用Flutter error");
             }
 
             @Override

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
 import 'package:ym_flutter_widget/widgets/TextField/ym_text_field.dart';
+import 'package:ym_flutter_widget/widgets/TextField/ym_text_marquee.dart';
 
 class TextFieldPage extends StatefulWidget {
 
@@ -23,6 +24,14 @@ class _TextFieldPageState extends State<TextFieldPage> {
   bool _isRouteFromFlutter = false;
 
   String _name = "";
+
+  List<String> _textArray = [
+    "循环滚动文字1111111111111111111111111111111",
+    "循环滚动文字2222222222222222222222222222222",
+    "循环滚动文字3333333333333333333333333333333",
+    "循环滚动文字4444444444444444444444444444444",
+    "循环滚动文字5555555555555555555555555555555",
+  ];
 
   @override
   void initState() {
@@ -145,14 +154,33 @@ class _TextFieldPageState extends State<TextFieldPage> {
                         maxLines: 1,
                       ),
                     ),
+
+                    Padding(
+                      padding: EdgeInsets.only(top:10,left:16,right: 16,bottom: 0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width - 32,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 0.5, style: BorderStyle.solid,color: Color(0xffefefef)),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          gradient: LinearGradient(
+                            colors: [Color(0xff606FFF),Color(0xff606FFF)],
+                          ),
+                        ),
+                        child:Padding(
+                          padding: EdgeInsets.only(top:2,left:10,right: 10,bottom: 2),
+                          child:YmTextMarquee(_textArray,initialScrollOffset: 24,),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             )
+
           ],
         ),
       ),
     );
   }
-
 
 }

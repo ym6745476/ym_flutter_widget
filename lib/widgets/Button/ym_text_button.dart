@@ -8,6 +8,7 @@ class YmTextButton extends StatelessWidget {
   final String text;
   final Color textColor;
   final Function() onClick;
+  final double fontSize;
   final Size size;
   final Color foregroundColor;
   final Color backgroundColor;
@@ -21,6 +22,7 @@ class YmTextButton extends StatelessWidget {
   final OutlinedBorder outlinedBorder;
 
   YmTextButton(this.text,this.textColor,this.onClick,{
+    this.fontSize = 14,
     this.size = const Size(120, 42),
     this.isOutlined = false,
     this.borderColor = const Color(0xFF3446F2),
@@ -48,7 +50,7 @@ class YmTextButton extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: textColor,
-            fontSize: 14,
+            fontSize: fontSize,
           ),
         ),
         onPressed: () {
@@ -91,7 +93,7 @@ class YmTextButton extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: textColor,
-            fontSize: 14,
+            fontSize: fontSize,
           ),
         ),
         onPressed: () {

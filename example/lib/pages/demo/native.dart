@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:example/base/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,9 +51,10 @@ class _NativePageState extends State<NativePage> {
       case "callFlutter":
         //获取原生传来的值
         String arguments = call.arguments;
-        print('原生Android调用了flutter方法' + arguments);
+        print('原生Android调用了flutter方法:' + arguments);
+        Map<String, dynamic> dataMap = json.decode(arguments);
         setState(() {
-          _resultMessage = arguments;
+          _resultMessage = dataMap['text'];
         });
         Config.isWeb = false;
         Config.isTest = false;

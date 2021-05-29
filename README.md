@@ -69,24 +69,24 @@ Future<void> _login() async {
 
 ### Widget List
 
-- export 'http/ym_http.dart';
-- export 'widgets/AppBar/ym_app_bar.dart';
-- export 'widgets/Button/ym_text_button.dart';
-- export 'widgets/Button/ym_tab_button.dart';
-- export 'widgets/Button/ym_image_button.dart';
-- export 'widgets/Button/ym_check_button.dart';
-- export 'widgets/Dialog/ym_dialog_router.dart';
-- export 'widgets/Dialog/ym_loading_dialog.dart';
-- export 'widgets/Cascader/ym_cascader.dart';
-- export 'widgets/Empty/ym_empty.dart';
-- export 'widgets/Html/ym_html.dart';
-- export 'widgets/Error/ym_error.dart';
-- export 'widgets/Loading/ym_loading.dart';
-- export 'widgets/Image/ym_image_viewer.dart';
-- export 'widgets/Video/ym_video_viewer.dart';
-- export 'widgets/SearchBar/ym_search_bar.dart';
-- export 'widgets/TextField/ym_text_field.dart';
-- export 'widgets/Toast/ym_toast.dart';
-- export 'utils/ym_string_util.dart';
-- export 'utils/ym_ui_util.dart';
+- export 'http/ym_http.dart';//网络请求框架
+- export 'widgets/AppBar/ym_app_bar.dart';//自定义导航栏
+- export 'widgets/Button/ym_text_button.dart';//文字按钮（形状样式）
+- export 'widgets/Button/ym_tab_button.dart';//Tab按钮
+- export 'widgets/Button/ym_image_button.dart';//图片按钮
+- export 'widgets/Button/ym_check_button.dart';//选择状态按钮
+- export 'widgets/Dialog/ym_loading_dialog.dart';//加载弹出框
+- export 'widgets/Cascader/ym_cascader.dart';//级联选择器
+- export 'widgets/Empty/ym_empty.dart';//空页面样式
+- export 'widgets/Html/ym_html.dart';//Html代码解析
+- export 'widgets/Error/ym_error.dart';//错误页面样式
+- export 'widgets/Loading/ym_loading.dart';//Loading页面样式
+- export 'widgets/Image/ym_image_viewer.dart';//图片弹出预览
+- export 'widgets/Video/ym_video_viewer.dart';//视频弹出预览
+- export 'widgets/SearchBar/ym_search_bar.dart';//搜索框
+- export 'widgets/TextField/ym_text_field.dart';//文本框
+- export 'widgets/TextField/ym_text_marquee.dart';//循环滚动文本
+- export 'widgets/Toast/ym_toast.dart';//小提示Toast
+- export 'utils/ym_string_util.dart';//字符串工具类
+- export 'utils/ym_ui_util.dart';//UI工具类
 
