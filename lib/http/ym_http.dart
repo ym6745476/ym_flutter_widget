@@ -38,8 +38,9 @@ class YmHttp {
   }
 
   /// 设置公共请求头
-  setHeader(Map<String, String> params) async {
+  setHeader(Map<String, String> params)  {
       dio.options.headers.addAll(params);
+      print('当前Header: ' + dio.options.headers.toString());
   }
 
   ///get请求
