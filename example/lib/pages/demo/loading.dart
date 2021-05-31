@@ -72,10 +72,7 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    if(_isLoading){
-      return YmLoading();
-    }else{
-      return MaterialApp(
+    return MaterialApp(
         home: Scaffold(
           body: Stack(
             fit: StackFit.expand,
@@ -93,22 +90,25 @@ class _LoadingPageState extends State<LoadingPage> {
                 ),
               ),
 
-              Positioned(
-                top: 80,
-                left:0,
-                width:  MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height - 80,
-                child:Center(
-                  child:Text("页面加载完成") ,
-                ),
-              ),
+              _isLoading?Positioned(
+                  top: 80,
+                  left:0,
+                  width:  MediaQuery.of(context).size.width,
+                  height:MediaQuery.of(context).size.height - 80,
+                  child:YmLoading())
+                  :Positioned(
+                      top: 80,
+                      left:0,
+                      width:  MediaQuery.of(context).size.width,
+                      height:MediaQuery.of(context).size.height - 80,
+                      child:Center(
+                        child:Text("页面加载完成") ,
+                      ),
+                    ),
             ],
           ),
         ),
       );
-    }
-
   }
-
 
 }

@@ -17,7 +17,9 @@ class YmLoading extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              new CircularProgressIndicator(),
+              new CircularProgressIndicator(
+                color:Color(0xFF606FFF) ,
+              ),
               new Padding(
                 padding: const EdgeInsets.only(
                   top: 20.0,
