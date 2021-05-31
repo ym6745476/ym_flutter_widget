@@ -128,6 +128,27 @@ class _ButtonPageState extends State<ButtonPage> {
                         print("Button Pressed");
                       },isOutlined: true,borderColor:Color(0xFFCCCCCC),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
+                      YmTextButton(
+                        "渐变色",
+                        Color(0xff3244ED),
+                            (){
+                          print("Button Pressed");
+                        }
+                        ,
+                        size: Size(100, 32),
+                        fontSize: 14,
+                        backgroundColor: Colors.transparent,
+                        borderColor:Color(0xFFEFAD40),
+                        foregroundColor: Color(0xFFEFAD40),
+                        isGradient:true,
+                        fontWeight: FontWeight.w600,
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xFFFFE4B7),Color(0xFFEFAD40)]
+                        ),
+                      ),
+
                       YmCheckButton(_isChecked[0],(){ _checkedButton(0);},text: "不选中",),
                       YmCheckButton(_isChecked[1],(){_checkedButton(1);},text: "选中",),
 

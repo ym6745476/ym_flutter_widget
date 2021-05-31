@@ -73,9 +73,7 @@ class _EmptyPageState extends State<EmptyPage> {
 
   @override
   Widget build(BuildContext context) {
-    if(_isLoading){
-      return YmLoading();
-    }else{
+
       return MaterialApp(
         home: Scaffold(
           body: Stack(
@@ -94,19 +92,24 @@ class _EmptyPageState extends State<EmptyPage> {
                 ),
               ),
 
-              Positioned(
-                top: 80,
-                left:0,
-                width:  MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height - 80,
-                child:YmEmpty("暂无数据","assets/images/ic_no_data.png")
+              _isLoading?Positioned(
+                  top: 80,
+                  left:0,
+                  width:  MediaQuery.of(context).size.width,
+                  height:MediaQuery.of(context).size.height - 80,
+                  child:YmLoading())
+                  :Positioned(
+                  top: 80,
+                  left:0,
+                  width:  MediaQuery.of(context).size.width,
+                  height:MediaQuery.of(context).size.height - 80,
+                  child:YmEmpty("暂无数据","assets/images/ic_no_data.png")
               ),
+
             ],
           ),
         ),
       );
-    }
-
   }
 
 

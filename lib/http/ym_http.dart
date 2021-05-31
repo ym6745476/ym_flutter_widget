@@ -44,22 +44,22 @@ class YmHttp {
   }
 
   ///get请求
-  get(String url, Map<String, dynamic> params, Function successCallBack,Function errorCallBack) async {
-     _requestHttp(url, "get", params, successCallBack,errorCallBack);
+  get(String url, Map<String, dynamic> params,{ required Function success,required Function error,required Function complete }) async {
+     _requestHttp(url, "get", params, success,error,complete);
   }
 
   ///post json请求
-  post(String url, Map<String, dynamic> params, Function successCallBack, Function errorCallBack) async {
-    _requestHttp(url, "post", params, successCallBack,errorCallBack);
+  post(String url, Map<String, dynamic> params, { required Function success,required Function error,required Function complete }) async {
+    _requestHttp(url, "post", params, success,error,complete);
   }
 
   ///post请求
-  postForm(String url, Map<String, dynamic> params, Function successCallBack, Function errorCallBack) async {
-    _requestHttp(url, "postForm", params, successCallBack,errorCallBack);
+  postForm(String url, Map<String, dynamic> params, { required Function success,required Function error,required Function complete }) async {
+    _requestHttp(url, "postForm", params, success,error,complete);
   }
 
   ///_requestHttp
-  _requestHttp(String url,String method, Map<String, dynamic> params,Function successCallBack, Function errorCallBack) async {
+  _requestHttp(String url,String method, Map<String, dynamic> params,Function successCallBack, Function errorCallBack,Function completeCallBack) async {
     late Response response;
     try {
 
@@ -123,6 +123,8 @@ class YmHttp {
         errorCallBack({'errorCode':600,'errorMessage':errorMessage});
       }
 
+    } finally{
+      completeCallBack();
     }
 
   }

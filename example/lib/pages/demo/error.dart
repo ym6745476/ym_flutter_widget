@@ -74,10 +74,7 @@ class _ErrorPageState extends State<ErrorPage> {
 
   @override
   Widget build(BuildContext context) {
-    if(_isLoading){
-      return YmLoading();
-    }else{
-      return MaterialApp(
+    return MaterialApp(
         home: Scaffold(
           body: Stack(
             fit: StackFit.expand,
@@ -95,19 +92,24 @@ class _ErrorPageState extends State<ErrorPage> {
                 ),
               ),
 
-              Positioned(
+              _isLoading?Positioned(
+                  top: 80,
+                  left:0,
+                  width:  MediaQuery.of(context).size.width,
+                  height:MediaQuery.of(context).size.height - 80,
+                  child:YmLoading())
+                  :Positioned(
                 top: 80,
                 left:0,
                 width:  MediaQuery.of(context).size.width,
                 height:MediaQuery.of(context).size.height - 80,
                 child:YmError("网络状态不佳","assets/images/ic_no_data.png")
               ),
+
             ],
           ),
         ),
       );
-    }
-
   }
 
 

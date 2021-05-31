@@ -44,31 +44,35 @@ class _HttpPageState extends State<HttpPage> {
     YmUiUtil.showLoading(context);
 
     //postForm表单提交 post默认为Json方式提交
-    YmHttp.getInstance().postForm(url, {"user_name":_account,"password":_password},(data) {
+    YmHttp.getInstance().postForm(
+        url
+        ,{"user_name":_account,"password":_password}
+        ,success: (data) {
 
+            //Json转换实体类
+            UserEntity _userEntity = UserEntity();
+            _userEntity.fromJson(data);
+
+            if(_userEntity.code == 1){
+              YmUiUtil.showToast(context,"登录成功！");
+              setState(() {
+                _result = "userId:" + _userEntity.data.userId.toString() + ",token:" + _userEntity.data.token;
+              });
+              Config.token = _userEntity.data.token;
+              Config.userId = _userEntity.data.userId.toString();
+            }else{
+              setState(() {
+                _result = "error:" + _userEntity.msg;
+              });
+            }
+        }
+        ,error: (error) {
+          print("失败：" + error.toString());
+          YmUiUtil.showToast(context,error['errorMessage']);
+        }
+        ,complete: (){
           //关闭进度框
           YmUiUtil.hideLoading(context);
-
-          //Json转换实体类
-          UserEntity _userEntity = UserEntity();
-          _userEntity.fromJson(data);
-
-          if(_userEntity.code == 1){
-            YmUiUtil.showToast(context,"登录成功！");
-            setState(() {
-              _result = "userId:" + _userEntity.data.userId.toString() + ",token:" + _userEntity.data.token;
-            });
-            Config.token = _userEntity.data.token;
-            Config.userId = _userEntity.data.userId.toString();
-          }else{
-            setState(() {
-              _result = "error:" + _userEntity.msg;
-            });
-          }
-        },(error) {
-          print("失败：" + error.toString());
-          YmUiUtil.hideLoading(context);
-          YmUiUtil.showToast(context,error['errorMessage']);
         }
     );
   }
