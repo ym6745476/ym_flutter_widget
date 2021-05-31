@@ -3,6 +3,7 @@ A Light Weight Flutter Widget
 (Including Http,JsonToBean,AppBar,Dialog,Toast,Cascader,Loading,Button,SearchBar,Html,Image,Video and so on).
 
 ## Get started
+Project Home Page:http://ymbok.com/index.php/home/info/id/105
 
 ### Add dependency
 
@@ -33,31 +34,43 @@ dependencies:
 
 ```dart
 ///登录接口示例
+///登录接口示例
 Future<void> _login() async {
-    String url = LOGIN_URL;
+    String url = await Config.getURL(Config.LOGIN_USER_URL);
 
     //显示进度框
     YmUiUtil.showLoading(context);
 
-    //post默认为用Json方式提交,postForm用表单方式提交
-    YmHttp.getInstance().postForm(url, {"user_name":_account,"password":_password},(data) {
+    //postForm表单提交 post默认为Json方式提交
+    YmHttp.getInstance().postForm(
+        url
+        ,{"user_name":_account,"password":_password}
+        ,success: (data) {
 
+            //Json转换实体类
+            UserEntity _userEntity = UserEntity();
+            _userEntity.fromJson(data);
+
+            if(_userEntity.code == 1){
+              YmUiUtil.showToast(context,"登录成功！");
+              setState(() {
+                _result = "userId:" + _userEntity.data.userId.toString() + ",token:" + _userEntity.data.token;
+              });
+              Config.token = _userEntity.data.token;
+              Config.userId = _userEntity.data.userId.toString();
+            }else{
+              setState(() {
+                _result = "error:" + _userEntity.msg;
+              });
+            }
+        }
+        ,error: (error) {
+          print("失败：" + error.toString());
+          YmUiUtil.showToast(context,error['errorMessage']);
+        }
+        ,complete: (){
           //关闭进度框
           YmUiUtil.hideLoading(context);
-
-          //Json转换实体类
-          UserEntity _userEntity = UserEntity();
-          _userEntity.fromJson(data);
-
-          if(_userEntity.code == 1){
-            YmUiUtil.showToast(context,"登录成功！");
-          }else{
-            YmUiUtil.showToast(context,"登录失败！");
-          }
-        },(error) {
-          print("失败：" + error.toString());
-          YmUiUtil.hideLoading(context);
-          YmUiUtil.showToast(context,error['errorMessage']);
         }
     );
 }
