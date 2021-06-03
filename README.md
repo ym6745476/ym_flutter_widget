@@ -5,7 +5,7 @@ A Light Weight Flutter Widget
 
 <p align="center" >
     <img src="https://img.shields.io/badge/flutter-2.2.0-green" />
-    <img src="https://img.shields.io/badge/ym-flutter-widget-0.0.4-orange" />
+    <img src="https://img.shields.io/badge/ym flutter widget-0.0.4-orange" />
     <img src="https://img.shields.io/badge/dio-4.9.0-blue" />
 </p>
   
