@@ -18,6 +18,7 @@ export 'widgets/Image/ym_image_viewer.dart';
 export 'widgets/Video/ym_video_viewer.dart';
 export 'widgets/SearchBar/ym_search_bar.dart';
 export 'widgets/TextField/ym_text_field.dart';
+export 'widgets/TabPageView//ym_tab_page_view.dart';
 export 'widgets/Toast/ym_toast.dart';
 export 'utils/ym_string_util.dart';
 export 'utils/ym_ui_util.dart';

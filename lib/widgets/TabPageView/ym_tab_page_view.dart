@@ -121,7 +121,7 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
           ),
 
           Padding(
-            padding: EdgeInsets.only(top:5,left: 0,right: 0,bottom: 0),
+            padding: EdgeInsets.only(top:10,left: 0,right: 0,bottom: 0),
             child:Container(
                     child:MediaQuery.removePadding(
                       removeTop:true,
