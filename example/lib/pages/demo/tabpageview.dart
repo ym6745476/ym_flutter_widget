@@ -1,27 +1,26 @@
 import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
-import 'package:ym_flutter_widget/widgets/Button/ym_check_button.dart';
-import 'package:ym_flutter_widget/widgets/Button/ym_tab_button.dart';
-import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
+import 'package:ym_flutter_widget/widgets/TabPageView/ym_tab_page_view.dart';
 
-class ButtonPage extends StatefulWidget {
+///
+/// Tab+ListView
+///
+class TabPageViewPage extends StatefulWidget {
 
-  ButtonPage({Key? key}) : super(key: key);
+  TabPageViewPage({Key? key}) : super(key: key);
 
-  final String title = "Button";
+  final String title = "Tab Page View";
 
   @override
-  _ButtonPageState createState() => _ButtonPageState();
+  _TabPageViewPageState createState() => _TabPageViewPageState();
 }
 
-class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
+class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStateMixin {
 
-  List<bool> _isChecked = [true,false];
-  List<String> _tabButtonList = ["全部","待付款","待发货"];
-  int _tabButtonselectedIndex = 0;
+  List<String> _tabs = ["全部","已付款","待付款"];
+  List<dynamic> _items = [];
 
   @override
   void initState() {
@@ -39,51 +38,40 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
       }
     });
 
+    _items.clear();
+    _items.add("第一行0");
+    _items.add("第二行0");
+    _items.add("第三行0");
+    _items.add("第四行0");
+    _items.add("第五行0");
+
   }
 
-  void _checkedButton(int index){
+  Widget _getListItemWidget(int index){
+    BoxDecoration boxDecoration = BoxDecoration( color: Color(0xffffffff),
+        border: Border(
+        top: BorderSide(color: Colors.white, width: 0),     // 上边边框
+        right: BorderSide(color: Colors.white, width: 0),   // 右侧边框
+        bottom: BorderSide(color: Colors.grey, width: 0.3),   // 底部边框
+        left: BorderSide(color: Colors.white, width: 0)),   // 左侧边框
+    );
 
-    setState(() {
-       for(int i = 0;i<_isChecked.length;i++){
-          if(i==index){
-            _isChecked[i] = true;
-          }else{
-            _isChecked[i] = false;
-          }
-       }
-    });
-  }
-
-  Widget _getTabWidget(int index){
-
-    if(index == 0){
-      return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonselectedIndex == index,()=>{
-              tabButtonChange(index)
-            },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(20),right:Radius.circular(2)),
-        ),
-      );
-    }else if(index == 1){
-      return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonselectedIndex == index,()=>{
-              tabButtonChange(index)
-            },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(2)),
-        ),
-      );
-    }else{
-      return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonselectedIndex == index,()=>{
-              tabButtonChange(index)
-            },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(20)),
-        ),
-      );
-    }
-  }
-
-  void tabButtonChange(int index){
-    setState(() {
-      _tabButtonselectedIndex = index;
-    });
+    return Container(
+        height:50,
+        decoration:boxDecoration ,
+        child:Padding(
+            padding: EdgeInsets.only(top:10,left: 0,right: 0,bottom: 10),
+            child:Text(
+                _items.elementAt(index).toString(),
+                textAlign:TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,    //字体宽度
+                ),
+            )
+        )
+    );
   }
 
   @override
@@ -91,6 +79,7 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.white,
         body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
@@ -108,96 +97,29 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
             ),
 
             Positioned(
-              top: 80,
-              left:0,
-              width:  MediaQuery.of(context).size.width,
-              child:Padding(
-                padding: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 16),
-                child:Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    children: [
-
-                      YmTextButton("Stadium", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder: StadiumBorder(),),
-
-                      YmTextButton("Circle", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder:CircleBorder()),
-
-                      YmTextButton("RoundedRectangle", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-
-                      YmTextButton("BeveledRectangle", Color(0xFFFFFFFF), (){
-                        print("Button Pressed");
-                      },outlinedBorder:BeveledRectangleBorder(borderRadius: BorderRadius.circular(10))),
-
-                      YmTextButton("Outlined", Color(0xFF3446F2), (){
-                        print("Button Pressed");
-                      },isOutlined: true,),
-
-                      YmTextButton("Outlined", Color(0xFF3446F2), (){
-                        print("Button Pressed");
-                      },isOutlined: true,borderColor:Color(0xFFCCCCCC),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-
-                      YmTextButton(
-                        "渐变色",
-                        Color(0xff3244ED),
-                            (){
-                          print("Button Pressed");
-                        }
-                        ,
-                        size: Size(100, 32),
-                        fontSize: 14,
-                        backgroundColor: Colors.transparent,
-                        borderColor:Color(0xFFEFAD40),
-                        foregroundColor: Color(0xFFEFAD40),
-                        isGradient:true,
-                        fontWeight: FontWeight.w600,
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xFFFFE4B7),Color(0xFFEFAD40)]
-                        ),
-                      ),
-
-                      YmCheckButton(_isChecked[0],(){ _checkedButton(0);},text: "不选中",),
-                      YmCheckButton(_isChecked[1],(){_checkedButton(1);},text: "选中",),
-
-
-                      //Tab Button
-                      Container(
-                          width: MediaQuery.of(context).size.width,
-                          height:40,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children:[
-                                ListView.builder(
-                                    padding: EdgeInsets.only(top:0,left: 0,right: 0,bottom: 0),
-                                    primary: true,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    physics: new ClampingScrollPhysics(),
-                                    itemCount: 3,
-                                    itemBuilder: (context, index) => this._getTabWidget(index)
-                                ),
-                              ]
-                          ),
-                      ),
-
-                    ]
-                )
+              top: 100,
+              left:16,
+              child:YmTabPageView(_tabs,_items,
+                size: Size(MediaQuery.of(context).size.width-32, MediaQuery.of(context).size.height-100),
+                onItemBuilder: (index){
+                  return _getListItemWidget(index);
+                },
+                onChanged:(index){
+                  setState(() {
+                    _items.clear();
+                    _items.add("第一行" + index.toString());
+                    _items.add("第二行" + index.toString());
+                    _items.add("第三行" + index.toString());
+                    _items.add("第四行" + index.toString());
+                    _items.add("第五行" + index.toString());
+                  });
+                },
               ),
             ),
-
           ],
         ),
       ),
     );
   }
-
 
 }

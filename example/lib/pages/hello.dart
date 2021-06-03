@@ -35,6 +35,7 @@ class _HelloPageState extends State<HelloPage> {
       {'text':'Image','path':'/demo/image'},
       {'text':'Video','path':'/demo/video'},
       {'text':'Cascader','path':'/demo/cascader'},
+      {'text':'TabPageView','path':'/demo/tabview'},
       {'text':'String工具类','path':'/demo/stringutil'},
       {'text':'UI工具类','path':'/demo/uiutil'},
     ];

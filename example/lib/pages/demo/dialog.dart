@@ -1,3 +1,4 @@
+import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
@@ -15,13 +16,7 @@ class DialogPage extends StatefulWidget {
   _DialogPageState createState() => _DialogPageState();
 }
 
-class _DialogPageState extends State<DialogPage> {
-
-  //和Native进行通信
-  static const flutterChannel = const MethodChannel("sample.flutter.io/flutter");
-  static const nativeChannel = const MethodChannel("sample.flutter.io/native");
-
-  bool _isRouteFromFlutter = false;
+class _DialogPageState extends State<DialogPage> with SingleNativeStateMixin{
 
   @override
   void initState() {
@@ -32,30 +27,12 @@ class _DialogPageState extends State<DialogPage> {
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        _isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || _isRouteFromFlutter){
+        isRouteFromFlutter = arguments["flutter"];
+        if(Config.isWeb || isRouteFromFlutter){
           //加载数据
         }
       }
     });
-
-  }
-
-  ///Flutter调用原生
-  Future<void> _goBack() async{
-    if(_isRouteFromFlutter){
-      //如果是Flutter导航进来的页面直接退出
-      Navigator.pop(context);
-    }else{
-      //如果该页面是Native直接打开的，发送完成消息给Native处理
-      try {
-        Map<String, dynamic> arguments = {'message': 'onFinish'};
-        String result = await flutterChannel.invokeMethod('callNative', arguments);
-        print(result);
-      } on PlatformException catch (e) {
-        print("Failed: '${e.message}'.");
-      }
-    }
   }
 
   void alertDialog(){
@@ -90,7 +67,7 @@ class _DialogPageState extends State<DialogPage> {
                 child: YmAppBar(widget.title,[
                   const Color(0xFF606FFF),
                   const Color(0xFF3446F2),
-                ],_goBack,titleTextColor: Colors.white,),
+                ],goBack,titleTextColor: Colors.white,),
               ),
             ),
 

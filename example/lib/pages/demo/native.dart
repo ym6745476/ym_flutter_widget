@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:example/base/config.dart';
+import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,59 +16,29 @@ class NativePage extends StatefulWidget {
   _NativePageState createState() => _NativePageState();
 }
 
-class _NativePageState extends State<NativePage> {
-
-  //和Native进行通信
-  static const flutterChannel = const MethodChannel("sample.flutter.io/flutter");
-  static const nativeChannel = const MethodChannel("sample.flutter.io/native");
+class _NativePageState extends State<NativePage> with SingleNativeStateMixin{
 
   String _resultMessage = "";
-  bool _isRouteFromFlutter = false;
-
 
   @override
   void initState() {
     super.initState();
-
-    //传值 设置监听
-    nativeChannel.setMethodCallHandler(nativeCallHandler);
 
     //获取name路由过来的参数
     Future.delayed(Duration.zero, () {
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        _isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || _isRouteFromFlutter){
+        isRouteFromFlutter = arguments["flutter"];
+        if(Config.isWeb || isRouteFromFlutter){
            //加载数据
         }
       }
     });
   }
 
-  ///原生调用Flutter
-  Future<dynamic> nativeCallHandler(MethodCall call) async {
-    switch (call.method) {
-      case "callFlutter":
-        //获取原生传来的值
-        String arguments = call.arguments;
-        print('原生Android调用了flutter方法:' + arguments);
-        Map<String, dynamic> dataMap = json.decode(arguments);
-        setState(() {
-          _resultMessage = dataMap['text'];
-        });
-        Config.isWeb = false;
-        Config.isTest = false;
-        //加载数据
-        break;
-    }
-  }
-
   ///Flutter调用原生
   Future<void> _callNative() async{
-    if(_isRouteFromFlutter){
-      Navigator.pop(context);
-    }else{
       try {
         Map<String, dynamic> message = {'message': 'flutter'};
         String result = await flutterChannel.invokeMethod('callNative', message);
@@ -79,9 +50,7 @@ class _NativePageState extends State<NativePage> {
           _resultMessage = "Failed: '${e.message}'.";
         });
       }
-    }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +74,6 @@ class _NativePageState extends State<NativePage> {
                         child: Text('调用Native'),
                         onPressed: _callNative,
                       ),
-
                     ],
                   ),
               ),

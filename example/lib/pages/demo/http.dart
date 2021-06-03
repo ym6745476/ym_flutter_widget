@@ -1,3 +1,4 @@
+import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
@@ -17,7 +18,7 @@ class HttpPage extends StatefulWidget {
   _HttpPageState createState() => _HttpPageState();
 }
 
-class _HttpPageState extends State<HttpPage> {
+class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin{
 
   String _account = "ym6745476";
   String _password = "ym6745476";
