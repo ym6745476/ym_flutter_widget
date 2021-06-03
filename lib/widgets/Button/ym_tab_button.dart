@@ -45,10 +45,10 @@ class YmTabButton extends StatelessWidget {
     );
 
     return GestureDetector(
-        child: new Container(
+        child:  Container(
             width: size.width,
             height: size.height,
-            margin: EdgeInsets.only(left:10),
+            margin: EdgeInsets.only(left:8),
             decoration: this.isSelected ? boxDecorationTabSelected : boxDecorationTabNormal,
             child:Row(
                 mainAxisAlignment:MainAxisAlignment.center,

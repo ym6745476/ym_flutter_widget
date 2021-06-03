@@ -51,13 +51,15 @@ class _HtmlPageState extends State<HtmlPage> {
     });
 
     _controller.addListener(() {
-      print('_controller offset : ${_controller.offset}');
+      //print('_controller offset : ${_controller.offset}');
       if (_controller.offset > 100) {
-        setState(() {
-          _backButtonColor = Color(0xffffffff);
-          _titleText = "Html Page";
-        });
-      } else {
+        if(_titleText == ""){
+          setState(() {
+            _backButtonColor = Color(0xffffffff);
+            _titleText = "Html Page";
+          });
+        }
+      } else if(_titleText != ""){
         setState(() {
           _backButtonColor = Color(0xffffffff);
           _titleText = "";

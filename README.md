@@ -2,6 +2,13 @@
 A Light Weight Flutter Widget
 (Including Http,JsonToBean,AppBar,Dialog,Toast,Cascader,Loading,Button,SearchBar,Html,Image,Video and so on).
 
+
+<p align="center" >
+    <img src="https://img.shields.io/badge/flutter-2.2.0-green" />
+    <img src="https://img.shields.io/badge/ym-flutter-widget-0.0.4-orange" />
+    <img src="https://img.shields.io/badge/dio-4.9.0-blue" />
+</p>
+  
 ## Get started
 Project Home Page:http://ymbok.com/index.php/home/info/id/105
 
@@ -9,7 +16,7 @@ Project Home Page:http://ymbok.com/index.php/home/info/id/105
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.0.2
+  ym_flutter_widget: ^0.0.4
 ```
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134456_7001ef4a_1461204.png "1.png")
@@ -100,6 +107,7 @@ Future<void> _login() async {
 - export 'widgets/TextField/ym_text_field.dart';//文本框
 - export 'widgets/TextField/ym_text_marquee.dart';//循环滚动文本
 - export 'widgets/Toast/ym_toast.dart';//小提示Toast
+- export 'widgets/TabPageView/ym_tab_page_view.dart';//Tab+ListView
 - export 'utils/ym_string_util.dart';//字符串工具类
 - export 'utils/ym_ui_util.dart';//UI工具类
 

@@ -60,6 +60,7 @@ class YmTextButton extends StatelessWidget {
     if (isOutlined) {
       return OutlinedButton(
         style: ButtonStyle(
+          padding:MaterialStateProperty.all(EdgeInsets.zero),
           side:MaterialStateProperty.all(BorderSide(color:borderColor)),
           //设置按钮的大小
           minimumSize: MaterialStateProperty.all(size),
@@ -81,7 +82,7 @@ class YmTextButton extends StatelessWidget {
     } else {
       return ElevatedButton(
         style: ButtonStyle(
-
+          padding:MaterialStateProperty.all(EdgeInsets.zero),
           shadowColor: MaterialStateProperty.resolveWith(
                 (states) {
                   return Colors.transparent;
