@@ -87,6 +87,49 @@ Future<void> _login() async {
 
 ```dart
 
+//显示进度框
+YmUiUtil.showLoading(context);
+
+//关闭进度框
+YmUiUtil.hideLoading(context);
+
+//显示Toast
+YmUiUtil.showToast(context,"a message!");
+
+//显示弹出框
+YmUiUtil.showAlertDialog(context, "确认提示", "您确定要打开弹窗吗?", "确定", "取消",onOkPressed: (){
+    print("Ok Pressed");
+});
+
+//文字按钮
+YmTextButton("Stadium", Color(0xFFFFFFFF), (){
+    print("Button Pressed");
+},outlinedBorder: StadiumBorder(),),
+
+//文本框
+YmTextField([],"默认值",_onTextChange,
+      fontSize: 15,
+      height: 35,
+      hintText:"基本输入框" ,
+      outlineInputBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(0),
+          borderSide: BorderSide(color: Color(0x00606FFF))
+      ),
+      focusedBorder:  OutlineInputBorder(
+          borderRadius: BorderRadius.circular(0),
+          borderSide: BorderSide(color: Color(0x003446F2))
+      ),
+),
+
+//Tab + ListView
+YmTabPageView(_tabs,_items,
+    onItemBuilder: (index){
+      return _getListItemWidget(index);
+    },
+    onChanged:(index){
+     
+    },
+),
 
 ```
 
