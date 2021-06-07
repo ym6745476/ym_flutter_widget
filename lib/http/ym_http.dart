@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'dart:convert';
@@ -12,7 +15,7 @@ class YmHttp {
   static var _instance;
 
   //Dio
-  Dio dio = new Dio();
+  Dio _dio = new Dio();
 
   ///单例
   static YmHttp getInstance() {
@@ -26,21 +29,21 @@ class YmHttp {
   YmHttp() {
 
     //请求header的配置
-    dio.options.headers = {
+    _dio.options.headers = {
 
     };
 
-    dio.options.connectTimeout = 5000;
-    dio.options.receiveTimeout = 3000;
+    _dio.options.connectTimeout = 5000;
+    _dio.options.receiveTimeout = 3000;
 
-    dio.interceptors.add(LogInterceptor(responseBody:false));           //是否开启请求日志
-    dio.interceptors.add(CookieManager(CookieJar()));                   //缓存相关类
+    _dio.interceptors.add(LogInterceptor(responseBody:false));           //是否开启请求日志
+    _dio.interceptors.add(CookieManager(CookieJar()));                   //缓存相关类
   }
 
   /// 设置公共请求头
   setHeader(Map<String, String> params)  {
-      dio.options.headers.addAll(params);
-      print('当前Header: ' + dio.options.headers.toString());
+      _dio.options.headers.addAll(params);
+      print('当前Header: ' + _dio.options.headers.toString());
   }
 
   ///get请求
@@ -63,25 +66,26 @@ class YmHttp {
     late Response response;
     try {
 
-      print('请求Header: ' + dio.options.headers.toString());
+      print('请求Header: ' + _dio.options.headers.toString());
       print('请求参数: ' + params.toString());
+
       if (method == 'get') {
         if (params.length > 0) {
-          response = await dio.get(url,queryParameters: params);
+          response = await _dio.get(url,queryParameters: params);
         } else {
-          response = await dio.get(url);
+          response = await _dio.get(url);
         }
       }else if (method == 'post') {
         if (params.length > 0) {
-          response = await dio.post(url, data: params);
+          response = await _dio.post(url, data: params);
         } else {
-          response = await dio.post(url);
+          response = await _dio.post(url);
         }
       }else if (method == 'postForm') {
         if (params.length > 0) {
-          response = await dio.post(url, data: FormData.fromMap(params));
+          response = await _dio.post(url, data: FormData.fromMap(params));
         } else {
-          response = await dio.post(url);
+          response = await _dio.post(url);
         }
       }
 

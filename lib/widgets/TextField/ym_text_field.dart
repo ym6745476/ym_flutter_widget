@@ -45,7 +45,7 @@ class YmTextField extends StatelessWidget {
           ),
           child:TextField(
             controller: controller,
-            autofocus: true,
+            autofocus: false,
             textAlign: TextAlign.left,//文本对齐方式
             maxLines: maxLines,//最大行数
             style: TextStyle(fontSize: fontSize, color: Colors.black87,fontWeight:FontWeight.w500),//输入文本的样式

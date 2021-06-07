@@ -30,7 +30,7 @@ class YmHtml extends StatelessWidget {
   _getWidget(){
     List<Widget> widgetList = [];
     for(HtmlTag tag in tagList){
-      if(tag.name == "p"){
+      if(tag.name == "p" || tag.name == "span" || tag.name == "strong"){
         widgetList.add(
             Container(
               width:width ,
@@ -77,16 +77,25 @@ class YmHtml extends StatelessWidget {
   }
 
   _parseHtml(dom.Element element){
+    String html = element.outerHtml;
+    if(html.indexOf("<div>") != -1){
+      html = html.replaceAll("<div>","<p>");
+      html = html.replaceAll("</div>","</p>");
+    }
 
+    if(element.outerHtml.indexOf("<br>") != -1){
+      element = dom.Element.html(element.outerHtml.replaceAll("<br>","</p><p>"));
+    }
+    print(element.outerHtml);
     List<dom.Element> elementList = element.children;
     if(elementList.length > 0){
       for(dom.Element element in elementList){
         _parseHtml(element);
       }
     }else{
-      //print(element.localName);
+      print(element.innerHtml);
       HtmlTag tag = HtmlTag();
-      if(element.localName == "p"){
+      if(element.localName == "p" || element.localName == "span" || element.localName == "strong"){
         tag.name = element.localName!;
         tag.text = element.innerHtml;
         tagList.add(tag);

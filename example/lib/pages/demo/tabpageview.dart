@@ -39,12 +39,9 @@ class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStat
     });
 
     _items.clear();
-    _items.add("第一行0");
-    _items.add("第二行0");
-    _items.add("第三行0");
-    _items.add("第四行0");
-    _items.add("第五行0");
-
+    for(int i=0;i<20;i++){
+      _items.add("第"+i.toString()+"行0");
+    }
   }
 
   Widget _getListItemWidget(int index){
@@ -107,11 +104,9 @@ class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStat
                 onChanged:(index){
                   setState(() {
                     _items.clear();
-                    _items.add("第一行" + index.toString());
-                    _items.add("第二行" + index.toString());
-                    _items.add("第三行" + index.toString());
-                    _items.add("第四行" + index.toString());
-                    _items.add("第五行" + index.toString());
+                    for(int i=0;i<20;i++){
+                      _items.add("第"+i.toString()+"行" + index.toString());
+                    }
                   });
                 },
               ),

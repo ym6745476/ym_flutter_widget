@@ -16,6 +16,7 @@ class YmTabPageView extends StatefulWidget {
   final Function onItemBuilder;
   final double fontSize;
   final Size size;
+  final double tabBarHeight;
 
   YmTabPageView(
       this.tabs,
@@ -24,6 +25,7 @@ class YmTabPageView extends StatefulWidget {
         Key? key,
         this.fontSize = 15,
         this.size = const Size(500, 500),
+        this.tabBarHeight = 40,
         this.selectedIndex = 0,
         required this.onChanged,
         required this.onItemBuilder,
@@ -121,8 +123,9 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
           ),
 
           Padding(
-            padding: EdgeInsets.only(top:10,left: 0,right: 0,bottom: 0),
+            padding:EdgeInsets.only(top:10,left: 0,right: 0,bottom: 0),
             child:Container(
+                    height: widget.size.height - widget.tabBarHeight - 10,
                     child:MediaQuery.removePadding(
                       removeTop:true,
                       context:context,
