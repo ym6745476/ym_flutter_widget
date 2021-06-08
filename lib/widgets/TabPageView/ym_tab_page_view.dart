@@ -14,9 +14,11 @@ class YmTabPageView extends StatefulWidget {
   final int selectedIndex;
   final Function onChanged;
   final Function onItemBuilder;
+  final Function onLoadMore;
   final double fontSize;
   final Size size;
   final double tabBarHeight;
+  bool canLoadMore;
 
   YmTabPageView(
       this.tabs,
@@ -29,18 +31,22 @@ class YmTabPageView extends StatefulWidget {
         this.selectedIndex = 0,
         required this.onChanged,
         required this.onItemBuilder,
+        required this.onLoadMore,
+        this.canLoadMore = true,
       }
   ): super(key: key);
 
   @override
-  _YmTabPageViewState createState() => _YmTabPageViewState(this.selectedIndex);
-
+  _YmTabPageViewState createState() {
+    return _YmTabPageViewState(this.selectedIndex);
+  }
 }
 
 class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProviderStateMixin{
 
   late TabController _tabController;
   late int _selectedIndex;
+  late ScrollController _scrollController;
 
   _YmTabPageViewState(this._selectedIndex);
 
@@ -48,6 +54,14 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
   void initState() {
     super.initState();
     _tabController = TabController(initialIndex: 0, length: widget.tabs.length,vsync: this);
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        if(widget.canLoadMore){
+            widget.onLoadMore();
+        }
+      }
+    });
   }
 
   List<Widget> _getTabListWidget(){
@@ -65,18 +79,46 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
     return tabWidgets;
   }
 
+  Widget _buildProgressIndicator() {
+    return Center(
+      child:widget.canLoadMore?Container(
+        width:40,
+        height:40,
+        child:Padding(
+          padding: EdgeInsets.all(8),
+          child:CircularProgressIndicator(
+              color:Color(0xFF606FFF),
+              strokeWidth: 3,
+            ),
+          ),
+        ):Padding(
+          padding: EdgeInsets.all(8),
+          child:Text(
+            "没有更多数据了~",
+            style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFF666666)
+          ),)
+        ),
+      );
+  }
 
   Widget _getListViewWidget(){
 
     if(widget.items.length > 0){
       return ListView.builder(
-          primary: true,
+          controller:_scrollController,
           shrinkWrap: true,  //为true可以解决子控件必须设置高度的问题
           scrollDirection: Axis.vertical,
           physics: ClampingScrollPhysics(),
-          itemCount: widget.items.length,
+          itemCount: widget.items.length + 1,
           itemBuilder: (context, index) {
-            return widget.onItemBuilder(index);
+            if(index == widget.items.length){
+              return _buildProgressIndicator();
+            }else{
+              return widget.onItemBuilder(index);
+            }
+            
           }
       );
     }else{
@@ -125,7 +167,7 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
           Padding(
             padding:EdgeInsets.only(top:10,left: 0,right: 0,bottom: 0),
             child:Container(
-                    height: widget.size.height - widget.tabBarHeight - 10,
+                    height: widget.size.height - widget.tabBarHeight,
                     child:MediaQuery.removePadding(
                       removeTop:true,
                       context:context,
@@ -140,6 +182,7 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
 
   @override
   void dispose() {
+    _scrollController.dispose();
     super.dispose();
   }
 
