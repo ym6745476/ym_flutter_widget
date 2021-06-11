@@ -10,7 +10,7 @@ A Light Weight Flutter Widget
 </p>
   
 ## Get started
-Project Home Page:http://ymbok.com/index.php/home/info/id/105
+Project Home Page:http://ymbok.com/index.php/index/info/id/105
 
 ### Add dependency
 
