@@ -30,7 +30,7 @@ class YmDialogBox extends StatelessWidget {
         child: ConstrainedBox(constraints: const BoxConstraints.expand()),
       );
     }
-    current = Align(alignment: alignment!, child: current);
+    current = Align(alignment: alignment, child: current);
 
     return Container(
       decoration: BoxDecoration(color: Color(0x96000000)),
