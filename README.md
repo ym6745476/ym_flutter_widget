@@ -16,7 +16,7 @@ Project Home Page:http://ymbok.com/index.php/home/info/id/105
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.0.4
+  ym_flutter_widget: ^0.0.5
 ```
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134456_7001ef4a_1461204.png "1.png")
