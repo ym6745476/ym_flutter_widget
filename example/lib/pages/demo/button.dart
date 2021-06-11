@@ -108,7 +108,7 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
             ),
 
             Positioned(
-              top: 80,
+              top: appBarHeight,
               left:0,
               width:  MediaQuery.of(context).size.width,
               child:Padding(

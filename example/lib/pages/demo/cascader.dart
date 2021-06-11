@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
 import 'package:ym_flutter_widget/widgets/Cascader/ym_cascader.dart';
+import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_box.dart';
 
 ///
 /// Cascader级联选择器
@@ -141,7 +142,7 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
             ),
 
             Positioned(
-              top: 80,
+              top: appBarHeight,
               left:0,
               width:  MediaQuery.of(context).size.width,
               child:Padding(
@@ -188,13 +189,12 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
 
             _showPickerDialog?
             Positioned(
-              bottom: 0,
-              left: 0,
               width: MediaQuery.of(context).size.width,
-              height: 220,
-              child: _pickerDialog(),
+              height: MediaQuery.of(context).size.height,
+              child: YmDialogBox(
+                  child:_pickerDialog(),
+              ),
             ):Container()
-
           ],
         ),
       ),

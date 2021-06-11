@@ -56,9 +56,9 @@ class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin{
 
 
             Positioned(
-              top: 80,
+              top: appBarHeight,
               left:0,
-              height: MediaQuery.of(context).size.height - 80 ,
+              height: MediaQuery.of(context).size.height - appBarHeight ,
               width:  MediaQuery.of(context).size.width,
               child: Container(
                 child:MediaQuery.removePadding(

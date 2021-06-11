@@ -20,7 +20,10 @@ class TabPageViewPage extends StatefulWidget {
 class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStateMixin {
 
   List<String> _tabs = ["全部","已付款","待付款"];
+  int _tabSelectedIndex = 0;
   List<dynamic> _items = [];
+  int _pageNumber = 1;
+  bool _hasMoreData = true;
 
   @override
   void initState() {
@@ -34,13 +37,43 @@ class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStat
         isRouteFromFlutter = arguments["flutter"];
         if(Config.isWeb || isRouteFromFlutter){
           //加载数据
+          loadData();
         }
       }
     });
+  }
 
-    _items.clear();
-    for(int i=0;i<20;i++){
-      _items.add("第"+i.toString()+"行0");
+  @override
+  Future<void> loadData() async{
+    _loadList();
+  }
+
+  void _tabChanged(index){
+    _tabSelectedIndex = index;
+
+    setState(() {
+      _hasMoreData = true;
+      _pageNumber = 1;
+    });
+    _loadList();
+  }
+
+  Future<void> _loadList() async{
+    print("_loadList _loadList _loadList");
+    if(_pageNumber == 1){
+      _items.clear();
+    }
+    setState(() {
+      for(int i= 0;i<10;i++){
+        _items.add("Tab" + _tabSelectedIndex.toString() + ",第" + _pageNumber.toString() + "页,第"+i.toString()+"行");
+      }
+      _pageNumber = _pageNumber + 1;
+    });
+
+    if(_pageNumber == 5){
+      setState(() {
+        _hasMoreData = false;
+      });
     }
   }
 
@@ -94,20 +127,20 @@ class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStat
             ),
 
             Positioned(
-              top: 100,
-              left:16,
+              top: appBarHeight,
+              left:0,
               child:YmTabPageView(_tabs,_items,
-                size: Size(MediaQuery.of(context).size.width-32, MediaQuery.of(context).size.height-100),
+                size: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height - appBarHeight),
+                tabBarHeight: 40,
+                hasMoreData: _hasMoreData,
                 onItemBuilder: (index){
                   return _getListItemWidget(index);
                 },
                 onChanged:(index){
-                  setState(() {
-                    _items.clear();
-                    for(int i=0;i<20;i++){
-                      _items.add("第"+i.toString()+"行" + index.toString());
-                    }
-                  });
+                  _tabChanged(index);
+                },
+                onLoadMore: (){
+                  _loadList();
                 },
               ),
             ),

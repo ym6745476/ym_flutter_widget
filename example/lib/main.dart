@@ -7,6 +7,7 @@ import 'package:example/pages/demo/error.dart';
 import 'package:example/pages/demo/html.dart';
 import 'package:example/pages/demo/http.dart';
 import 'package:example/pages/demo/image.dart';
+import 'package:example/pages/demo/listview.dart';
 import 'package:example/pages/demo/loading.dart';
 import 'package:example/pages/demo/native.dart';
 import 'package:example/pages/demo/searchbar.dart';
@@ -64,6 +65,7 @@ class MyRouter {
   static final imagePage = '/demo/image';
   static final videoPage = '/demo/video';
   static final tabViewPage = '/demo/tabview';
+  static final listViewPage = '/demo/listview';
 
   //
   // 路由代码
@@ -87,6 +89,7 @@ class MyRouter {
     imagePage: (ctx) => ImagePage(),
     videoPage: (ctx) => VideoPage(),
     tabViewPage: (ctx) => TabPageViewPage(),
+    listViewPage: (ctx) => ListViewPage(),
   };
 }
 

@@ -65,7 +65,7 @@ class _ImagePageState extends State<ImagePage> with SingleNativeStateMixin{
             ),
 
             Positioned(
-              top: 80,
+              top: appBarHeight,
               left:0,
               width:  MediaQuery.of(context).size.width,
               child:Padding(

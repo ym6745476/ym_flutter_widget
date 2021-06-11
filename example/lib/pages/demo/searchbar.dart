@@ -59,7 +59,7 @@ class _SearchBarPageState extends State<SearchBarPage> with SingleNativeStateMix
             ),
 
             Positioned(
-              top: 80,
+              top: appBarHeight,
               left:0,
               height: 100 ,
               width:  MediaQuery.of(context).size.width,

@@ -69,13 +69,14 @@ class _YmCascaderState extends State<YmCascader> {
   Widget build(BuildContext context) {
     return Container(
       height:220,
+      decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Divider(
             height: 1,
-            color: Color(0xffEFEFEF),
+            color: Color(0xFFEFEFEF),
             thickness: 1,
           ),
           Container(

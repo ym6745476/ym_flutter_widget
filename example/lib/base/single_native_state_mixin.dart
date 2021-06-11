@@ -11,6 +11,7 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
   bool isRouteFromFlutter = false;
   bool isLoading = true;
   bool isError = false;
+  double appBarHeight = 76;
 
   //传值
   MethodChannel flutterChannel = const MethodChannel("sample.flutter.io/flutter");
@@ -19,8 +20,14 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
   @override
   void initState() {
     super.initState();
+
+    Future.delayed(Duration.zero, () {
+      appBarHeight = MediaQuery.of(context).padding.top + 56;
+    });
+
     //传值 设置监听
     nativeChannel.setMethodCallHandler(nativeCallHandler);
+
   }
 
   ///get请求数据
@@ -47,10 +54,10 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
             ),
             ///Loading
             Positioned(
-                top: 80,
+                top: appBarHeight,
                 left:0,
                 width: MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height - 80,
+                height:MediaQuery.of(context).size.height - appBarHeight,
                 child: YmLoading())
           ],
         ),
@@ -75,18 +82,33 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
     }
   }
 
-  ///Flutter调用原生
+  ///返回
   Future<void> goBack() async{
     if(isRouteFromFlutter){
-      if(!Config.isWeb) {
-        try {
-          print('Flutter调用Native:onBack');
-          Map<String, dynamic> arguments = {'message': 'onBack'};
-          String result = await flutterChannel.invokeMethod('callNative', arguments);
-          print('Flutter调用Native onBack:' + result);
-        } on PlatformException catch (e) {}
+
+      if(Navigator.canPop(context)){
+        Navigator.pop(context,"");
+        if(!Config.isWeb) {
+          try {
+            print('Flutter调用Native:onBack');
+            Map<String, dynamic> arguments = {'message': 'onBack'};
+            String result = await flutterChannel.invokeMethod('callNative', arguments);
+            print('Flutter调用Native onBack:' + result);
+          } on PlatformException catch (e) {}
+        }
+      }else{
+        if(!Config.isWeb) {
+          try {
+            print('Flutter调用Native:onFinish');
+            Map<String, dynamic> arguments = {'message': 'onFinish'};
+            String result = await flutterChannel.invokeMethod('callNative', arguments);
+            print('Flutter调用Native onFinish:' + result);
+          } on PlatformException catch (e) {
+            print("Failed: '${e.message}'.");
+          }
+        }
       }
-      Navigator.pop(context);
+
     }else{
       try {
         print('Flutter调用Native:onFinish');
@@ -96,6 +118,17 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
       } on PlatformException catch (e) {
         print("Failed: '${e.message}'.");
       }
+    }
+  }
+
+  ///Flutter调用原生
+  Future<void> flutterCallNative(Map<String, dynamic> arguments) async{
+    if(!Config.isWeb) {
+      try {
+        print('Flutter调用Native:flutterCallNative');
+        String result = await flutterChannel.invokeMethod('callNative', arguments);
+        print('Flutter调用Native:' + result);
+      } on PlatformException catch (e) {}
     }
   }
 

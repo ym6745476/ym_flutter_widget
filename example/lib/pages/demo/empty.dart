@@ -68,16 +68,16 @@ class _EmptyPageState extends State<EmptyPage> with SingleNativeStateMixin{
               ),
 
               _isLoading?Positioned(
-                  top: 80,
+                  top: appBarHeight,
                   left:0,
                   width:  MediaQuery.of(context).size.width,
-                  height:MediaQuery.of(context).size.height - 80,
+                  height:MediaQuery.of(context).size.height - appBarHeight,
                   child:YmLoading())
                   :Positioned(
-                  top: 80,
+                  top: MediaQuery.of(context).padding.top + 56,
                   left:0,
                   width:  MediaQuery.of(context).size.width,
-                  height:MediaQuery.of(context).size.height - 80,
+                  height:MediaQuery.of(context).size.height - appBarHeight,
                   child:YmEmpty("暂无数据","assets/images/ic_no_data.png")
               ),
 

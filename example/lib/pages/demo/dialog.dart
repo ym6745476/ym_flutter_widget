@@ -72,7 +72,7 @@ class _DialogPageState extends State<DialogPage> with SingleNativeStateMixin{
             ),
 
             Positioned(
-              top: 80,
+              top:appBarHeight,
               left:0,
               width:  MediaQuery.of(context).size.width,
               child:Padding(

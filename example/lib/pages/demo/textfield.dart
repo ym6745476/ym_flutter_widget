@@ -73,10 +73,10 @@ class _TextFieldPageState extends State<TextFieldPage> with SingleNativeStateMix
             ),
 
             Positioned(
-              top: 80,
+              top: appBarHeight,
               left:0,
               width: MediaQuery.of(context).size.width,
-              height:MediaQuery.of(context).size.height - 80,
+              height:MediaQuery.of(context).size.height - appBarHeight,
               child:Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

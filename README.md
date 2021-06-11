@@ -41,7 +41,6 @@ dependencies:
 
 ```dart
 ///登录接口示例
-///登录接口示例
 Future<void> _login() async {
     String url = await Config.getURL(Config.LOGIN_USER_URL);
 
