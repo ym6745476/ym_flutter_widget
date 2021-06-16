@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_check_button.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_gradient_button.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_image_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_tab_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 
@@ -21,7 +23,7 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
   List<bool> _isChecked = [true,false];
   List<String> _tabButtonList = ["全部","待付款","待发货"];
-  int _tabButtonselectedIndex = 0;
+  int _tabButtonSelectedIndex = 0;
 
   @override
   void initState() {
@@ -58,21 +60,21 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
     if(index == 0){
       return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonselectedIndex == index,()=>{
+        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonSelectedIndex == index,()=>{
               tabButtonChange(index)
             },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(20),right:Radius.circular(2)),
         ),
       );
     }else if(index == 1){
       return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonselectedIndex == index,()=>{
+        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonSelectedIndex == index,()=>{
               tabButtonChange(index)
             },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(2)),
         ),
       );
     }else{
       return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonselectedIndex == index,()=>{
+        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonSelectedIndex == index,()=>{
               tabButtonChange(index)
             },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(20)),
         ),
@@ -82,7 +84,7 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
   void tabButtonChange(int index){
     setState(() {
-      _tabButtonselectedIndex = index;
+      _tabButtonSelectedIndex = index;
     });
   }
 
@@ -120,6 +122,10 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
                       YmTextButton("Stadium", Color(0xFFFFFFFF), (){
                         print("Button Pressed");
+                      }),
+
+                      YmTextButton("Stadium", Color(0xFFFFFFFF), (){
+                        print("Button Pressed");
                       },outlinedBorder: StadiumBorder(),),
 
                       YmTextButton("Circle", Color(0xFFFFFFFF), (){
@@ -136,13 +142,40 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
                       YmTextButton("Outlined", Color(0xFF3446F2), (){
                         print("Button Pressed");
-                      },isOutlined: true,),
+                      },isOutlined: true,borderColor:Color(0xFF3446F2),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
-                      YmTextButton("Outlined", Color(0xFF3446F2), (){
+                      Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top:0,left: 10,right: 0,bottom: 0),
+                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),foregroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top:0,left: 10,right: 10,bottom: 0),
+                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),foregroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                            ),
+                          ]
+                      ),
+
+                      YmImageButton("ImageButton", (){
                         print("Button Pressed");
-                      },isOutlined: true,borderColor:Color(0xFFCCCCCC),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),foregroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png"),
 
-                      YmTextButton(
+                      YmImageButton("ImageButton", (){
+                        print("Button Pressed");
+                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),foregroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png",outlinedBorder:StadiumBorder()),
+
+                      YmImageButton("ImageButton", (){
+                        print("Button Pressed");
+                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),foregroundColor:Color(0xFF606FFF),iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+
+                      YmImageButton("ImageButton", (){
+                        print("Button Pressed");
+                      },textColor:Color(0xFF3446F2),size:Size(160,42),isOutlined:true,iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+
+
+
+                      YmGradientButton(
                         "渐变色",
                         Color(0xff3244ED),
                             (){
@@ -151,10 +184,8 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                         ,
                         size: Size(100, 32),
                         fontSize: 14,
-                        backgroundColor: Colors.transparent,
                         borderColor:Color(0xFFEFAD40),
-                        foregroundColor: Color(0xFFEFAD40),
-                        isGradient:true,
+                        pressedBackgroundColor: Color(0xFFEFAD40),
                         fontWeight: FontWeight.w600,
                         gradient: LinearGradient(
                             begin: Alignment.topCenter,

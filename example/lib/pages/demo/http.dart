@@ -51,19 +51,20 @@ class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin{
         ,success: (data) {
 
             //Json转换实体类
-            UserEntity _userEntity = UserEntity();
-            _userEntity.fromJson(data);
+            UserEntity userEntity = UserEntity();
+            userEntity.fromJson(data);
 
-            if(_userEntity.code == 1){
+            if(userEntity.code == 1){
               YmUiUtil.showToast(context,"登录成功！");
               setState(() {
-                _result = "userId:" + _userEntity.data.userId.toString() + ",token:" + _userEntity.data.token;
+                _result = "userId:" + userEntity.data.userId.toString() + ",token:" + userEntity.data.token;
               });
-              Config.token = _userEntity.data.token;
-              Config.userId = _userEntity.data.userId.toString();
+              Config.token = userEntity.data.token;
+              Config.userId = userEntity.data.userId.toString();
             }else{
+              YmUiUtil.showToast(context,userEntity.msg);
               setState(() {
-                _result = "error:" + _userEntity.msg;
+                _result = "error:" + userEntity.msg;
               });
             }
         }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 
-///普通样式的Button
-class YmTextButton extends StatelessWidget {
+///背景是渐变色的Button
+class YmGradientButton extends StatelessWidget {
 
   final String text;
   final Color textColor;
@@ -11,10 +10,7 @@ class YmTextButton extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final Size size;
-  final Color foregroundColor;
-  final Color backgroundColor;
-  final bool isOutlined;
-  final bool isGradient;
+  final Color pressedBackgroundColor;
   final Color borderColor;
   final LinearGradient gradient;
 
@@ -24,22 +20,18 @@ class YmTextButton extends StatelessWidget {
   //StadiumBorder 两端是半圆的边框
   final OutlinedBorder outlinedBorder;
 
-  YmTextButton(this.text,this.textColor,this.onClick,{
+  YmGradientButton(this.text,this.textColor,this.onClick,{
     this.fontSize = 14,
     this.fontWeight = FontWeight.normal,
     this.size = const Size(120, 42),
-    this.isOutlined = false,
-    this.isGradient = false,
-    this.borderColor = const Color(0xFFCCCCCC),
-    this.foregroundColor = const Color(0xFF606FFF),
-    this.backgroundColor = const Color(0xFF3446F2),
-    this.outlinedBorder = const RoundedRectangleBorder(),
+    this.borderColor = Colors.transparent,
+    this.pressedBackgroundColor = const Color(0xFF606FFF),
+    this.outlinedBorder = const StadiumBorder(),
     this.gradient = const LinearGradient( colors: [const Color(0xFF606FFF),const Color(0xFF3446F2)]),
   });
 
   @override
   Widget build(BuildContext context) {
-    if(isGradient){
       return Container(
         width: size.width,
         height: size.height,
@@ -51,35 +43,10 @@ class YmTextButton extends StatelessWidget {
         ),
         child:buildTextButton(),
       );
-    }else{
-      return buildTextButton();
-    }
   }
 
   Widget buildTextButton() {
-    if (isOutlined) {
-      return OutlinedButton(
-        style: ButtonStyle(
-          padding:MaterialStateProperty.all(EdgeInsets.zero),
-          side:MaterialStateProperty.all(BorderSide(color:borderColor)),
-          //设置按钮的大小
-          minimumSize: MaterialStateProperty.all(size),
-          //外边框装饰
-          shape: MaterialStateProperty.all(outlinedBorder),
-        ),
-        child: Text(text,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: textColor,
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-          ),
-        ),
-        onPressed: () {
-          onClick();
-        },
-      );
-    } else {
+
       return ElevatedButton(
         style: ButtonStyle(
           padding:MaterialStateProperty.all(EdgeInsets.zero),
@@ -90,29 +57,27 @@ class YmTextButton extends StatelessWidget {
           ),
           foregroundColor: MaterialStateProperty.resolveWith(
                 (states) {
-              if (states.contains(MaterialState.focused) &&
-                  !states.contains(MaterialState.pressed)) {
-                //获取焦点时的颜色
-                return foregroundColor;
-              } else if (states.contains(MaterialState.pressed)) {
-                //按下时的颜色
-                return foregroundColor;
+
+              if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
+                //获取焦点和按下时的颜色
+                return pressedBackgroundColor;
               }
               //默认状态使用的颜色
-              return backgroundColor;
+              return Colors.transparent;
             },
           ),
-          //背景颜色
+
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             //设置按下时的背景颜色
-            if (states.contains(MaterialState.pressed)) {
-              return foregroundColor;
+            if (states.contains(MaterialState.focused) ||  states.contains(MaterialState.pressed)) {
+              return pressedBackgroundColor;
+            }else{
+              return Colors.transparent;
             }
-            //默认使用背景颜色
-            return backgroundColor;
           }),
-          //设置按钮的大小
-          minimumSize: MaterialStateProperty.all(size),
+
+          //设置按钮的最小尺寸
+          //minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
           shape: MaterialStateProperty.all(outlinedBorder),
 
@@ -130,5 +95,4 @@ class YmTextButton extends StatelessWidget {
         },
       );
     }
-  }
 }

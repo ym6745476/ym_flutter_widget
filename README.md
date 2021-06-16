@@ -1,6 +1,6 @@
 # Ym Flutter Widget
 A Light Weight Flutter Widget
-(Including Http,JsonToBean,AppBar,Dialog,Toast,Cascader,Loading,Button,SearchBar,Html,Image,Video and so on).
+(Including Http,AppBar,Dialog,Toast,Cascader,Loading,Button,SearchBar,Html,Image,Video and so on).
 
 
 <p align="center" >
@@ -41,6 +41,7 @@ dependencies:
 ### Super simple to use http
 
 ```dart
+
 ///登录接口示例
 Future<void> _login() async {
     String url = await Config.getURL(Config.LOGIN_USER_URL);
@@ -55,20 +56,15 @@ Future<void> _login() async {
         ,success: (data) {
 
             //Json转换实体类
-            UserEntity _userEntity = UserEntity();
-            _userEntity.fromJson(data);
+            UserEntity userEntity = UserEntity();
+            userEntity.fromJson(data);
 
-            if(_userEntity.code == 1){
+            if(userEntity.code == 1){
               YmUiUtil.showToast(context,"登录成功！");
-              setState(() {
-                _result = "userId:" + _userEntity.data.userId.toString() + ",token:" + _userEntity.data.token;
-              });
-              Config.token = _userEntity.data.token;
-              Config.userId = _userEntity.data.userId.toString();
+              Config.token = userEntity.data.token;
+              Config.userId = userEntity.data.userId.toString();
             }else{
-              setState(() {
-                _result = "error:" + _userEntity.msg;
-              });
+              YmUiUtil.showToast(context,userEntity.msg);
             }
         }
         ,error: (error) {
@@ -104,7 +100,12 @@ YmUiUtil.showAlertDialog(context, "确认提示", "您确定要打开弹窗吗?"
 //文字按钮
 YmTextButton("Stadium", Color(0xFFFFFFFF), (){
     print("Button Pressed");
-},outlinedBorder: StadiumBorder(),),
+},outlinedBorder: StadiumBorder()),
+
+//带图标和文字的按钮
+YmImageButton("ImageButton", Color(0xFFFFFFFF), (){
+   print("Button Pressed");
+},size:Size(180,42),iconLeft:"assets/images/ic_share_down.png",outlinedBorder:StadiumBorder()),
 
 //文本框
 YmTextField([],"默认值",_onTextChange,
