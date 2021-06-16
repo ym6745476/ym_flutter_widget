@@ -16,27 +16,31 @@ Project Home Page:http://ymbok.com/index.php/index/info/id/105
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.0.5
+  ym_flutter_widget: ^0.0.6
 ```
+### Show Case Online
+https://ymbok.com/ym_flutter_widget/index.html
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134456_7001ef4a_1461204.png "1.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134504_fadbefbe_1461204.png "2.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134512_73d65a48_1461204.png "3.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134518_6dba8ac6_1461204.png "4.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134524_c0ca803a_1461204.png "5.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134529_54bc1cfe_1461204.png "6.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134535_34c176dd_1461204.png "7.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134541_0d61364c_1461204.png "8.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134547_b8d649a3_1461204.png "9.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134553_205a73ca_1461204.png "10.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134559_cd16b650_1461204.png "11.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134604_24dcbced_1461204.png "12.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134610_92c26753_1461204.png "13.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134617_ac03a280_1461204.png "14.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134622_49a1cfe2_1461204.png "15.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0531/134628_1e792f0e_1461204.png "16.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0611/175410_fe536034_1461204.png "17.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0611/175419_222979d4_1461204.png "18.png")
+### Screenshot
+
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/1.png "1.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/2.png "2.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/3.png "3.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/4.png "4.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/5.png "5.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/6.png "6.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/7.png "7.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/8.png "8.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/9.png "9.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/10.png "10.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/11.png "11.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/12.png "12.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/13.png "13.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/14.png "14.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/15.png "15.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/16.png "16.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/17.png "17.png")
+![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/18.png "18.png")
 
 ### Super simple to use http
 
