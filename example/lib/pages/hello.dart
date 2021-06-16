@@ -1,3 +1,4 @@
+import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
 
 class HelloPage extends StatefulWidget {
@@ -10,7 +11,7 @@ class HelloPage extends StatefulWidget {
   _HelloPageState createState() => _HelloPageState();
 }
 
-class _HelloPageState extends State<HelloPage> {
+class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin{
 
   @override
   void initState() {

@@ -5,7 +5,7 @@ A Light Weight Flutter Widget
 
 <p align="center" >
     <img src="https://img.shields.io/badge/flutter-2.2.0-green" />
-    <img src="https://img.shields.io/badge/ym flutter widget-0.0.4-orange" />
+    <img src="https://img.shields.io/badge/ym flutter widget-0.0.6-orange" />
     <img src="https://img.shields.io/badge/dio-4.9.0-blue" />
 </p>
   
@@ -20,28 +20,29 @@ dependencies:
   ym_flutter_widget: ^0.0.6
 ```
 ### Show Case Online
-https://ymbok.com/ym_flutter_widget/index.html
+
+http://case.ymbok.com:8082/
 
 ### Screenshot
 
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/1.png "1.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/2.png "2.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/3.png "3.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/4.png "4.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/5.png "5.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/6.png "6.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/7.png "7.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/8.png "8.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/9.png "9.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/10.png "10.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/11.png "11.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/12.png "12.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/13.png "13.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/14.png "14.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/15.png "15.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/16.png "16.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/17.png "17.png")
-![输入图片说明](https://ymbok.com/upload/images/sample/screenshot/18.png "18.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/1.png "1.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/2.png "2.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/3.png "3.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/4.png "4.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/5.png "5.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/6.png "6.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/7.png "7.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/8.png "8.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/9.png "9.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/10.png "10.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/11.png "11.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/12.png "12.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/13.png "13.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/14.png "14.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/15.png "15.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/16.png "16.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/17.png "17.png")
+![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/18.png "18.png")
 
 ### Super simple to use http
 

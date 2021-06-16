@@ -63,7 +63,7 @@ public class MainActivity extends FlutterActivity {
     public void callFlutter(){
         Log.e("MainActivity","调用Flutter start");
 
-        String arguments = "{\"text\":\"Native发送的消息\"}";
+        String arguments = "{\"test\":false,\"token\":\"ASDFGHJKL\",\"userId\":1}";
 
         MethodChannel methodChannel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), NATIVE_CHANNEL);
         methodChannel.invokeMethod(NATIVE_METHOD, arguments, new MethodChannel.Result() {

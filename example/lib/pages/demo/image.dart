@@ -80,14 +80,14 @@ class _ImagePageState extends State<ImagePage> with SingleNativeStateMixin{
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network(
-                              "http://ymbok.com/upload/images/sample/20210527085005NyPU23.png",
+                              "http://case.ymbok.com:8082/public/20210527085005NyPU23.png",
                               fit:BoxFit.fitWidth,
                               width:(MediaQuery.of(context).size.width - 30)/3,
                             ),
                           ],
                         ),
                         onTap: (){
-                          this._itemOnClick("http://ymbok.com/upload/images/sample/20210527085005NyPU23.png");
+                          this._itemOnClick("http://case.ymbok.com:8082/public/20210527085005NyPU23.png");
                         }
                       ),
                     ]
