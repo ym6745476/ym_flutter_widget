@@ -21,7 +21,7 @@ dependencies:
 ```
 ### Show Case Online
 
-http://case.ymbok.com:8082/
+http://www.ymbok.com/index.php/index/phone/id/2
 
 ### Screenshot
 

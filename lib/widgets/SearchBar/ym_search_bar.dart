@@ -10,7 +10,7 @@ class YmSearchBar extends StatefulWidget {
   ///搜索框上显示的文案
   String hint;
   ///搜索框的圆角
-  double defaultBorderRadius;
+  double borderRadius;
   EdgeInsets margin;
   EdgeInsets padding;
   ///如果考虑不需要水波纹效果那么就可以设置颜色为透明色
@@ -39,7 +39,7 @@ class YmSearchBar extends StatefulWidget {
   YmSearchBar(
       {
         this.hint = "搜索",
-        this.defaultBorderRadius = 30.0,
+        this.borderRadius = 30.0,
         this.margin = const EdgeInsets.only(top: 10.0, bottom: 10.0),
         this.padding = const EdgeInsets.only(left: 12),
         this.splashColor = const Color(0xFFD6D6D6),
@@ -54,9 +54,7 @@ class YmSearchBar extends StatefulWidget {
         this.width = 200,
         this.height = 60
       }
-    ) {
-          this.height = this.defaultBorderRadius * 2;
-  }
+    );
 
   @override
   State<StatefulWidget> createState() {
@@ -142,7 +140,7 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
       ///圆角边框
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(widget.defaultBorderRadius),
+        borderRadius: BorderRadius.circular(widget.borderRadius),
       ),
       child: buildRow(),
     );

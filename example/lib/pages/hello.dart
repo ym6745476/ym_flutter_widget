@@ -59,12 +59,13 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        child:Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
 
-            //按钮
+            //功能列表
             Padding(
               padding: EdgeInsets.only(top:10,left: 16,right: 16,bottom: 10),
               child: Wrap(

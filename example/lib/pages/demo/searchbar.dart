@@ -61,13 +61,13 @@ class _SearchBarPageState extends State<SearchBarPage> with SingleNativeStateMix
             Positioned(
               top: appBarHeight,
               left:0,
-              height: 100 ,
               width:  MediaQuery.of(context).size.width,
               child:Padding(
-                padding: EdgeInsets.only(top: 0, left: 15, right: 15, bottom: 0),
+                padding: EdgeInsets.only(top: 5, left: 20, right: 20, bottom: 5),
                 child: YmSearchBar(
                     hint: "请输入关键词",
                     width: MediaQuery.of(context).size.width - 40,
+                    height: 40,
                     onSubmitted: (text){
                       print("搜索$text");
                       setState(() {

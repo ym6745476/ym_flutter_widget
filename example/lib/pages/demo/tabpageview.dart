@@ -64,7 +64,7 @@ class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStat
       _items.clear();
     }
     setState(() {
-      for(int i= 0;i<10;i++){
+      for(int i= 0;i<20;i++){
         _items.add("Tab" + _tabSelectedIndex.toString() + ",第" + _pageNumber.toString() + "页,第"+i.toString()+"行");
       }
       _pageNumber = _pageNumber + 1;

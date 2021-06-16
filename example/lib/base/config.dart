@@ -13,7 +13,7 @@ class Config {
 
   static String token = "";              //当前Token
   static String userId = "";             //登录用户ID
-  static String serverAddress = "http://ymbok.com";
+  static String serverAddress = "https://ymbok.com";
 
   static String LOGIN_USER_URL =  "/api.php/api/loginPassword/ajax/1";          //登录
 
