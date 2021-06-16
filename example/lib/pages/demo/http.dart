@@ -27,6 +27,12 @@ class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin{
   @override
   void initState() {
     super.initState();
+    loadData();
+  }
+
+  @override
+  Future<void> loadData() async{
+    YmHttp.getInstance().setHeader({'sign':"123456"});
   }
 
   void onTextChangeAccount(text){
@@ -39,7 +45,7 @@ class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin{
 
   ///登录接口示例
   Future<void> _login() async {
-    String url = await Config.getURL(Config.LOGIN_USER_URL);
+    String url = await Config.getURL(Config.LOGIN_PASSWORD_URL);
 
     //显示进度框
     YmUiUtil.showLoading(context);

@@ -13,9 +13,9 @@ class Config {
 
   static String token = "";              //当前Token
   static String userId = "";             //登录用户ID
-  static String serverAddress = "https://ymbok.com";
+  static String serverAddress = "http://ymbok.com";   //web需要在同一个域名下才能访问接口
 
-  static String LOGIN_USER_URL =  "/api.php/api/loginPassword/ajax/1";          //登录
+  static const String LOGIN_PASSWORD_URL =  "/api.php/api/loginPassword/ajax/1";          //登录
 
   static Future<String> getURL(String path) async {
     return serverAddress + path;
