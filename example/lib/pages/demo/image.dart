@@ -80,14 +80,14 @@ class _ImagePageState extends State<ImagePage> with SingleNativeStateMixin{
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network(
-                              "http://case.ymbok.com:8082/public/20210527085005NyPU23.png",
+                              "https://ymbok.com/static/ym_flutter_widget/screenshot/pic2.png",
                               fit:BoxFit.fitWidth,
                               width:(MediaQuery.of(context).size.width - 30)/3,
                             ),
                           ],
                         ),
                         onTap: (){
-                          this._itemOnClick("http://case.ymbok.com:8082/public/20210527085005NyPU23.png");
+                          this._itemOnClick("https://ymbok.com/static/ym_flutter_widget/screenshot/pic2.png");
                         }
                       ),
                     ]

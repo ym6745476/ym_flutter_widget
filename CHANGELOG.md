@@ -1,6 +1,8 @@
+
 ## [0.0.6] - 2021/06/20.
 * add ImageButton Widget and Sample
 * add Gradient Button Widget and Sample
+* add Online Demo
 
 ## [0.0.5] - 2021/06/11.
 * add ListView LoadMore Widget and Sample
@@ -16,8 +18,8 @@
 * add Http Named parameters  (success,error,complete)
 
 ## [0.0.2] - 2021/05/27.
-* add CheckButton Widget
-* add Cascader Widget
+* add CheckButton Widget and Sample
+* add Cascader Widget and Sample
 
 ## [0.0.1] - 2021/05/22.
 * Http Widget and Sample

@@ -19,30 +19,30 @@ Project Home Page:https://ymbok.com/index.php/index/info/id/105
 dependencies:
   ym_flutter_widget: ^0.0.6
 ```
-### Show Case Online
+### Online Demo
 
 http://www.ymbok.com/index.php/index/phone/id/2
 
 ### Screenshot
 
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/1.png "1.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/2.png "2.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/3.png "3.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/4.png "4.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/5.png "5.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/button.png "6.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/7.png "7.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/8.png "8.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/9.png "9.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/10.png "10.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/11.png "11.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/12.png "12.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/13.png "13.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/14.png "14.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/15.png "15.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/16.png "16.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/17.png "17.png")
-![输入图片说明](https://ymbok.com/upload/sample/ym_flutter_widget/18.png "18.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/1.png "1.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/2.png "2.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/3.png "3.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/4.png "4.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/5.png "5.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/6.png "6.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/7.png "7.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/8.png "8.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/9.png "9.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/10.png "10.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/11.png "11.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/12.png "12.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/13.png "13.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/14.png "14.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/15.png "15.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/16.png "16.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/17.png "17.png")
+![图片说明](http://www.ymbok.com/static/ym_flutter_widget/screenshot/18.png "18.png")
 
 ### Super simple to use http
 
@@ -114,18 +114,31 @@ YmImageButton("ImageButton", Color(0xFFFFFFFF), (){
 },size:Size(180,42),iconLeft:"assets/images/ic_share_down.png",outlinedBorder:StadiumBorder()),
 
 //文本框
-YmTextField([],"默认值",_onTextChange,
-      fontSize: 15,
-      height: 35,
-      hintText:"基本输入框" ,
-      outlineInputBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(0),
-          borderSide: BorderSide(color: Color(0x00606FFF))
-      ),
-      focusedBorder:  OutlineInputBorder(
-          borderRadius: BorderRadius.circular(0),
-          borderSide: BorderSide(color: Color(0x003446F2))
-      ),
+YmTextField([],"默认值",
+  _onTextChange,
+  fontSize: 15,
+  height: 35,
+  hintText:"基本输入框" ,
+  outlineInputBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(0),
+      borderSide: BorderSide(color: Color(0x00606FFF))
+  ),
+  focusedBorder:  OutlineInputBorder(
+      borderRadius: BorderRadius.circular(0),
+      borderSide: BorderSide(color: Color(0x003446F2))
+  ),
+),
+
+//级联选择器
+YmCascader(
+  _data,_value,
+  onOkClick:(){
+  },
+  onCancelClick:(){
+  },
+  onChanged: (position,index,value){
+    _pickerSelected[position] = index;
+  },
 ),
 
 //Tab + ListView
@@ -134,15 +147,12 @@ YmTabPageView(_tabs,_items,
       return _getListItemWidget(index);
     },
     onChanged:(index){
-     
     },
 ),
 
 ```
 
-🎉 A widget list.
-
-### Widget List
+### 🎉  Widget List
 
 - export 'http/ym_http.dart';                           //网络请求框架
 - export 'widgets/AppBar/ym_app_bar.dart';              //自定义导航栏
