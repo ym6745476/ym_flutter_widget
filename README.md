@@ -26,8 +26,8 @@ dependencies:
 
 ### Screenshot
 
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/1.png?a=1 "1.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/2.png?a=1 "2.png")
+![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/1.png "1.png")
+![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/2.png "2.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/3.png "3.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/4.png "4.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/5.png "5.png")
