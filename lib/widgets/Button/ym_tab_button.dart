@@ -6,6 +6,7 @@ class YmTabButton extends StatelessWidget {
 
   final String text;
   final Color textColor;
+  final Color selectedTextColor;
   final double fontSize;
   final bool isSelected;
   final Function() onClick;
@@ -14,13 +15,20 @@ class YmTabButton extends StatelessWidget {
   final Color backgroundColor;
   final BorderRadius borderRadius;
   final Color borderColor;
+  final Color selectedBorderColor;
 
-  YmTabButton(this.text,this.textColor,this.fontSize,this.isSelected,this.onClick,
+  YmTabButton(this.text,
       {
-        this.size = const Size(100, 50),
-        this.backgroundColor = const Color(0xff818DFF),
-        this.selectedBackgroundColor = const Color(0xff3446F2),
-        this.borderColor = const Color(0x00ffffff),
+        required this.onClick,
+        this.textColor = const Color(0xFF666666),
+        this.selectedTextColor = const Color(0xFFFFFFFF),
+        this.fontSize = 14,
+        this.isSelected = false,
+        this.size = const Size(80, 40),
+        this.backgroundColor = const Color(0xFF818DFF),
+        this.selectedBackgroundColor = const Color(0xFF3446F2),
+        this.borderColor = Colors.transparent,
+        this.selectedBorderColor = Colors.transparent,
         this.borderRadius = const BorderRadius.horizontal(left:Radius.circular(2),right: Radius.circular(2)),
       }
   );
@@ -40,7 +48,7 @@ class YmTabButton extends StatelessWidget {
 
     BoxDecoration boxDecorationTabSelected = BoxDecoration(
         color: selectedBackgroundColor,
-        border: Border.all(width: 0.5, style: BorderStyle.solid,color:borderColor),
+        border: Border.all(width: 0.5, style: BorderStyle.solid,color:selectedBorderColor),
         borderRadius: borderRadius
     );
 
@@ -48,7 +56,6 @@ class YmTabButton extends StatelessWidget {
         child:  Container(
             width: size.width,
             height: size.height,
-            margin: EdgeInsets.only(left:8),
             decoration: this.isSelected ? boxDecorationTabSelected : boxDecorationTabNormal,
             child:Row(
                 mainAxisAlignment:MainAxisAlignment.center,
@@ -60,7 +67,7 @@ class YmTabButton extends StatelessWidget {
                         text,
                         textAlign:TextAlign.center,
                         style: TextStyle(
-                          color: this.isSelected?Color(0xffffffff):textColor ,
+                          color: this.isSelected?selectedTextColor:textColor ,
                           fontSize: this.fontSize,
                         ),
                       )

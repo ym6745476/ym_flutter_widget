@@ -69,11 +69,11 @@ class _ToastPageState extends State<ToastPage> with SingleNativeStateMixin{
                     runSpacing: 5,
                     children: [
 
-                      YmTextButton("Toast Bottom", Color(0xFFFFFFFF), (){
+                      YmTextButton("Toast Bottom", textColor:Color(0xFFFFFFFF),onClick: (){
                         YmToast.show("这是一条Toast", context, duration: YmToast.lengthShort, gravity:  YmToast.bottom);
                       },outlinedBorder: StadiumBorder(),),
 
-                      YmTextButton("Toast Center", Color(0xFFFFFFFF), (){
+                      YmTextButton("Toast Center", textColor:Color(0xFFFFFFFF),onClick: (){
                         YmUiUtil.showToast(context,"这是一条Toast");
                       },outlinedBorder: StadiumBorder(),),
 

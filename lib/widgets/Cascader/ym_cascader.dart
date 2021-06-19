@@ -72,7 +72,7 @@ class _YmCascaderState extends State<YmCascader> {
       decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Divider(
             height: 1,
@@ -80,18 +80,18 @@ class _YmCascaderState extends State<YmCascader> {
             thickness: 1,
           ),
           Container(
-            height:38,
+            height:39,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  YmTextButton("取消", Color(0xFF666666), (){
+                  YmTextButton("取消", textColor:Color(0xFF666666), onClick: (){
                     widget.onCancelClick();
-                  },isOutlined: true,size: Size(60,30),borderColor: Color(0x00666666),),
+                  },size: Size(80,40),backgroundColor: Colors.transparent,pressedBackgroundColor:Color(0xFFEFEFEF) ,),
 
-                  YmTextButton("确定", Color(0xFF3446F2), (){
+                  YmTextButton("确定", textColor:Color(0xFF3446F2), onClick:(){
                     widget.onOkClick();
-                  },isOutlined: true,size:Size(60,30),borderColor: Color(0x00666666),),
+                  },size:Size(80,40),backgroundColor: Colors.transparent,pressedBackgroundColor:Color(0xFFEFEFEF)),
                 ]
             ),
           ),

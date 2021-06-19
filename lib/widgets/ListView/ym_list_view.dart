@@ -15,6 +15,7 @@ class YmListView extends StatefulWidget {
   final Function onLoadMore;
   final Size size;
   bool hasMoreData;
+  late String loadMoreText;
 
 
   YmListView(
@@ -24,6 +25,7 @@ class YmListView extends StatefulWidget {
         Key? key,
         this.size = const Size(500, 500),
         this.hasMoreData = true,
+        this.loadMoreText = "没有更多了~",
         required this.onItemBuilder,
         required this.onLoadMore,
 
@@ -78,7 +80,7 @@ class _YmListViewState extends State<YmListView> with SingleTickerProviderStateM
         child: Padding(
             padding: EdgeInsets.all(8),
             child: Text(
-              "没有更多了~",
+              widget.loadMoreText,
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 14,

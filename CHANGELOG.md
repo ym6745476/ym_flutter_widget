@@ -1,4 +1,9 @@
 
+## [0.0.7] - 2021/06/30.
+* add YmCheckButton
+* add YmRadioButton
+* add YmBoxDialog
+
 ## [0.0.6] - 2021/06/20.
 * add ImageButton Widget and Sample
 * add Gradient Button Widget and Sample

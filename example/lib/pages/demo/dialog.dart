@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/utils/ym_ui_util.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_radio_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
+import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_box.dart';
 
 class DialogPage extends StatefulWidget {
 
@@ -17,6 +19,8 @@ class DialogPage extends StatefulWidget {
 }
 
 class _DialogPageState extends State<DialogPage> with SingleNativeStateMixin{
+
+  bool _showBoxDialog = false;
 
   @override
   void initState() {
@@ -82,18 +86,100 @@ class _DialogPageState extends State<DialogPage> with SingleNativeStateMixin{
                     runSpacing: 5,
                     children: [
 
-                      YmTextButton("Loading Dialog", Color(0xFFFFFFFF), (){
+                      YmTextButton("Loading Dialog", textColor:Color(0xFFFFFFFF), onClick: (){
                         loadingDialog();
                       },outlinedBorder: StadiumBorder(),),
 
-                      YmTextButton("Alert Dialog", Color(0xFFFFFFFF), (){
+                      YmTextButton("Alert Dialog", textColor:Color(0xFFFFFFFF), onClick: (){
                         alertDialog();
                       },outlinedBorder: StadiumBorder(),),
+
+                      YmTextButton("Box Dialog",
+                        textColor:Color(0xFFFFFFFF),
+                        onClick: (){
+                          setState(() {
+                            _showBoxDialog = !_showBoxDialog;
+                          });
+                        },
+                      ),
 
                     ]
                 )
               ),
             ),
+
+            _showBoxDialog?Positioned(
+              top: appBarHeight + 120,
+              left:0,
+              height: MediaQuery.of(context).size.height - appBarHeight - 120 ,
+              width:  MediaQuery.of(context).size.width,
+              child: YmDialogBox(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.white,
+                  height:200,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+
+                      Padding(
+                        padding: EdgeInsets.only(top:10,left:16,right: 16,bottom: 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "任意位置，任意内容",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xff333333) ,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(child: Container()),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+
+                          Expanded(
+                            child:YmTextButton("重置",
+                              textColor:Color(0xFF666666),
+                              onClick:(){
+
+                              },
+                              backgroundColor: Color(0xFFEFEFEF),
+                            ),
+                          ),
+
+
+                          Expanded(
+                            child:YmTextButton("确认",
+                              textColor:Color(0xFFFFFFFF),
+                              onClick:(){
+                                setState(() {
+                                  _showBoxDialog = false;
+                                });
+                              },
+                              backgroundColor:Color(0xFF3446F2),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                ),
+              ),
+            ):Container(),
 
           ],
         ),

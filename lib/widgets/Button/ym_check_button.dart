@@ -7,20 +7,25 @@ class YmCheckButton extends StatelessWidget {
   String text;
   Color textColor;
   double fontSize;
-  bool isChecked;
-  final Function() onClick;
+  int value;
+  bool checked;
+  final Function(bool checked,dynamic value) onChanged;
   final Size size;
   final String image;
   final String checkedImage;
 
-  YmCheckButton(this.isChecked,this.onClick,
+  YmCheckButton(
       {
+        required this.value,
+        required this.onChanged,
+        this.checked = false,
         this.text = "",
         this.size = const Size(80, 40),
         this.fontSize = 14,
         this.textColor = const Color(0xff333333),
-        this.image = "assets/images/ic_check.png",
-        this.checkedImage = "assets/images/ic_checked.png",
+        this.image = "assets/images/ic_box.png",
+        this.checkedImage = "assets/images/ic_box_checked.png",
+
       }
   );
 
@@ -40,7 +45,7 @@ class YmCheckButton extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    this.isChecked?this.checkedImage:this.image,
+                    this.checked?this.checkedImage:this.image,
                     fit:BoxFit.fitWidth,
                     width:22,
                     height:22,
@@ -60,8 +65,7 @@ class YmCheckButton extends StatelessWidget {
             )
         ),
         onTap:(){
-          this.isChecked = !this.isChecked;
-          onClick();
+          onChanged(!this.checked,this.value);
           //this._updateList(_selectedTypeTabIndex);
         }
     );

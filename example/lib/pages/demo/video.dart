@@ -99,7 +99,7 @@ class _VideoPageState extends State<VideoPage> with SingleNativeStateMixin{
                     runSpacing: 5,
                     children: [
 
-                      YmTextButton("点击播放", Color(0xFFFFFFFF), (){
+                      YmTextButton("点击播放", textColor:Color(0xFFFFFFFF),onClick:  (){
                         this._itemOnClick("http://bkt.ymbok.com/%E4%B8%96%E7%95%8C%E4%B8%8D%E4%BC%9A%E8%BD%BB%E6%98%93%E5%B4%A9%E5%A1%8C.mp4");
                       },outlinedBorder: StadiumBorder(),),
 

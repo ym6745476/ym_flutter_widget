@@ -6,6 +6,7 @@ import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_check_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_gradient_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_image_button.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_radio_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_tab_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 
@@ -21,7 +22,9 @@ class ButtonPage extends StatefulWidget {
 
 class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
-  List<bool> _isChecked = [true,false];
+  List<bool> _isChecked = [false,false,false];
+  int _radioGroupValue1 = 0;
+  int _radioGroupValue2 = 0;
   List<String> _tabButtonList = ["全部","待付款","待发货"];
   int _tabButtonSelectedIndex = 0;
 
@@ -43,38 +46,40 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
   }
 
-  void _checkedButton(int index){
-
+  void _checkedMultipleButton(int index,bool checked,dynamic value){
     setState(() {
-       for(int i = 0;i<_isChecked.length;i++){
-          if(i==index){
-            _isChecked[i] = true;
-          }else{
-            _isChecked[i] = false;
-          }
-       }
+      _isChecked[index] = checked;
     });
+  }
+
+  void _checkedSingleButton(bool checked,dynamic value){
+    if(checked){
+      setState(() {
+        _radioGroupValue1 = value;
+      });
+    }
   }
 
   Widget _getTabWidget(int index){
 
     if(index == 0){
       return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonSelectedIndex == index,()=>{
+        child: YmTabButton(_tabButtonList.elementAt(index), textColor:Color(0xffffffff),fontSize:14, isSelected:this._tabButtonSelectedIndex == index,onClick: ()=>{
               tabButtonChange(index)
             },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(20),right:Radius.circular(2)),
         ),
       );
     }else if(index == 1){
       return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonSelectedIndex == index,()=>{
+        padding: EdgeInsets.only(left:5,right: 5),
+        child: YmTabButton(_tabButtonList.elementAt(index), textColor:Color(0xffffffff),fontSize:14, isSelected:this._tabButtonSelectedIndex == index,onClick:()=>{
               tabButtonChange(index)
             },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(2)),
         ),
       );
     }else{
       return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), Color(0xffffffff),14, this._tabButtonSelectedIndex == index,()=>{
+        child: YmTabButton(_tabButtonList.elementAt(index), textColor:Color(0xffffffff),fontSize:14, isSelected:this._tabButtonSelectedIndex == index,onClick:()=>{
               tabButtonChange(index)
             },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(20)),
         ),
@@ -120,27 +125,27 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                     runSpacing: 5,
                     children: [
 
-                      YmTextButton("Stadium", Color(0xFFFFFFFF), (){
+                      YmTextButton("Stadium", textColor:Color(0xFFFFFFFF),onClick:  (){
                         print("Button Pressed");
                       }),
 
-                      YmTextButton("Stadium", Color(0xFFFFFFFF), (){
+                      YmTextButton("Stadium", textColor:Color(0xFFFFFFFF), onClick:(){
                         print("Button Pressed");
                       },outlinedBorder: StadiumBorder(),),
 
-                      YmTextButton("Circle", Color(0xFFFFFFFF), (){
+                      YmTextButton("Circle", textColor:Color(0xFFFFFFFF), onClick:(){
                         print("Button Pressed");
                       },outlinedBorder:CircleBorder()),
 
-                      YmTextButton("RoundedRectangle", Color(0xFFFFFFFF), (){
+                      YmTextButton("RoundedRectangle", textColor:Color(0xFFFFFFFF),onClick: (){
                         print("Button Pressed");
                       },outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
-                      YmTextButton("BeveledRectangle", Color(0xFFFFFFFF), (){
+                      YmTextButton("BeveledRectangle", textColor:Color(0xFFFFFFFF), onClick:(){
                         print("Button Pressed");
                       },outlinedBorder:BeveledRectangleBorder(borderRadius: BorderRadius.circular(10))),
 
-                      YmTextButton("Outlined", Color(0xFF3446F2), (){
+                      YmTextButton("Outlined", textColor:Color(0xFF3446F2),onClick: (){
                         print("Button Pressed");
                       },isOutlined: true,borderColor:Color(0xFF3446F2),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
@@ -148,32 +153,30 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(top:0,left: 10,right: 0,bottom: 0),
-                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),foregroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top:0,left: 10,right: 10,bottom: 0),
-                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),foregroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
                             ),
                           ]
                       ),
 
                       YmImageButton("ImageButton", (){
                         print("Button Pressed");
-                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),foregroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png"),
+                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),pressedBackgroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png"),
 
                       YmImageButton("ImageButton", (){
                         print("Button Pressed");
-                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),foregroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png",outlinedBorder:StadiumBorder()),
+                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),pressedBackgroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png",outlinedBorder:StadiumBorder()),
 
                       YmImageButton("ImageButton", (){
                         print("Button Pressed");
-                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),foregroundColor:Color(0xFF606FFF),iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                      },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),pressedBackgroundColor:Color(0xFF606FFF),iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
                       YmImageButton("ImageButton", (){
                         print("Button Pressed");
                       },textColor:Color(0xFF3446F2),size:Size(160,42),isOutlined:true,iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-
-
 
                       YmGradientButton(
                         "渐变色",
@@ -194,8 +197,47 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                         ),
                       ),
 
-                      YmCheckButton(_isChecked[0],(){ _checkedButton(0);},text: "不选中",),
-                      YmCheckButton(_isChecked[1],(){_checkedButton(1);},text: "选中",),
+
+                      YmCheckButton(value:0,
+                        checked:_radioGroupValue1==0,
+                        onChanged: (bool checked,dynamic value){ _checkedSingleButton(checked,value);},
+                        text: "单选1",
+                        image: "assets/images/ic_radio.png",
+                        checkedImage: "assets/images/ic_radio_checked.png",
+                      ),
+
+                      YmCheckButton(value:1,
+                        checked:_radioGroupValue1==1,
+                        onChanged:(bool checked,dynamic value){ _checkedSingleButton(checked,value);},
+                        text: "单选2",
+                        image: "assets/images/ic_radio.png",
+                        checkedImage: "assets/images/ic_radio_checked.png",
+                      ),
+
+                      YmCheckButton(value:0,checked:_isChecked[0],onChanged: (bool checked,dynamic value){ _checkedMultipleButton(0,checked,value);},text: "多选1",),
+                      YmCheckButton(value:1,checked:_isChecked[1],onChanged:(bool checked,dynamic value){ _checkedMultipleButton(1,checked,value);},text: "多选2",),
+                      YmCheckButton(value:2,checked:_isChecked[2],onChanged:(bool checked,dynamic value){ _checkedMultipleButton(2,checked,value);},text: "多选3",),
+
+                      YmRadioButton(
+                        value:0,
+                        groupValue:_radioGroupValue2,
+                        onChanged: (value){
+                          setState(() {
+                            _radioGroupValue2 = value;
+                          });
+                        },
+                        text: "心情好",
+                      ),
+                      YmRadioButton(
+                        value:1,
+                        groupValue:_radioGroupValue2,
+                        onChanged: (value){
+                          setState(() {
+                            _radioGroupValue2 = value;
+                          });
+                        },
+                        text: "心情不好",
+                      ),
 
 
                       //Tab Button
