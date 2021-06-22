@@ -107,10 +107,11 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
               top: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: YmAppBar(widget.title,[
-                  const Color(0xFF606FFF),
-                  const Color(0xFF3446F2),
-                ],goBack,titleTextColor: Colors.white,),
+                child: YmAppBar(widget.title,
+                  background:[
+                    const Color(0xFF606FFF),
+                    const Color(0xFF3446F2),
+                  ],onBackClick: goBack,textColor: Colors.white,),
               ),
             ),
 
@@ -153,28 +154,28 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(top:0,left: 10,right: 0,bottom: 0),
-                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                              child:YmImageButton("按钮",onClick: (){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top:0,left: 10,right: 10,bottom: 0),
-                              child:YmImageButton("按钮",(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                              child:YmImageButton("按钮",onClick:(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
                             ),
                           ]
                       ),
 
-                      YmImageButton("ImageButton", (){
+                      YmImageButton("ImageButton", onClick:(){
                         print("Button Pressed");
                       },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),pressedBackgroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png"),
 
-                      YmImageButton("ImageButton", (){
+                      YmImageButton("ImageButton", onClick:(){
                         print("Button Pressed");
                       },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),pressedBackgroundColor:Color(0xFF606FFF),iconLeft:"assets/images/ic_download.png",outlinedBorder:StadiumBorder()),
 
-                      YmImageButton("ImageButton", (){
+                      YmImageButton("ImageButton", onClick:(){
                         print("Button Pressed");
                       },textColor:Color(0xFFFFFFFF),size:Size(160,42),backgroundColor:Color(0xFF3446F2),pressedBackgroundColor:Color(0xFF606FFF),iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
-                      YmImageButton("ImageButton", (){
+                      YmImageButton("ImageButton", onClick:(){
                         print("Button Pressed");
                       },textColor:Color(0xFF3446F2),size:Size(160,42),isOutlined:true,iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 

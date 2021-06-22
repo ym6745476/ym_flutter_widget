@@ -15,7 +15,7 @@ Web Site: https://ymbok.com
 
 ### Online Demo
 
-https://ymbok.com/index.php/index/phone/id/2
+https://ymbok.com/phone-2.html
 
 ### Add dependency
 

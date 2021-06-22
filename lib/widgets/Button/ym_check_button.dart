@@ -37,7 +37,7 @@ class YmCheckButton extends StatelessWidget {
   Widget buildCheckButton() {
 
     return GestureDetector(
-        child: new Container(
+        child: Container(
             width: size.width,
             height: size.height,
             child:Row(
@@ -65,8 +65,8 @@ class YmCheckButton extends StatelessWidget {
             )
         ),
         onTap:(){
-          onChanged(!this.checked,this.value);
-          //this._updateList(_selectedTypeTabIndex);
+          this.checked = !this.checked;
+          onChanged(this.checked,this.value);
         }
     );
   }

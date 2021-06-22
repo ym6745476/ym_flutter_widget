@@ -16,6 +16,7 @@ class YmImageButton extends StatelessWidget {
   final Color borderColor;
   final String iconLeft;
   final String iconRight;
+  final MainAxisAlignment mainAxisAlignment;
 
   //BeveledRectangleBorder 带斜角的长方形边框
   //CircleBorder 圆形边框
@@ -23,11 +24,12 @@ class YmImageButton extends StatelessWidget {
   //StadiumBorder 两端是半圆的边框
   final OutlinedBorder outlinedBorder;
 
-  YmImageButton(this.text,this.onClick,{
+  YmImageButton(this.text,{
     this.iconLeft = "",
     this.iconRight = "",
     this.textColor = const Color(0xFFFFFFFF),
     this.fontSize = 14,
+    required this.onClick,
     this.fontWeight = FontWeight.normal,
     this.size = const Size(160, 42),
     this.isOutlined = false,
@@ -35,6 +37,7 @@ class YmImageButton extends StatelessWidget {
     this.pressedBackgroundColor = const Color(0xFF606FFF),
     this.backgroundColor = const Color(0xFF3446F2),
     this.outlinedBorder =  const RoundedRectangleBorder(),
+    this.mainAxisAlignment = MainAxisAlignment.center,
   });
 
   @override
@@ -82,9 +85,9 @@ class YmImageButton extends StatelessWidget {
         child: Container(
           width: this.size.width,
           height: this.size.height,
-          padding:EdgeInsets.only(top:0,left: 10,right: 10,bottom: 0),
+          padding:EdgeInsets.only(top:0,left: 1,right: 1,bottom: 0),
           child: Row(
-              mainAxisAlignment:MainAxisAlignment.center,
+              mainAxisAlignment:mainAxisAlignment,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                   this.iconLeft.isNotEmpty?Image.asset(
@@ -154,9 +157,9 @@ class YmImageButton extends StatelessWidget {
         child:Container(
           width: this.size.width,
           height: this.size.height,
-          padding:EdgeInsets.only(top:0,left: 10,right: 10,bottom: 0),
+          padding:EdgeInsets.only(top:0,left: 1,right: 1,bottom: 0),
           child: Row(
-              mainAxisAlignment:MainAxisAlignment.center,
+              mainAxisAlignment:mainAxisAlignment,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 this.iconLeft.isNotEmpty?Image.asset(

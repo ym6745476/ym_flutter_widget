@@ -7,11 +7,19 @@ class YmAppBar extends StatelessWidget {
   final String title;                            // 标题名称
   final List<Color> background;                  // 背景颜色
   final double barHeight = 56;                   // 标题栏高度
-  final Function() backAction;                   // 返回
-  final Color titleTextColor;                    // 文本标题的颜色
+  final Function() onBackClick;                  // 返回
+  final Color textColor;                    // 文本标题的颜色
 
   ///构造方法传入标题栏
-  YmAppBar(this.title,this.background, this.backAction,{this.titleTextColor = Colors.black});
+  YmAppBar(this.title,
+      {
+        this.textColor = Colors.black,
+        this.background = const [
+          const Color(0xFF606FFF),
+          const Color(0xFF3446F2),
+        ],
+        required this.onBackClick,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +41,8 @@ class YmAppBar extends StatelessWidget {
             height:barHeight,
             child:IconButton(
               icon: new Icon(Icons.arrow_back_ios),
-              color: this.titleTextColor,
-              onPressed: backAction,
+              color: this.textColor,
+              onPressed: onBackClick,
               iconSize: 28,
             ),
           ),
@@ -46,7 +54,7 @@ class YmAppBar extends StatelessWidget {
                 title,
                 textAlign:TextAlign.center,
                 style: TextStyle(
-                  color: this.titleTextColor,
+                  color: this.textColor,
                   fontSize: 20,
                   fontWeight: FontWeight.w400,    //字体宽度
                 ),

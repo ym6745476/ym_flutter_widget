@@ -8,6 +8,7 @@ class YmTabButton extends StatelessWidget {
   final Color textColor;
   final Color selectedTextColor;
   final double fontSize;
+  final FontWeight fontWeight;
   final bool isSelected;
   final Function() onClick;
   final Size size;
@@ -23,6 +24,7 @@ class YmTabButton extends StatelessWidget {
         this.textColor = const Color(0xFF666666),
         this.selectedTextColor = const Color(0xFFFFFFFF),
         this.fontSize = 14,
+        this.fontWeight = FontWeight.normal,
         this.isSelected = false,
         this.size = const Size(80, 40),
         this.backgroundColor = const Color(0xFF818DFF),
@@ -69,6 +71,7 @@ class YmTabButton extends StatelessWidget {
                         style: TextStyle(
                           color: this.isSelected?selectedTextColor:textColor ,
                           fontSize: this.fontSize,
+                          fontWeight: this.fontWeight,
                         ),
                       )
                   ),

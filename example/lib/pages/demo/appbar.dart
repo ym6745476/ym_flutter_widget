@@ -47,10 +47,11 @@ class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin{
               top: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: YmAppBar(widget.title,[
+                child: YmAppBar(widget.title,
+                  background:[
                   const Color(0xFF606FFF),
                   const Color(0xFF3446F2),
-                ],goBack,titleTextColor: Colors.white,),
+                ],onBackClick: goBack,textColor: Colors.white,),
               ),
             ),
 

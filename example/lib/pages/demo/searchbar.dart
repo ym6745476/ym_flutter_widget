@@ -51,10 +51,11 @@ class _SearchBarPageState extends State<SearchBarPage> with SingleNativeStateMix
               top: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: YmAppBar(widget.title,[
-                  const Color(0xFF606FFF),
-                  const Color(0xFF3446F2),
-                ],goBack,titleTextColor: Colors.white,),
+                child: YmAppBar(widget.title,
+                  background:[
+                    const Color(0xFF606FFF),
+                    const Color(0xFF3446F2),
+                  ],onBackClick: goBack,textColor: Colors.white,),
               ),
             ),
 
