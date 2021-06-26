@@ -141,6 +141,7 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(widget.borderRadius),
+        border: Border.all(width: 0.5, style: BorderStyle.solid,color: Color(0XFFEFEFEF)),
       ),
       child: buildRow(),
     );

@@ -16,7 +16,10 @@ class YmTabPageView extends StatefulWidget {
   final Function onChanged;
   final Function onItemBuilder;
   final Function onLoadMore;
+  final String loadMoreText;
   final double fontSize;
+  final Color textColor;
+  final Color selectedTextColor;
   final Size size;
   final double tabBarHeight;
   bool hasMoreData;
@@ -30,7 +33,10 @@ class YmTabPageView extends StatefulWidget {
         this.size = const Size(500, 500),
         this.tabBarHeight = 40,
         this.selectedIndex = 0,
+        this.textColor = const Color(0xff666666),
+        this.selectedTextColor = const Color(0xff606FFF),
         this.hasMoreData = true,
+        this.loadMoreText = "没有更多了~",
         required this.onChanged,
         required this.onItemBuilder,
         required this.onLoadMore,
@@ -40,7 +46,7 @@ class YmTabPageView extends StatefulWidget {
 
   @override
   _YmTabPageViewState createState() {
-    return _YmTabPageViewState(this.selectedIndex);
+    return _YmTabPageViewState();
   }
 }
 
@@ -50,13 +56,15 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
   late ScrollController _scrollController;
   late int _selectedIndex;
 
-  _YmTabPageViewState(this._selectedIndex);
+  _YmTabPageViewState();
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: 0, length: widget.tabs.length,vsync: this);
+    _selectedIndex = widget.selectedIndex;
+    _tabController = TabController(initialIndex: _selectedIndex, length: widget.tabs.length,vsync: this);
     _scrollController = ScrollController();
+
   }
 
   List<Widget> _getTabListWidget(){
@@ -65,7 +73,7 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
       tabWidgets.add(Text(widget.tabs[i],
           textAlign:TextAlign.center,
           style: TextStyle(
-            color: _selectedIndex==i?Color(0xff606FFF):Color(0xff666666),
+            color: _selectedIndex==i?widget.selectedTextColor:widget.textColor,
             fontWeight: _selectedIndex==i?FontWeight.w800:FontWeight.normal,
             fontSize: widget.fontSize,
           )
@@ -93,7 +101,7 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
               unselectedLabelColor: Color(0xff666666),
               labelPadding:EdgeInsets.only(top:5,left: 0,right:0,bottom: 5),
               labelStyle: TextStyle(fontSize: 15),
-              indicatorColor: Color(0xff3446F2),
+              indicatorColor: widget.selectedTextColor,
               indicatorSize: TabBarIndicatorSize.label,
               indicatorWeight: 2,
               tabs:_getTabListWidget(),
@@ -103,17 +111,20 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
                   _selectedIndex = index;
                 });
                 widget.onChanged(index);
-                _scrollController.jumpTo(0);
+                if(widget.items.length > 0){
+                  _scrollController.jumpTo(0);
+                }
               },
             ),
           ),
 
           Padding(
-            padding:EdgeInsets.only(top:0,left: 0,right: 0,bottom: 0),
+            padding:EdgeInsets.only(top:5,left: 0,right: 0,bottom: 0),
             child:YmListView(widget.items,
                   _scrollController,
-                  size: Size(widget.size.width, widget.size.height - widget.tabBarHeight),
+                  size: Size(widget.size.width, widget.size.height - widget.tabBarHeight - 5),
                   hasMoreData: widget.hasMoreData,
+                  loadMoreText: widget.loadMoreText,
                   onItemBuilder: (index) {
                     return widget.onItemBuilder(index);
                   },

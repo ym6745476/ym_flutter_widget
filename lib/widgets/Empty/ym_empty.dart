@@ -15,7 +15,7 @@ class YmEmpty extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: ShapeDecoration(
-          color: Color(0xFFFFFFFF),
+          color: Color(0x00FFFFFF),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.zero),
           ),

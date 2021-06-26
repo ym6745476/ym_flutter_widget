@@ -91,14 +91,11 @@ class YmHttp {
 
       if(response.data is String){
         print("请求成功：" + response.data);
-        //json字符串转换成Map
-        Map<String, dynamic> responseMap = json.decode(response.data);
-        successCallBack(responseMap);
+        successCallBack(json.decode(response.data));
       }else{
         String responseStr = json.encode(response.data);
         print("请求成功：" + responseStr);
-        Map<String, dynamic> responseMap = json.decode(responseStr);
-        successCallBack(responseMap);
+        successCallBack(response.data);
       }
 
     } on DioError catch (error) {

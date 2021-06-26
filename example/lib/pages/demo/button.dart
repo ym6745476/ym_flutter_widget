@@ -126,7 +126,7 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                     runSpacing: 5,
                     children: [
 
-                      YmTextButton("Stadium", textColor:Color(0xFFFFFFFF),onClick:  (){
+                      YmTextButton("RoundedRectangle", textColor:Color(0xFFFFFFFF),onClick:  (){
                         print("Button Pressed");
                       }),
 

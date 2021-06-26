@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class YmAppBar extends StatelessWidget {
 
   final String title;                            // 标题名称
+  final TextAlign textAlign;                     // 标题方向
   final List<Color> background;                  // 背景颜色
   final double barHeight = 56;                   // 标题栏高度
   final Function() onBackClick;                  // 返回
-  final Color textColor;                    // 文本标题的颜色
+  final Color textColor;                         // 文本标题的颜色
+  final Widget? rightWidget;                     //右边内容
 
   ///构造方法传入标题栏
   YmAppBar(this.title,
@@ -19,6 +21,8 @@ class YmAppBar extends StatelessWidget {
           const Color(0xFF3446F2),
         ],
         required this.onBackClick,
+        this.rightWidget,
+        this.textAlign = TextAlign.center,
       });
 
   @override
@@ -50,9 +54,10 @@ class YmAppBar extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
+              margin: EdgeInsets.only(right:rightWidget == null?barHeight:0),
               child: Text(
                 title,
-                textAlign:TextAlign.center,
+                textAlign:this.textAlign,
                 style: TextStyle(
                   color: this.textColor,
                   fontSize: 20,
@@ -63,8 +68,8 @@ class YmAppBar extends StatelessWidget {
           ),
 
           Container(
-            width:barHeight,
             height:barHeight,
+            child: rightWidget == null?Container():rightWidget,
           ),
 
         ],
