@@ -1,12 +1,8 @@
 import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
-import 'package:ym_flutter_widget/utils/ym_ui_util.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
-import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 import 'package:ym_flutter_widget/widgets/Loading/ym_loading.dart';
-import 'package:ym_flutter_widget/widgets/Toast/ym_toast.dart';
 
 class LoadingPage extends StatefulWidget {
 
@@ -29,8 +25,8 @@ class _LoadingPageState extends State<LoadingPage> with SingleNativeStateMixin{
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || isRouteFromFlutter){
+        isRouteFlutter = arguments["flutter"];
+        if(!Config.isNative || isRouteFlutter){
           //加载数据
           Future.delayed(Duration(seconds: 1), () {
             setState(() {

@@ -34,17 +34,17 @@ class _TabPageViewPageState extends State<TabPageViewPage> with SingleNativeStat
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || isRouteFromFlutter){
+        isRouteFlutter = arguments["flutter"];
+        if(!Config.isNative || isRouteFlutter){
           //加载数据
-          loadData();
+          onStart();
         }
       }
     });
   }
 
   @override
-  Future<void> loadData() async{
+  Future<void> onStart() async{
     _loadList();
   }
 

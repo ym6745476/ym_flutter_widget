@@ -1,15 +1,13 @@
 import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
-import 'package:ym_flutter_widget/widgets/Button/ym_check_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_gradient_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_image_button.dart';
-import 'package:ym_flutter_widget/widgets/Button/ym_radio_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_tab_button.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 
+///各种样式的文字按钮和图标按钮
 class ButtonPage extends StatefulWidget {
 
   ButtonPage({Key? key}) : super(key: key);
@@ -22,9 +20,6 @@ class ButtonPage extends StatefulWidget {
 
 class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
-  List<bool> _isChecked = [false,false,false];
-  int _radioGroupValue1 = 0;
-  int _radioGroupValue2 = 0;
   List<String> _tabButtonList = ["全部","待付款","待发货"];
   int _tabButtonSelectedIndex = 0;
 
@@ -37,27 +32,12 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || isRouteFromFlutter){
+        isRouteFlutter = arguments["flutter"];
+        if(!Config.isNative || isRouteFlutter){
           //加载数据
         }
       }
     });
-
-  }
-
-  void _checkedMultipleButton(int index,bool checked,dynamic value){
-    setState(() {
-      _isChecked[index] = checked;
-    });
-  }
-
-  void _checkedSingleButton(bool checked,dynamic value){
-    if(checked){
-      setState(() {
-        _radioGroupValue1 = value;
-      });
-    }
   }
 
   Widget _getTabWidget(int index){
@@ -197,49 +177,6 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                             colors: [Color(0xFFFFE4B7),Color(0xFFEFAD40)]
                         ),
                       ),
-
-
-                      YmCheckButton(value:0,
-                        checked:_radioGroupValue1==0,
-                        onChanged: (bool checked,dynamic value){ _checkedSingleButton(checked,value);},
-                        text: "单选1",
-                        image: "assets/images/ic_radio.png",
-                        checkedImage: "assets/images/ic_radio_checked.png",
-                      ),
-
-                      YmCheckButton(value:1,
-                        checked:_radioGroupValue1==1,
-                        onChanged:(bool checked,dynamic value){ _checkedSingleButton(checked,value);},
-                        text: "单选2",
-                        image: "assets/images/ic_radio.png",
-                        checkedImage: "assets/images/ic_radio_checked.png",
-                      ),
-
-                      YmCheckButton(value:0,checked:_isChecked[0],onChanged: (bool checked,dynamic value){ _checkedMultipleButton(0,checked,value);},text: "多选1",),
-                      YmCheckButton(value:1,checked:_isChecked[1],onChanged:(bool checked,dynamic value){ _checkedMultipleButton(1,checked,value);},text: "多选2",),
-                      YmCheckButton(value:2,checked:_isChecked[2],onChanged:(bool checked,dynamic value){ _checkedMultipleButton(2,checked,value);},text: "多选3",),
-
-                      YmRadioButton(
-                        value:0,
-                        groupValue:_radioGroupValue2,
-                        onChanged: (value){
-                          setState(() {
-                            _radioGroupValue2 = value;
-                          });
-                        },
-                        text: "心情好",
-                      ),
-                      YmRadioButton(
-                        value:1,
-                        groupValue:_radioGroupValue2,
-                        onChanged: (value){
-                          setState(() {
-                            _radioGroupValue2 = value;
-                          });
-                        },
-                        text: "心情不好",
-                      ),
-
 
                       //Tab Button
                       Container(

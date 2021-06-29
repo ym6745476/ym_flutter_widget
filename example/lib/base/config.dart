@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 ///系统主题设置，包括系统默认字体 背景色等
 class Config {
 
-  static bool isDebug = true;   //是否是调试模式   【打包APP时改为false】
-  static bool isWeb = true;     //是否是Web运行   【打包APP时改为false】
-  static bool isTest = false;   //是否是测试环境   【不用修改 Native调用程序自己会判断】
+  static bool isDebug = false;    //是否是调试模式        【打包APP时改为false】
+  static bool isNative = false;   //是否是原生框架里运行   【不用修改 Native调用程序自己会判断，值对APP没影响】
+  static bool isTest = false;     //是否是测试环境        【不用修改 Native调用程序自己会判断】
 
   static String appBarHeight = "";              //导航栏+状态栏总高度
 

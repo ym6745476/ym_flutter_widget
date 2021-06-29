@@ -1,6 +1,5 @@
 import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
 import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_router.dart';
@@ -27,8 +26,8 @@ class _ImagePageState extends State<ImagePage> with SingleNativeStateMixin{
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || isRouteFromFlutter){
+        isRouteFlutter = arguments["flutter"];
+        if(!Config.isNative || isRouteFlutter){
           //加载数据
         }
       }

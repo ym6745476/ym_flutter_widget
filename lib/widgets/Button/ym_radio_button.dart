@@ -19,7 +19,7 @@ class YmRadioButton extends StatelessWidget {
         required this.groupValue,
         required this.onChanged,
         this.text = "",
-        this.size = const Size(120, 40),
+        this.size = const Size(140, 40),
         this.fontSize = 14,
         this.textColor = const Color(0xff333333),
         this.color = Colors.indigo,

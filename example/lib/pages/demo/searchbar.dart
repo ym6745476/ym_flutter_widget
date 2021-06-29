@@ -28,8 +28,8 @@ class _SearchBarPageState extends State<SearchBarPage> with SingleNativeStateMix
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || isRouteFromFlutter){
+        isRouteFlutter = arguments["flutter"];
+        if(!Config.isNative || isRouteFlutter){
           //加载数据
         }
       }

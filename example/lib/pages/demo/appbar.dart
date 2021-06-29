@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:example/base/config.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 
+///APP导航：左边返回键，中间/左边标题和右边按钮
 class AppBarPage extends StatefulWidget {
 
   AppBarPage({Key? key}) : super(key: key);
@@ -25,8 +27,8 @@ class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin{
       dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
-        isRouteFromFlutter = arguments["flutter"];
-        if(Config.isWeb || isRouteFromFlutter){
+        isRouteFlutter = arguments["flutter"];
+        if(!Config.isNative || isRouteFlutter){
           //加载数据
         }
       }
@@ -42,7 +44,7 @@ class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin{
           fit: StackFit.expand,
           children: <Widget>[
 
-            ///导航栏
+            ///导航栏1
             Positioned(
               top: 0,
               child: Container(
@@ -55,22 +57,30 @@ class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin{
               ),
             ),
 
-
+            ///导航栏2
             Positioned(
-              top: appBarHeight,
-              left:0,
-              height: MediaQuery.of(context).size.height - appBarHeight ,
-              width:  MediaQuery.of(context).size.width,
+              top: appBarHeight + 30,
               child: Container(
-                child:MediaQuery.removePadding(
-                  removeTop:true,
-                  context:context,
-                  child:Center(
-                    child: Text("YmAppBar和自定义返回键"),
+                width: MediaQuery.of(context).size.width,
+                child: YmAppBar(widget.title,
+                  background:[
+                    const Color(0xFF606FFF),
+                    const Color(0xFF3446F2),
+                  ],onBackClick: goBack,textColor: Colors.white,
+                  textAlign: TextAlign.left,
+                  rightWidget: YmTextButton(
+                      "扫一扫",
+                      textColor:Color(0xFFFFFFFF),
+                      backgroundColor: Colors.transparent,
+                      pressedBackgroundColor: Color(0x50606FFF),
+                      size: Size(90,40),
+                      onClick:  (){
+                        print("扫一扫");
+                      }
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

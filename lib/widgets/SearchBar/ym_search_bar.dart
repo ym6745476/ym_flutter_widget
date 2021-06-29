@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 ///圆角搜索框
 class YmSearchBar extends StatefulWidget {
 
+  ///搜索框上默认的文本
+  String text;
   ///搜索框上显示的文案
   String hint;
   ///搜索框的圆角
@@ -21,6 +23,7 @@ class YmSearchBar extends StatefulWidget {
   TextEditingController? controller;
   ///点击键盘上的回车键的回调
   Function(String text)? onSubmitted;
+  Function(String text)? onChanged;
   ///清楚搜索回调
   Function? clearCallback;
   ///返回键的回调
@@ -38,6 +41,7 @@ class YmSearchBar extends StatefulWidget {
 
   YmSearchBar(
       {
+        this.text = "",
         this.hint = "搜索",
         this.borderRadius = 30.0,
         this.margin = const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -46,6 +50,7 @@ class YmSearchBar extends StatefulWidget {
         this.focusNode,
         this.controller,
         this.onSubmitted,
+        this.onChanged,
         this.onBackCallback,
         this.clearCallback,
         this.inputKeyWordsLength = 20,
@@ -67,11 +72,26 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
   ///为true 时显示清除选项
   bool showClear = false;
   ///文本输入框的默认使用控制器
-  TextEditingController defaultTextController = TextEditingController();
+  late TextEditingController defaultController;
 
   @override
   void initState() {
     super.initState();
+
+    ///默认的Controller
+    if (widget.controller == null) {
+      defaultController = TextEditingController.fromValue(
+          TextEditingValue(
+            // 设置内容
+              text: widget.text,
+              // 保持光标在最后
+              selection: TextSelection.fromPosition(TextPosition(
+                  affinity: TextAffinity.downstream,
+                  offset: widget.text.length))
+          )
+      );
+    }
+
     ///创建默认的焦点控制
     if (widget.focusNode == null) {
       widget.focusNode = new FocusNode();
@@ -192,10 +212,9 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
       ///只有苹果手机上有效果
       keyboardAppearance: Brightness.dark,
       ///控制器配置
-      controller:widget.controller == null ? defaultTextController : widget.controller,
+      controller:widget.controller == null ? defaultController : widget.controller,
       ///最大行数
       maxLines: 1,
-
       ///输入文本格式过滤
       inputFormatters: [
         ///输入的内容长度限制
@@ -208,14 +227,20 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
         ///只有当有改变时再刷新
         if (text.length > 0) {
           if (!showClear) {
-            showClear = true;
-            setState(() {});
+            setState(() {
+              showClear = true;
+            });
           }
         } else {
           if (showClear) {
-            showClear = false;
-            setState(() {});
+            setState(() {
+              showClear = false;
+            });
           }
+        }
+
+        if (widget.onChanged != null) {
+          widget.onChanged!(text);
         }
       },
 
@@ -267,10 +292,13 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
         ),
         onPressed: () {
           if(widget.controller==null){
-            defaultTextController.clear();
+            defaultController.clear();
           }else{
-            widget.controller!.text = "";
+            widget.controller!.clear();
           }
+          setState(() {
+            showClear = false;
+          });
           if (widget.clearCallback != null) {
             widget.clearCallback!();
           }

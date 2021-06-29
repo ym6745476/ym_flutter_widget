@@ -1,5 +1,6 @@
 import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
+import 'package:ym_flutter_widget/widgets/Button/ym_image_button.dart';
 
 class HelloPage extends StatefulWidget {
 
@@ -26,6 +27,7 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin{
       {'text':'AppBar','path':'/demo/appbar'},
       {'text':'SearchBar','path':'/demo/searchbar'},
       {'text':'Button','path':'/demo/button'},
+      {'text':'CheckButton','path':'/demo/checkbutton'},
       {'text':'TextField','path':'/demo/textfield'},
       {'text':'Dialog','path':'/demo/dialog'},
       {'text':'Toast','path':'/demo/toast'},
@@ -38,16 +40,19 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin{
       {'text':'Cascader','path':'/demo/cascader'},
       {'text':'TabPageView','path':'/demo/tabview'},
       {'text':'ListView','path':'/demo/listview'},
+      {'text':'QrCode','path':'/demo/qrcode'},
       {'text':'String工具类','path':'/demo/stringutil'},
       {'text':'UI工具类','path':'/demo/uiutil'},
     ];
     return List.generate(buttons.length, (index) {
-      return ElevatedButton(
-        child: Text(buttons[index]['text']),
-        onPressed:(){
-          Navigator.of(context).pushNamed(buttons[index]['path'],arguments: {'flutter':true});
-        },
-      );
+
+        return ElevatedButton(
+          child: Text(buttons[index]['text']),
+          onPressed:(){
+            Navigator.of(context).pushNamed(buttons[index]['path'],arguments: {'flutter':true});
+          },
+        );
+
     });
 
   }

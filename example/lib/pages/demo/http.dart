@@ -27,11 +27,11 @@ class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin{
   @override
   void initState() {
     super.initState();
-    loadData();
+    onStart();
   }
 
   @override
-  Future<void> loadData() async{
+  Future<void> onStart() async{
     YmHttp.getInstance().setHeader({'sign':"123456"});
   }
 
