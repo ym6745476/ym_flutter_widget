@@ -21,13 +21,13 @@ https://ymbok.com/phone-2.html
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.0.6
+  ym_flutter_widget: ^0.0.7
 ```
 
 ### Screenshot
 
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/1.png?a=1 "1.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/2.png?a=1 "2.png")
+![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/1.png "1.png")
+![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/2.png "2.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/3.png "3.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/4.png "4.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/5.png "5.png")
@@ -42,8 +42,9 @@ dependencies:
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/14.png "14.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/15.png "15.png")
 ![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/16.png "16.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/17.png?a=1 "17.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/18.png?a=1 "18.png")
+![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/17.png "17.png")
+![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/18.png "18.png")
+![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/19.png "18.png")
 
 ### Super simple to use http
 
@@ -51,13 +52,14 @@ dependencies:
 
 ///登录接口示例
 Future<void> _login() async {
-    String url = await Config.getURL(Config.LOGIN_USER_URL);
+
+    String url = await Config.LOGIN_USER_URL;
 
     //显示进度框
     YmUiUtil.showLoading(context);
 
     //postForm表单提交 post默认为Json方式提交
-    YmHttp.getInstance().postForm(
+    YmHttp().postForm(
         url
         ,{"user_name":_account,"password":_password}
         ,success: (data) {
@@ -89,6 +91,24 @@ Future<void> _login() async {
 ## Super simple to use widget
 
 ```dart
+
+YmAppBar("标题",
+  background:[
+    const Color(0xFF606FFF),
+    const Color(0xFF3446F2),
+  ],onBackClick: goBack,textColor: Colors.white,
+  textAlign: TextAlign.left,
+  rightWidget: YmTextButton(
+      "右边按钮",
+      textColor:Color(0xFFFFFFFF),
+      backgroundColor: Colors.transparent,
+      pressedBackgroundColor: Color(0x50606FFF),
+      size: Size(90,40),
+      onClick:  (){
+        print("right button click");
+      }
+  ),
+),
 
 //显示进度框
 YmUiUtil.showLoading(context);
