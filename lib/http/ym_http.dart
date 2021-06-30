@@ -11,27 +11,37 @@ import 'dart:convert';
  */
 class YmHttp {
 
-  //写一个单例
+  // 单例模式
   static var _instance;
 
-  //Dio
-  Dio _dio = new Dio();
+  //工厂构造函数
+  factory YmHttp() => _getInstance();
 
-  ///单例
-  static YmHttp getInstance() {
+  // 私有构造函数
+  YmHttp._internal() {
+    // 初始化
+    init();
+  }
+
+  // 静态私有
+  static YmHttp _getInstance() {
     if (_instance == null) {
-      _instance = YmHttp();
+      _instance = new YmHttp._internal();
     }
     return _instance;
   }
 
+  //Dio
+  late Dio _dio;
+
   ///构造
-  YmHttp() {
+  init() {
+
+    print('YmHttp init~');
+    _dio = new Dio();
 
     //请求header的配置
-    _dio.options.headers = {
-
-    };
+    _dio.options.headers = {};
 
     _dio.options.connectTimeout = 5000;
     _dio.options.receiveTimeout = 3000;
@@ -43,7 +53,7 @@ class YmHttp {
   /// 设置公共请求头
   setHeader(Map<String, String> params)  {
       _dio.options.headers.addAll(params);
-      print('当前Header: ' + _dio.options.headers.toString());
+      print('YmHttp 设置Header: ' + _dio.options.headers.toString());
   }
 
   ///get请求

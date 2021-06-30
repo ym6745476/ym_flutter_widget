@@ -32,7 +32,7 @@ class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin{
 
   @override
   Future<void> onStart() async{
-    YmHttp.getInstance().setHeader({'sign':"123456"});
+    super.onStart();
   }
 
   void onTextChangeAccount(text){
@@ -51,7 +51,7 @@ class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin{
     YmUiUtil.showLoading(context);
 
     //postForm表单提交 post默认为Json方式提交
-    YmHttp.getInstance().postForm(
+    YmHttp().postForm(
         url
         ,{"user_name":_account,"password":_password}
         ,success: (data) {

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ym_flutter_widget/http/ym_http.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
 import 'package:ym_flutter_widget/widgets/Loading/ym_loading.dart';
 import 'config.dart';
@@ -38,7 +39,7 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
 
   ///请求数据
   Future<void> onStart() async{
-    //需要覆盖
+    YmHttp().setHeader({'sign':"123456"});
   }
 
   Widget getLoadingWidget(String title){
