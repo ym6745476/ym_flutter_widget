@@ -4,6 +4,7 @@ import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_router.dart';
 import 'package:ym_flutter_widget/widgets/Dialog/ym_loading_dialog.dart';
 import 'package:ym_flutter_widget/widgets/Toast/ym_toast.dart';
 
+/// UI工具类
 class YmUiUtil {
 
   static bool _isLoading = false;
@@ -39,18 +40,18 @@ class YmUiUtil {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return new AlertDialog(
-          title: new Text(title),
-          content: new SingleChildScrollView(
-            child: new ListBody(
+        return  AlertDialog(
+          title:  Text(title),
+          content:  SingleChildScrollView(
+            child:  ListBody(
               children: <Widget>[
-                new Text(message),
+                 Text(message),
               ],
             ),
           ),
           actions: <Widget>[
-            new TextButton(
-              child: new Text(cancelText),
+             TextButton(
+              child:  Text(cancelText),
               onPressed: () {
                 if(null != onCancelPressed){
                   onCancelPressed();
@@ -58,8 +59,8 @@ class YmUiUtil {
                 Navigator.of(context).pop();
               },
             ),
-            new TextButton(
-              child: new Text(okText),
+            TextButton(
+              child:  Text(okText),
               onPressed: () {
                 if(null != onOkPressed){
                   onOkPressed();

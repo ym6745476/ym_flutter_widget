@@ -6,9 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'dart:convert';
 
-/*
- * 网络请求管理类
- */
+/// 网络请求管理类
 class YmHttp {
 
   // 单例模式

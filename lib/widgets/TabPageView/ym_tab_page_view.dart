@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ym_flutter_widget/widgets/Empty/ym_empty.dart';
 import 'package:ym_flutter_widget/widgets/ListView/ym_list_view.dart';
 
-///
-/// 顶部是TabBar，内容是列表
-///
-
+/// TabBar+ListView组合的Widget
 class YmTabPageView extends StatefulWidget {
 
   //Tab数据

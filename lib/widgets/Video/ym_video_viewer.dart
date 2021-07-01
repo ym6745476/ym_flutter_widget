@@ -4,6 +4,7 @@ import 'package:video_player/video_player.dart';
 
 
 ///
+/// 弹出层预览视频
 /// Navigator.push(context, YmDialogRouter(
 ///     YmVideoViewer(context, posterPath, false,controller)));
 ///

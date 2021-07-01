@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-///背景是渐变色的Button
+/// 背景是渐变色的Button
 class YmGradientButton extends StatelessWidget {
 
   final String text;

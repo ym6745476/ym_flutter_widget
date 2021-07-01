@@ -1,5 +1,5 @@
 
-
+/// 字符串工具类
 class YmStringUtil {
 
   ///去掉金额的.00

@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ym_flutter_widget/widgets/Empty/ym_empty.dart';
 
-///
-/// 顶部是TabBar，内容是列表
-///
-
+/// 带有LoadMore和分页功能的ListView
 class YmListView extends StatefulWidget {
 
 

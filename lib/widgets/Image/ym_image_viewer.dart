@@ -4,6 +4,7 @@ import 'package:video_player/video_player.dart';
 
 
 ///
+/// 弹性层预览图片
 /// Navigator.push(context, YmDialogRouter(YmImageViewer(context, posterPath, false)));
 ///
 class YmImageViewer extends Dialog {

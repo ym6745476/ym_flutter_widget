@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-///无边框输入框
+/// 输入框
 class YmTextField extends StatelessWidget {
 
   final List<TextInputFormatter> inputFormatters;

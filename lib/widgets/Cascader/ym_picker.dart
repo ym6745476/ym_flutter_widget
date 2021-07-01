@@ -2,10 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-///
-/// 单个选择器picker
-///
-
+/// 滚动选择器
 class YmPicker extends StatefulWidget {
 
   //默认值
@@ -22,7 +19,6 @@ class YmPicker extends StatefulWidget {
 
   final double itemHeight;
   final Color backgroundColor;
-
 
   YmPicker(
       this.data,

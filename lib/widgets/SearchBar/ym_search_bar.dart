@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-///圆角搜索框
+/// 有圆角和图标的搜索框
 class YmSearchBar extends StatefulWidget {
 
   ///搜索框上默认的文本

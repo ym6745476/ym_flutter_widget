@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+/// 小提示
 class YmToast {
   static final int lengthShort = 1;
   static final int lengthLong = 2;

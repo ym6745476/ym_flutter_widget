@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:html/dom.dart' as dom;
 
+/// 简单的Html解析显示
 class YmHtml extends StatelessWidget {
 
   String html;

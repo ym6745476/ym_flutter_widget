@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+
+/// 显示加载中和进度的Widget
 class YmLoading extends StatelessWidget {
 
   YmLoading() : super();

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-///
 /// 弹出层样式(用于包裹一个Widget,显示到任意方向上)
-///
 class YmDialogBox extends StatelessWidget {
 
   final Widget? child;

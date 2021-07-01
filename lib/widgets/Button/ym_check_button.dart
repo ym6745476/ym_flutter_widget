@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-///可以更换图标的单选按钮
+/// 可以更换图标的选择按钮
 class YmCheckButton extends StatelessWidget {
 
   String text;

@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-///
-///文字垂直滚动
-///
+/// 循环滚动文本
 class YmTextMarquee extends StatefulWidget {
 
   List<String> textArray = [];

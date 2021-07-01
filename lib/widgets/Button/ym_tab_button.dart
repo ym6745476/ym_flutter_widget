@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-///普通样式的Tab Button
+/// Tab样式的按钮
 class YmTabButton extends StatelessWidget {
 
   final String text;

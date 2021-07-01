@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-///普通样式的Button
+/// 带图标和文字的按钮
 class YmImageButton extends StatelessWidget {
 
   final String text;

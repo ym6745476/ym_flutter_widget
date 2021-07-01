@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-///单选按钮组合文字
+/// 带文字的单选按钮
 class YmRadioButton extends StatelessWidget {
 
   String text;

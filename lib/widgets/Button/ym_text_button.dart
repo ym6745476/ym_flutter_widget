@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-///普通样式的Button
+/// 文字样式的按钮
 class YmTextButton extends StatelessWidget {
 
   final String text;

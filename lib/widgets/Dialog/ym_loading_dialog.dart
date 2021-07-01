@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+
+///加载框
 class YmLoadingDialog extends Dialog {
 
   ///点击背景是否能够退出

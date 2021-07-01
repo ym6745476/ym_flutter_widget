@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
 import 'package:ym_flutter_widget/widgets/Cascader/ym_picker.dart';
 
-///
-/// Cascader级联选择器
-///
-
+/// 级联选择器（多级）
 class YmCascader extends StatefulWidget {
 
   //数据
