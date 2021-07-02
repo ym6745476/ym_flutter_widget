@@ -10,6 +10,7 @@ class YmTextField extends StatelessWidget {
   final double fontSize;
   final double height;
   final String hintText;
+  final TextAlign textAlign;
   final FocusNode? focusNode;
   final int maxLines;
   late OutlineInputBorder outlineInputBorder;
@@ -24,6 +25,7 @@ class YmTextField extends StatelessWidget {
         this.hintText = "",
         this.maxLines = 1,
         this.focusNode,
+        this.textAlign = TextAlign.left,
         this.outlineInputBorder = const OutlineInputBorder(),
         this.focusedBorder = const OutlineInputBorder()
       }
@@ -49,7 +51,7 @@ class YmTextField extends StatelessWidget {
             controller: controller,
             autofocus: false,
             focusNode: this.focusNode,
-            textAlign: TextAlign.left,//文本对齐方式
+            textAlign: this.textAlign,//文本对齐方式
             maxLines: maxLines,//最大行数
             style: TextStyle(fontSize: fontSize, color: Colors.black87,fontWeight:FontWeight.w500),//输入文本的样式
             inputFormatters: this.inputFormatters,   //允许的输入格式

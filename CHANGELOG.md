@@ -1,4 +1,11 @@
 
+## [0.0.8] - 2021/07/10.
+* add YmBoxDialog
+* add YmCheckButton and YmRadioButton Sample
+* add YmAppBar right button sample
+* add YmQrCode add qr code scan Sample
+* update YmHttp single instance YmHttp()
+
 ## [0.0.7] - 2021/06/30.
 * add YmBoxDialog
 * add YmCheckButton and YmRadioButton Sample

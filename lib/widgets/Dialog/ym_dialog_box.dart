@@ -30,10 +30,19 @@ class YmDialogBox extends StatelessWidget {
     }
     current = Align(alignment: alignment, child: current);
 
-    return Container(
-      decoration: BoxDecoration(color: Color(0x96000000)),
-      child: current
+    return GestureDetector(
+      child: Container(
+        decoration: BoxDecoration(color: Color(0x96000000)),
+        child: GestureDetector(
+          child: current,
+          onTap: (){},
+        ),
+      ),
+      onTap: (){
+        Navigator.of(context).pop();
+      },
     );
+
   }
 
 }

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_box.dart';
 import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_router.dart';
 import 'package:ym_flutter_widget/widgets/Dialog/ym_loading_dialog.dart';
 import 'package:ym_flutter_widget/widgets/Toast/ym_toast.dart';
@@ -72,6 +73,19 @@ class YmUiUtil {
             ),
           ],
         );
+      },
+    ).then((val) {
+      print(val);
+    });
+  }
+
+  ///显示底部弹出框
+  static showBottomDialog(BuildContext context,Widget child){
+    showDialog<Null>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return  YmDialogBox(child:child);
       },
     ).then((val) {
       print(val);

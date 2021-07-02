@@ -187,7 +187,8 @@ YmTabPageView(_tabs,_items,
 - export 'widgets/Toast/ym_toast.dart';                 //小提示Toast
 - export 'widgets/Dialog/ym_loading_dialog.dart';       //加载弹出框
 - export 'widgets/Dialog/ym_dialog_box.dart';           //弹出层样式包裹
-- export 'widgets/Cascader/ym_cascader.dart';           //级联选择器
+- export 'widgets/Picker/ym_cascader.dart';             //级联选择器
+- export 'widgets/Picker/ym_picker.dart';               //滚动选择器
 - export 'widgets/TextField/ym_text_marquee.dart';      //循环滚动文本
 - export 'widgets/Html/ym_html.dart';                   //Html代码解析
 - export 'widgets/Loading/ym_loading.dart';             //Loading页面样式

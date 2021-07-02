@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ym_flutter_widget/widgets/Button/ym_text_button.dart';
-import 'package:ym_flutter_widget/widgets/Cascader/ym_picker.dart';
+import 'package:ym_flutter_widget/widgets/Picker/ym_picker.dart';
 
 /// 级联选择器（多级）
-class YmCascader extends StatefulWidget {
+class YmCascader extends StatelessWidget {
 
   //数据
-  late List<List<Map>> data;
-
-  //默认Value
-  late List<String> value;
+  final List<List<Map>> data;
+  //默认值
+  final List<String> value;
 
   final double width;
   final double height;
@@ -36,34 +35,11 @@ class YmCascader extends StatefulWidget {
   ): super(key: key);
 
   @override
-  _YmCascaderState createState() => _YmCascaderState();
-
-}
-
-class _YmCascaderState extends State<YmCascader> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  Widget _getPickerWidget(int position){
-    double pickerItemWidth = (MediaQuery.of(context).size.width)/widget.data.length;
-    return YmPicker(
-      widget.data.elementAt(position),
-      widget.value[position],
-      width: pickerItemWidth,
-      itemHeight: 40,
-      height: 180,
-      onChanged: (index,val) {
-        print("Picker onChanged  position=" + position.toString() + ",index=" + index.toString() + ",val=" + val);
-        widget.onChanged(position,index,val);
-      },
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
+
+    double pickerItemWidth = (MediaQuery.of(context).size.width)/this.data.length;
+    List<YmPicker> pickerList = [];
+
     return Container(
       height:220,
       decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
@@ -83,29 +59,36 @@ class _YmCascaderState extends State<YmCascader> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   YmTextButton("取消", textColor:Color(0xFF666666), onClick: (){
-                    widget.onCancelClick();
+                    this.onCancelClick();
                   },size: Size(80,40),backgroundColor: Colors.transparent,pressedBackgroundColor:Color(0xFFEFEFEF) ,),
 
                   YmTextButton("确定", textColor:Color(0xFF3446F2), onClick:(){
-                    widget.onOkClick();
+                    this.onOkClick();
                   },size:Size(80,40),backgroundColor: Colors.transparent,pressedBackgroundColor:Color(0xFFEFEFEF)),
                 ]
             ),
           ),
 
           Row(
-            children:List.generate(widget.data.length, (index) {
-              return _getPickerWidget(index);
+            children:List.generate(this.data.length, (position) {
+              YmPicker picker = YmPicker(
+                this.data[position],
+                this.value[position],
+                width: pickerItemWidth,
+                itemHeight: 40,
+                height: 180,
+                onChanged: (index,val) {
+                  print("Picker onChanged  position=" + position.toString() + ",index=" + index.toString() + ",val=" + val);
+                  this.onChanged(position,index,val);
+                },
+              );
+              pickerList.add(picker);
+              return picker;
             }),
           )
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
 }

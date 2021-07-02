@@ -1,8 +1,9 @@
 import 'package:example/base/single_native_state_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:example/base/config.dart';
+import 'package:ym_flutter_widget/utils/ym_ui_util.dart';
 import 'package:ym_flutter_widget/widgets/AppBar/ym_app_bar.dart';
-import 'package:ym_flutter_widget/widgets/Cascader/ym_cascader.dart';
+import 'package:ym_flutter_widget/widgets/Picker/ym_cascader.dart';
 import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_box.dart';
 
 ///
@@ -19,9 +20,6 @@ class CascaderPage extends StatefulWidget {
 }
 
 class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin{
-
-  //显示底部弹窗
-  bool _showPickerDialog = false;
 
   //计算拼接地址字符串的
   List<int> _pickerSelected = [0,0,0];
@@ -89,7 +87,7 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
 
   }
 
-  Future<void> _changeData(int pid,int index) async {
+  Future<void> _changeData(Function dialogState,int pid,int index) async {
     List<Map> listNew = [
     ];
 
@@ -99,7 +97,7 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
 
     if(index == 1){
       print("update list2...............");
-      setState(() {
+      dialogState(() {
         _regionData[1] = listNew;
       });
 
@@ -110,7 +108,7 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
 
     }else if(index == 2){
       print("update list3...............");
-      setState(() {
+      dialogState(() {
         _regionData[2] = listNew;
       });
 
@@ -160,8 +158,8 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
                             "级联组件",
                             textAlign:TextAlign.left,
                             style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
+                              color: Colors.black54,
+                              fontSize: 15,
                             ),
                           )
                       ),
@@ -175,8 +173,8 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
                                 _address3,
                                 textAlign:TextAlign.left,
                                 style: const TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 16,
+                                  color: Colors.black54,
+                                  fontSize: 15,
                                 ),
                               )
                           ),
@@ -187,67 +185,47 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
                 ),
               ),
             ),
-
-            _showPickerDialog?
-            Positioned(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: YmDialogBox(
-                  child:_pickerDialog(),
-              ),
-            ):Container()
           ],
         ),
       ),
     );
   }
 
-
-  Widget _pickerDialog() {
-    return YmCascader(
-      _regionData,_regionValue,
-      onOkClick:(){
-        closePickerDialog();
-        setState(() {
-          _address3 = _regionData[0].elementAt(_pickerSelected[0])['label'] + "/" + _regionData[1].elementAt(_pickerSelected[1])['label'] + "/" + _regionData[2].elementAt(_pickerSelected[2])['label'];
-        });
-      },
-      onCancelClick:(){
-        closePickerDialog();
-
-      },
-      onChanged: (position,index,value){
-        if(position == 0){
-          _pickerSelected[0] = index;
-          _pickerSelected[1] = 0;
-          _pickerSelected[2] = 0;
-          _regionValue[0] = value;
-          _changeData(int.parse(value),1);
-        }else if(position == 1){
-          _pickerSelected[1] = index;
-          _pickerSelected[2] = 0;
-          _regionValue[1] = value;
-          _changeData(int.parse(value),2);
-        }else if(position == 2){
-          _pickerSelected[2] = index;
-          _regionValue[2] = value;
-        }
-      },
-    );
-
-  }
-
   // 对话框式底部滑动窗口
   Future _openPickerDialog() async {
-    setState(() {
-      _showPickerDialog = true;
-    });
-  }
-
-  void closePickerDialog(){
-    setState(() {
-      _showPickerDialog = false;
-    });
+    YmUiUtil.showBottomDialog(context,StatefulBuilder(
+      builder: (context,state){
+        return  YmCascader(
+            _regionData,_regionValue,
+            onOkClick:(){
+              Navigator.of(context).pop();
+              setState(() {
+                _address3 = _regionData[0].elementAt(_pickerSelected[0])['label'] + "/" + _regionData[1].elementAt(_pickerSelected[1])['label'] + "/" + _regionData[2].elementAt(_pickerSelected[2])['label'];
+              });
+            },
+            onCancelClick:(){
+              Navigator.of(context).pop();
+            },
+            onChanged: (position,index,value){
+              if(position == 0){
+                _pickerSelected[0] = index;
+                _pickerSelected[1] = 0;
+                _pickerSelected[2] = 0;
+                _regionValue[0] = value;
+                _changeData(state,int.parse(value),1);
+              }else if(position == 1){
+                _pickerSelected[1] = index;
+                _pickerSelected[2] = 0;
+                _regionValue[1] = value;
+                _changeData(state,int.parse(value),2);
+              }else if(position == 2){
+                _pickerSelected[2] = index;
+                _regionValue[2] = value;
+              }
+            },
+        );
+      },
+    ));
   }
 
 }
