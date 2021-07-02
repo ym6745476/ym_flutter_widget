@@ -14,12 +14,11 @@ class YmFormItemInput extends StatelessWidget {
   final Size size;
   final Function(String text) onTextChanged;
 
-  YmFormItemInput(
+  YmFormItemInput(this.text,
       {
-        required this.text,
+        this.label = "",
         required this.onTextChanged,
         this.hintText = "请输入",
-        this.label = "",
         this.size = const Size(120, 40),
         this.fontSize = 14,
         this.textColor = const Color(0xff666666),
@@ -33,6 +32,12 @@ class YmFormItemInput extends StatelessWidget {
     return Container(
         width:this.size.width,
         height:this.size.height,
+        decoration: BoxDecoration(
+          color: Color(0xFFFFFFFF),
+          border: Border(
+            bottom: BorderSide(color: Color(0xFFEFEFEF), width: 0.5),
+          ),
+        ),
         padding: EdgeInsets.only(top:0,left: 16,right: 16,bottom: 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

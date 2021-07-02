@@ -15,9 +15,8 @@ class YmFormItemSelect extends StatelessWidget {
   String? rightImage;
   final Function() onClick;
 
-  YmFormItemSelect(
+  YmFormItemSelect(this.text,
       {
-        required this.text,
         required this.onClick,
         this.hintText = "请选择",
         this.label = "",
@@ -35,6 +34,12 @@ class YmFormItemSelect extends StatelessWidget {
     return Container(
         width:this.size.width,
         height:this.size.height,
+        decoration: BoxDecoration(
+          color: Color(0xFFFFFFFF),
+          border: Border(
+            bottom: BorderSide(color: Color(0xFFEFEFEF), width: 0.5),
+          ),
+        ),
         padding: EdgeInsets.only(top:0,left: 16,right: 16,bottom: 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,7 +63,7 @@ class YmFormItemSelect extends StatelessWidget {
                         children: [
 
                           Text(
-                            this.text,
+                            this.text!=""?this.text:this.hintText,
                             textAlign:TextAlign.right,
                             style: TextStyle(
                               color: this.textColor,
