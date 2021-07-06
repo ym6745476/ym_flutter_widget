@@ -2,6 +2,54 @@
 /// 字符串工具类
 class YmStringUtil {
 
+  /// int为空
+  static bool intEmpty(int? value) {
+    return value == null;
+  }
+
+  /// int不为空
+  static bool intNotEmpty(int? value) {
+    return value != null;
+  }
+
+  /// 字符串为空
+  static bool strEmpty(String? value) {
+    if (value == null) return true;
+    return value.trim().isEmpty;
+  }
+
+  /// 字符串不为空
+  static bool strNotEmpty(String? value) {
+    if (value == null) return false;
+    return value.trim().isNotEmpty;
+  }
+
+  /// Map为空
+  static bool mapEmpty(Map? value) {
+    if (value == null) return true;
+    return value.isEmpty;
+  }
+
+  /// Map不为空
+  static bool mapNotEmpty(Map? value) {
+    if (value == null) return false;
+    return value.isNotEmpty;
+  }
+
+  /// List为空
+  static bool listEmpty(List? list) {
+    if (list == null) return true;
+    if (list.length == 0) return true;
+    return false;
+  }
+
+  /// List不为空
+  static bool listNotEmpty(List? list) {
+    if (list == null) return false;
+    if (list.length == 0) return false;
+    return true;
+  }
+
   ///去掉金额的.00
   static toStringMoney(double money) {
        String moneyNew = money.toStringAsFixed(2);

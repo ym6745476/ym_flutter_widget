@@ -47,8 +47,8 @@ class YmCheckButton extends StatelessWidget {
                   Image.asset(
                     this.checked?this.checkedImage:this.image,
                     fit:BoxFit.fitWidth,
-                    width:22,
-                    height:22,
+                    width:size.height/2,
+                    height:size.height/2,
                   ),
                   Padding(
                       padding: EdgeInsets.only(top:0,left: 8,right: 5,bottom: 0),

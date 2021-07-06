@@ -19,7 +19,7 @@ class YmFormItemInput extends StatelessWidget {
         this.label = "",
         required this.onTextChanged,
         this.hintText = "请输入",
-        this.size = const Size(120, 40),
+        this.size = const Size(120, 44),
         this.fontSize = 14,
         this.textColor = const Color(0xff666666),
         this.labelTextColor = const Color(0xff333333),

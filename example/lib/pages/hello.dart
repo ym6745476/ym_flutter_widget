@@ -37,6 +37,7 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin{
       {'text':'Html','path':'/demo/html'},
       {'text':'Image','path':'/demo/image'},
       {'text':'Video','path':'/demo/video'},
+      {'text':'DateTimePicker','path':'/demo/datetimepicker'},
       {'text':'Cascader','path':'/demo/cascader'},
       {'text':'TabPageView','path':'/demo/tabview'},
       {'text':'ListView','path':'/demo/listview'},

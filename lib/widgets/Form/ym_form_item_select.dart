@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ym_flutter_widget/utils/ym_string_util.dart';
 import 'package:ym_flutter_widget/widgets/TextField/ym_text_field.dart';
 
 /// 表单-选择控件
@@ -20,7 +21,7 @@ class YmFormItemSelect extends StatelessWidget {
         required this.onClick,
         this.hintText = "请选择",
         this.label = "",
-        this.size = const Size(120, 40),
+        this.size = const Size(120, 44),
         this.fontSize = 14,
         this.textColor = const Color(0xff666666),
         this.labelTextColor = const Color(0xff333333),
@@ -71,7 +72,7 @@ class YmFormItemSelect extends StatelessWidget {
                             ),
                           ),
 
-                          this.rightImage!=null?Padding(
+                          YmStringUtil.strNotEmpty(this.rightImage)?Padding(
                             padding: EdgeInsets.only(top:0,left: 5,right: 0,bottom: 0),
                             child:Image.asset(
                               this.rightImage!,

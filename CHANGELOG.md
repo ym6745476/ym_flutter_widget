@@ -1,10 +1,12 @@
 
 ## [0.0.8] - 2021/07/10.
-* add Form Widget
+* add Some Form Widget
 * add Ym YmFormItemInput Widget and Sample
 * add YmFormItemSelect Widget and sample
 * optimize YmCascader Widget
 * add showBottomDialog()
+* add YmDateUtil
+* add YmDatePicker and sample
 
 ## [0.0.7] - 2021/06/30.
 * add YmBoxDialog

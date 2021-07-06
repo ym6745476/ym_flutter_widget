@@ -9,10 +9,8 @@ class YmCascader extends StatelessWidget {
   //数据
   final List<List<Map>> data;
   //默认值
-  final List<String> value;
+  final List<int> currentIndex;
 
-  final double width;
-  final double height;
   final Function onChanged;
   final Function onOkClick;
   final Function onCancelClick;
@@ -21,7 +19,6 @@ class YmCascader extends StatelessWidget {
 
   YmCascader(
       this.data,
-      this.value,
       {
         Key? key,
         required this.onChanged,
@@ -29,8 +26,7 @@ class YmCascader extends StatelessWidget {
         required this.onCancelClick,
         this.itemHeight = 36,
         this.backgroundColor = const Color(0xffffffff),
-        this.height = 150.0,
-        this.width = 150.0
+        this.currentIndex = const [0,0,0,0,0],
       }
   ): super(key: key);
 
@@ -73,7 +69,7 @@ class YmCascader extends StatelessWidget {
             children:List.generate(this.data.length, (position) {
               YmPicker picker = YmPicker(
                 this.data[position],
-                this.value[position],
+                currentIndex: this.currentIndex[position],
                 width: pickerItemWidth,
                 itemHeight: 40,
                 height: 180,

@@ -2,6 +2,7 @@ import 'package:example/pages/demo/appbar.dart';
 import 'package:example/pages/demo/button.dart';
 import 'package:example/pages/demo/cascader.dart';
 import 'package:example/pages/demo/checkbutton.dart';
+import 'package:example/pages/demo/datetimepicker.dart';
 import 'package:example/pages/demo/dialog.dart';
 import 'package:example/pages/demo/empty.dart';
 import 'package:example/pages/demo/error.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
       //home: HelloPage(title: 'Home Page'),
       routes: MyRouter.routes,
       initialRoute: MyRouter.helloPage,   //初始页面路由可代替home
+
     );
   }
 
@@ -70,6 +72,7 @@ class MyRouter {
   static final tabViewPage = '/demo/tabview';
   static final listViewPage = '/demo/listview';
   static final qrCodePage = '/demo/qrcode';
+  static final dateTimePickerPage = '/demo/datetimepicker';
 
 
   //
@@ -97,6 +100,7 @@ class MyRouter {
     tabViewPage: (ctx) => TabPageViewPage(),
     listViewPage: (ctx) => ListViewPage(),
     qrCodePage: (ctx) => QRCodePage(),
+    dateTimePickerPage: (ctx) => DateTimePickerPage(),
   };
 }
 

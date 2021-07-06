@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 /// 滚动选择器
 class YmPicker extends StatefulWidget {
 
-  //默认值
-  final String value;
+
   //数据格式：{"label": "请选择", "value": ""}
   final List<Map> data;
+
+  //默认值
+  final int currentIndex;
 
   //前方文字
   final String label;
@@ -21,10 +23,10 @@ class YmPicker extends StatefulWidget {
 
   YmPicker(
       this.data,
-      this.value,
       {
         Key? key,
         this.label = "",
+        this.currentIndex = 0,
         this.itemHeight = 36,
         this.backgroundColor = const Color(0xffffffff),
         this.height = 150,
@@ -43,37 +45,21 @@ class YmPickerState extends State<YmPicker> {
   //设置防抖周期为300毫秒
   Duration _durationTime = const Duration(milliseconds: 300);
   Timer _timer = Timer(Duration(milliseconds: 300), () {});
-  int _currentIndex = 0;
   late FixedExtentScrollController _controller;
 
   @override
   void initState() {
     super.initState();
     print("YmPickerState initState");
-    _currentIndex =  _getDefaultIndex();
-    _controller = FixedExtentScrollController(initialItem: _currentIndex);
+    _controller = FixedExtentScrollController(initialItem: widget.currentIndex);
   }
 
   @override
   void didUpdateWidget(YmPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
-    setState(() {
-      _currentIndex = _getDefaultIndex();
-    });
-
-    //更新数据后选中第一个数据
-    _controller.jumpToItem(_currentIndex);
-    print("YmPickerState didUpdateWidget default index:" + _currentIndex.toString());
-  }
-
-  // 获取默认选择值的位置
-  int _getDefaultIndex() {
-    for (var i = 0; i < widget.data.length; i++) {
-      if (widget.data[i]["value"] == widget.value) {
-        return i;
-      }
-    }
-    return 0;
+    //更新数据
+    _controller.jumpToItem(widget.currentIndex);
+    print("YmPickerState didUpdateWidget default index :" + widget.currentIndex.toString());
   }
 
   // 触发值改变
