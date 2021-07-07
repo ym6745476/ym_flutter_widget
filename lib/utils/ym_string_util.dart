@@ -50,20 +50,34 @@ class YmStringUtil {
     return true;
   }
 
-  ///去掉金额的.00
-  static toStringMoney(double money) {
+  /// 去掉金额的.00
+  static String toStringMoney(double money) {
        String moneyNew = money.toStringAsFixed(2);
        return moneyNew.replaceAll(".00", "");
   }
 
-  ///判断是否为手机号
+  /// 每3位加逗号
+  static String formatMoney(double money, {separate: 3}) {
+      String str = money.toStringAsFixed(2);
+      List<String> sub = str.split('.');
+      List val = List.from(sub[0].split(''));
+      //处理分割符
+      for (int index = 0, i = val.length - 1; i >= 0; index++, i--) {
+        // 除以三没有余数、不等于零并且不等于1 就加个逗号
+        if (index % separate == 0 && index != 0) {
+            val[i] = val[i] + ',';
+        }
+      }
+      return '${val.join('')}.${sub[1]}';
+  }
+
+  /// 判断是否为手机号
   static isMobile(String mobile){
     RegExp exp = RegExp(r'^((13[0-9])|(14[0-9])|(15[0-9])|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$');
     return exp.hasMatch(mobile);
   }
 
-
-  ///将姓名变为*号
+  /// 将姓名变为*号
   static String formatStarName(String name) {
     String newStr;
     if (name.length == 2) {
