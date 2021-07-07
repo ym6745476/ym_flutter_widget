@@ -44,6 +44,7 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin{
       {'text':'QrCode','path':'/demo/qrcode'},
       {'text':'String工具类','path':'/demo/stringutil'},
       {'text':'UI工具类','path':'/demo/uiutil'},
+      {'text':'Date工具类','path':'/demo/dateutil'},
     ];
     return List.generate(buttons.length, (index) {
 

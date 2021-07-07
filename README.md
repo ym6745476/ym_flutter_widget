@@ -21,30 +21,30 @@ https://ymbok.com/phone-2.html
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.0.7
+  ym_flutter_widget: ^0.0.8
 ```
 
 ### Screenshot
 
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/1.png?a=2 "1.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/2.png?a=2 "2.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/3.png?a=2 "3.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/4.png?a=2 "4.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/5.png?a=2 "5.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/6.png?a=2 "6.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/7.png?a=2 "7.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/8.png?a=2 "8.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/9.png?a=2 "9.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/10.png?a=2 "10.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/11.png?a=2 "11.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/12.png?a=2 "12.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/13.png?a=2 "13.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/14.png?a=2 "14.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/15.png?a=2 "15.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/16.png?a=2 "16.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/17.png?a=2 "17.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/18.png?a=2 "18.png")
-![图片说明](https://ymbok.com/static/ym_flutter_widget/screenshot/19.png?a=2 "19.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/1.png "1.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/2.png "2.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/3.png "3.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/4.png "4.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/5.png "5.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/6.png "6.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/7.png "7.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/8.png "8.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/9.png "9.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/10.png "10.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/11.png "11.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/12.png "12.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/13.png "13.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/14.png "14.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/15.png "15.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/16.png "16.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/17.png "17.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/18.png "18.png")
+![图片说明](https://github.com/ym6745476/ym_flutter_widget/blob/master/screenshot/19.png "19.png")
 
 ### Super simple to use http
 
@@ -153,7 +153,8 @@ YmTextField([],"默认值",
 
 //级联选择器
 YmCascader(
-  _data,_value,
+  _data,
+  currentIndex: [1],
   onOkClick:(){
   },
   onCancelClick:(){

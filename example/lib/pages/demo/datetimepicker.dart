@@ -23,7 +23,7 @@ class DateTimePickerPage extends StatefulWidget {
 
 class _DateTimePickerPageState extends State<DateTimePickerPage> with SingleNativeStateMixin{
 
-  String  _chooseDate = "请选择日期";
+  String  _chooseDate = "";
 
   @override
   void initState() {
@@ -105,7 +105,7 @@ class _DateTimePickerPageState extends State<DateTimePickerPage> with SingleNati
                               child: Padding(
                                   padding: EdgeInsets.only(top:0,left:16,right: 16,bottom: 0),
                                   child:Text(
-                                    _chooseDate,
+                                    _chooseDate==""?"请选择日期":_chooseDate,
                                     textAlign:TextAlign.left,
                                     style: const TextStyle(
                                       color: Colors.black54,
@@ -137,7 +137,7 @@ class _DateTimePickerPageState extends State<DateTimePickerPage> with SingleNati
         return  YmDatePicker(
           "1920-10-01",
           "2090-10-01",
-          value: _chooseDate==""?YmDateUtil.currentDateString():_chooseDate,
+          value: _chooseDate,
           onOkClick:(String date){
             Navigator.of(context).pop();
             setState(() {
