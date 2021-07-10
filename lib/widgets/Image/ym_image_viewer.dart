@@ -47,46 +47,54 @@ class YmImageViewer extends Dialog {
 
   Widget _getContent(){
 
-    return Image.network(
-      mediaUrl,
-      fit:BoxFit.contain,
-      width:MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.6,
-      loadingBuilder:(BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-           if (loadingProgress == null){
-             return child;
-           }
-           return Center(
-             child:Padding(
-               padding: EdgeInsets.all(20),
-               child: CircularProgressIndicator(
-                 value: loadingProgress.expectedTotalBytes != null
-                     ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                     : null,
-               ),
-             ),
-           );
-      },
-    );
+    if(mediaUrl.contains("assets/")){
+      return Image.asset(
+        mediaUrl,
+        fit:BoxFit.contain,
+        width:MediaQuery.of(context).size.width * 0.8,
+      );
+    }else{
+      return Image.network(
+        mediaUrl,
+        fit:BoxFit.contain,
+        width:MediaQuery.of(context).size.width * 0.8,
+        height: MediaQuery.of(context).size.height * 0.6,
+        loadingBuilder:(BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+          if (loadingProgress == null){
+            return child;
+          }
+          return Center(
+            child:Padding(
+              padding: EdgeInsets.all(20),
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                    : null,
+              ),
+            ),
+          );
+        },
+      );
+    }
   }
 
   Widget _dialog(){
     return Center(
         child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width:MediaQuery.of(context).size.width * 0.8 ,
-                    alignment: AlignmentDirectional.bottomEnd,
-                    child:
-                      IconButton(icon: Image.asset('assets/images/ic_close.png'), iconSize: 30.0, onPressed: (){
-                          closeDialog();
-                      }),
-                  ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width:MediaQuery.of(context).size.width * 0.8 ,
+                alignment: AlignmentDirectional.bottomEnd,
+                child:
+                  IconButton(icon: Image.asset('assets/images/ic_close.png'), iconSize: 30.0, onPressed: (){
+                      closeDialog();
+                  }),
+              ),
 
-                  _getContent(),
-                ],
+              _getContent(),
+            ],
           ),
     );
   }
