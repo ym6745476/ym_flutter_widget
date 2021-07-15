@@ -91,6 +91,14 @@ class YmHttp {
         }
       }else if (method == 'postForm') {
         if (params.length > 0) {
+          params.forEach((key, value)  {
+            if(value is File){
+              //print(value.path);
+              MultipartFile file =  MultipartFile.fromFileSync(value.path,filename: value.path.substring(value.path.lastIndexOf("/")+1));
+              params[key] = file;
+            }
+          });
+          print(params);
           response = await _dio.post(url, data: FormData.fromMap(params));
         } else {
           response = await _dio.post(url);

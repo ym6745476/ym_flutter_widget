@@ -23,6 +23,8 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
   List<String> _tabButtonList = ["全部","待付款","待发货"];
   int _tabButtonSelectedIndex = 0;
 
+  bool _enabled = true;
+
   @override
   void initState() {
     super.initState();
@@ -129,6 +131,15 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                       YmTextButton("Outlined", textColor:Color(0xFF3446F2),onClick: (){
                         print("Button Pressed");
                       },isOutlined: true,borderColor:Color(0xFF3446F2),outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+
+                      YmTextButton("Enable", textColor:Color(0xFFFFFFFF),backgroundColor:_enabled?Color(0xFF3446F2):Color(0xFFa1a3a6),
+                          pressedBackgroundColor:Color(0xFFa1a3a6),onClick:_enabled?(){
+                            print("Button Pressed");
+                            setState(() {
+                              _enabled = false;
+                            });
+                          }:null,
+                          outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
                       Row(
                           children: [

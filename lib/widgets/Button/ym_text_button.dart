@@ -7,7 +7,7 @@ class YmTextButton extends StatelessWidget {
 
   final String text;
   final Color textColor;
-  final Function() onClick;
+  final Function()? onClick;
   final double fontSize;
   final FontWeight fontWeight;
   final Size size;
@@ -103,9 +103,7 @@ class YmTextButton extends StatelessWidget {
             fontWeight: fontWeight,
           ),
         ),
-        onPressed: () {
-          onClick();
-        },
+        onPressed:onClick,
       );
     } else {
       return ElevatedButton(
@@ -150,9 +148,7 @@ class YmTextButton extends StatelessWidget {
             fontWeight: fontWeight,
           ),
         ),
-        onPressed: () {
-          onClick();
-        },
+        onPressed: onClick,
       );
     }
   }
