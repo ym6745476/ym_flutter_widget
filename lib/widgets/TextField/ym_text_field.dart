@@ -15,7 +15,7 @@ class YmTextField extends StatelessWidget {
   final int maxLines;
   late OutlineInputBorder outlineInputBorder;
   late OutlineInputBorder focusedBorder;
-  final TextEditingController controller = TextEditingController();
+  late TextEditingController controller;
 
   ///[FilteringTextInputFormatter.digitsOnly,FilteringTextInputFormatter.allow(RegExp("[0-9.]")]
   YmTextField(this.inputFormatters,this.text,this.onTextChanged,
@@ -39,7 +39,12 @@ class YmTextField extends StatelessWidget {
   Widget buildTextField() {
 
     //controller初始化值
-    this.controller.text = text;
+    this.controller = TextEditingController.fromValue(TextEditingValue(
+        text: text,
+        selection: TextSelection.fromPosition(TextPosition(
+            affinity: TextAffinity.downstream,
+            offset: text.length))),
+    );
 
     return Theme(
       data: new ThemeData(primaryColor:Color(0xFF3446F2), hintColor: Colors.black45),
