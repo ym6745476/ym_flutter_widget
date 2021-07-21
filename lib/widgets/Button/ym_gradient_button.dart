@@ -20,14 +20,16 @@ class YmGradientButton extends StatelessWidget {
   //StadiumBorder 两端是半圆的边框
   final OutlinedBorder outlinedBorder;
 
-  YmGradientButton(this.text,this.textColor,this.onClick,{
+  YmGradientButton(this.text,{
     this.fontSize = 14,
     this.fontWeight = FontWeight.normal,
+    this.textColor = const Color(0xFF666666),
     this.size = const Size(120, 42),
     this.borderColor = Colors.transparent,
     this.pressedBackgroundColor = const Color(0xFF606FFF),
     this.outlinedBorder = const StadiumBorder(),
     this.gradient = const LinearGradient( colors: [const Color(0xFF606FFF),const Color(0xFF3446F2)]),
+    required this.onClick,
   });
 
   @override

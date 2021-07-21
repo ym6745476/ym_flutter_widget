@@ -27,6 +27,7 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin{
       {'text':'AppBar','path':'/demo/appbar'},
       {'text':'SearchBar','path':'/demo/searchbar'},
       {'text':'Button','path':'/demo/button'},
+      {'text':'TabButton','path':'/demo/tabbutton'},
       {'text':'CheckButton','path':'/demo/checkbutton'},
       {'text':'TextField','path':'/demo/textfield'},
       {'text':'Dialog','path':'/demo/dialog'},

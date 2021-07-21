@@ -14,6 +14,7 @@ import 'package:example/pages/demo/loading.dart';
 import 'package:example/pages/demo/native.dart';
 import 'package:example/pages/demo/qrcode.dart';
 import 'package:example/pages/demo/searchbar.dart';
+import 'package:example/pages/demo/tabbutton.dart';
 import 'package:example/pages/demo/tabpageview.dart';
 import 'package:example/pages/demo/textfield.dart';
 import 'package:example/pages/demo/toast.dart';
@@ -58,6 +59,7 @@ class MyRouter {
   static final appbarPage = '/demo/appbar';
   static final searchbarPage = '/demo/searchbar';
   static final buttonPage = '/demo/button';
+  static final tabButtonPage = '/demo/tabbutton';
   static final checkButtonPage = '/demo/checkbutton';
   static final cascaderPage = '/demo/cascader';
   static final textFieldPage = '/demo/textfield';
@@ -86,6 +88,7 @@ class MyRouter {
     appbarPage: (ctx) => AppBarPage(),
     searchbarPage: (ctx) => SearchBarPage(),
     buttonPage: (ctx) => ButtonPage(),
+    tabButtonPage: (ctx) => TabButtonPage(),
     checkButtonPage: (ctx) => CheckButtonPage(),
     cascaderPage: (ctx) => CascaderPage(),
     textFieldPage: (ctx) => TextFieldPage(),

@@ -20,9 +20,6 @@ class ButtonPage extends StatefulWidget {
 
 class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
 
-  List<String> _tabButtonList = ["全部","待付款","待发货"];
-  int _tabButtonSelectedIndex = 0;
-
   bool _enabled = true;
 
   @override
@@ -39,39 +36,6 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
           //加载数据
         }
       }
-    });
-  }
-
-  Widget _getTabWidget(int index){
-
-    if(index == 0){
-      return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), textColor:Color(0xffffffff),fontSize:14, isSelected:this._tabButtonSelectedIndex == index,onClick: ()=>{
-              tabButtonChange(index)
-            },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(20),right:Radius.circular(2)),
-        ),
-      );
-    }else if(index == 1){
-      return  Container(
-        padding: EdgeInsets.only(left:5,right: 5),
-        child: YmTabButton(_tabButtonList.elementAt(index), textColor:Color(0xffffffff),fontSize:14, isSelected:this._tabButtonSelectedIndex == index,onClick:()=>{
-              tabButtonChange(index)
-            },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(2)),
-        ),
-      );
-    }else{
-      return  Container(
-        child: YmTabButton(_tabButtonList.elementAt(index), textColor:Color(0xffffffff),fontSize:14, isSelected:this._tabButtonSelectedIndex == index,onClick:()=>{
-              tabButtonChange(index)
-            },size:Size(90,40),borderRadius: BorderRadius.horizontal(left:Radius.circular(2),right:Radius.circular(20)),
-        ),
-      );
-    }
-  }
-
-  void tabButtonChange(int index){
-    setState(() {
-      _tabButtonSelectedIndex = index;
     });
   }
 
@@ -145,11 +109,11 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(top:0,left: 10,right: 0,bottom: 0),
-                              child:YmImageButton("按钮",onClick: (){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                              child:YmImageButton("Button",onClick: (){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top:0,left: 10,right: 10,bottom: 0),
-                              child:YmImageButton("按钮",onClick:(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconLeft: "assets/images/ic_download.png"),
+                              child:YmImageButton("Button",onClick:(){},size:Size(100,42),textColor:Color(0xFF666666),backgroundColor:Color(0xFFFFFFFF),pressedBackgroundColor:Color(0xFFEFEFEF),iconRight: "assets/images/ic_download.png"),
                             ),
                           ]
                       ),
@@ -171,43 +135,20 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
                       },textColor:Color(0xFF3446F2),size:Size(160,42),isOutlined:true,iconRight:"assets/images/ic_download.png",outlinedBorder:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
 
                       YmGradientButton(
-                        "渐变色",
-                        Color(0xff3244ED),
-                            (){
+                        "GradientButton",
+                        textColor:Color(0xFFFFFFFF),
+                        onClick: (){
                           print("Button Pressed");
-                        }
-                        ,
-                        size: Size(100, 32),
+                        },
+                        size: Size(MediaQuery.of(context).size.width - 32, 40),
                         fontSize: 14,
-                        borderColor:Color(0xFFEFAD40),
-                        pressedBackgroundColor: Color(0xFFEFAD40),
-                        fontWeight: FontWeight.w600,
+                        borderColor:Color(0xFF606FFF),
+                        pressedBackgroundColor: Color(0xFF606FFF),
                         gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                            colors: [Color(0xFFFFE4B7),Color(0xFFEFAD40)]
+                            colors: [Color(0xFF606FFF),Color(0xFF3446F2)]
                         ),
-                      ),
-
-                      //Tab Button
-                      Container(
-                          width: MediaQuery.of(context).size.width,
-                          height:40,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children:[
-                                ListView.builder(
-                                    padding: EdgeInsets.only(top:0,left: 0,right: 0,bottom: 0),
-                                    primary: true,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    physics: new ClampingScrollPhysics(),
-                                    itemCount: 3,
-                                    itemBuilder: (context, index) => this._getTabWidget(index)
-                                ),
-                              ]
-                          ),
                       ),
 
                     ]

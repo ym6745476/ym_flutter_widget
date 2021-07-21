@@ -24,7 +24,7 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
 
     //和initBuild作用相同,弥补漏调用initBuild
     Future.delayed(Duration.zero, () {
-      appBarHeight = MediaQuery.of(context).padding.top + 56;
+      initBuild(context);
     });
 
     //传值 设置监听
@@ -34,7 +34,9 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
 
   ///在build里第一行设置UI属性
   void initBuild(BuildContext context) {
-    appBarHeight = MediaQuery.of(context).padding.top + 56;
+    setState(() {
+      appBarHeight = MediaQuery.of(context).padding.top + 56;
+    });
   }
 
   ///请求数据
