@@ -1,6 +1,6 @@
 # Ym Flutter Widget
-A Light Weight Flutter Widget.
-一个轻量级的Flutter控件库。
+A Light Weight Flutter Widget.  
+一个轻量级的Flutter控件库。  
 
 <p align="center" >
     <img src="https://img.shields.io/badge/flutter-2.2.3-green" />
