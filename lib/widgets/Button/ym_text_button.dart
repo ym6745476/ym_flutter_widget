@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 /// 文字样式的按钮
 class YmTextButton extends StatelessWidget {
-
   final String text;
   final Color textColor;
   final Function()? onClick;
@@ -24,7 +23,8 @@ class YmTextButton extends StatelessWidget {
   //StadiumBorder 两端是半圆的边框
   final OutlinedBorder outlinedBorder;
 
-  YmTextButton(this.text,{
+  YmTextButton(
+    this.text, {
     required this.onClick,
     this.fontSize = 14,
     this.textColor = const Color(0xFF666666),
@@ -36,24 +36,25 @@ class YmTextButton extends StatelessWidget {
     this.pressedBackgroundColor = const Color(0xFF606FFF),
     this.backgroundColor = const Color(0xFF3446F2),
     this.outlinedBorder = const RoundedRectangleBorder(),
-    this.gradient = const LinearGradient( colors: [const Color(0xFF606FFF),const Color(0xFF3446F2)]),
+    this.gradient = const LinearGradient(colors: [const Color(0xFF606FFF), const Color(0xFF3446F2)]),
   });
 
   @override
   Widget build(BuildContext context) {
-    if(isGradient){
+    if (isGradient) {
       return Container(
         width: size.width,
         height: size.height,
         margin: EdgeInsets.all(0),
         decoration: BoxDecoration(
-          gradient:gradient,
-          border: Border.all(width: 0.5, style: BorderStyle.solid,color:borderColor),
-          borderRadius:BorderRadius.horizontal(left:Radius.circular(size.height/2),right: Radius.circular(size.height/2)),
+          gradient: gradient,
+          border: Border.all(width: 0.5, style: BorderStyle.solid, color: borderColor),
+          borderRadius:
+              BorderRadius.horizontal(left: Radius.circular(size.height / 2), right: Radius.circular(size.height / 2)),
         ),
-        child:buildTextButton(),
+        child: buildTextButton(),
       );
-    }else{
+    } else {
       return buildTextButton();
     }
   }
@@ -62,15 +63,14 @@ class YmTextButton extends StatelessWidget {
     if (isOutlined) {
       return OutlinedButton(
         style: ButtonStyle(
-          padding:MaterialStateProperty.all(EdgeInsets.zero),
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
           shadowColor: MaterialStateProperty.resolveWith(
-                (states) {
+            (states) {
               return Colors.transparent;
             },
           ),
           foregroundColor: MaterialStateProperty.resolveWith(
-                (states) {
-
+            (states) {
               if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
                 //获取焦点和按下时的颜色
                 return pressedBackgroundColor;
@@ -82,20 +82,21 @@ class YmTextButton extends StatelessWidget {
 
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             //设置按下时的背景颜色
-            if (states.contains(MaterialState.focused) ||  states.contains(MaterialState.pressed)) {
+            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
               return pressedBackgroundColor;
-            }else{
+            } else {
               return Colors.transparent;
             }
           }),
 
-          side:MaterialStateProperty.all(BorderSide(color:borderColor)),
+          side: MaterialStateProperty.all(BorderSide(color: borderColor)),
           //设置按钮最小的大小
           //minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
           shape: MaterialStateProperty.all(outlinedBorder),
         ),
-        child: Text(text,
+        child: Text(
+          text,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: textColor,
@@ -103,20 +104,19 @@ class YmTextButton extends StatelessWidget {
             fontWeight: fontWeight,
           ),
         ),
-        onPressed:onClick,
+        onPressed: onClick,
       );
     } else {
       return ElevatedButton(
         style: ButtonStyle(
-          padding:MaterialStateProperty.all(EdgeInsets.zero),
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
           shadowColor: MaterialStateProperty.resolveWith(
-                (states) {
-                  return Colors.transparent;
+            (states) {
+              return Colors.transparent;
             },
           ),
           foregroundColor: MaterialStateProperty.resolveWith(
-                (states) {
-
+            (states) {
               if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
                 //获取焦点和按下时的颜色
                 return pressedBackgroundColor;
@@ -128,9 +128,9 @@ class YmTextButton extends StatelessWidget {
 
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             //设置按下时的背景颜色
-            if (states.contains(MaterialState.focused) ||  states.contains(MaterialState.pressed)) {
+            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
               return pressedBackgroundColor;
-            }else{
+            } else {
               return backgroundColor;
             }
           }),
@@ -138,9 +138,9 @@ class YmTextButton extends StatelessWidget {
           minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
           shape: MaterialStateProperty.all(outlinedBorder),
-
         ),
-        child: Text(text,
+        child: Text(
+          text,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: textColor,

@@ -3,31 +3,27 @@ import 'package:flutter/rendering.dart';
 
 /// 可以更换图标的选择按钮
 class YmCheckButton extends StatelessWidget {
-
   String text;
   Color textColor;
   double fontSize;
   int value;
   bool checked;
-  final Function(bool checked,dynamic value) onChanged;
+  final Function(bool checked, dynamic value) onChanged;
   final Size size;
   final String image;
   final String checkedImage;
 
-  YmCheckButton(
-      {
-        required this.value,
-        required this.onChanged,
-        this.checked = false,
-        this.text = "",
-        this.size = const Size(80, 40),
-        this.fontSize = 14,
-        this.textColor = const Color(0xff333333),
-        this.image = "assets/images/ic_box.png",
-        this.checkedImage = "assets/images/ic_box_checked.png",
-
-      }
-  );
+  YmCheckButton({
+    required this.value,
+    required this.onChanged,
+    this.checked = false,
+    this.text = "",
+    this.size = const Size(80, 40),
+    this.fontSize = 14,
+    this.textColor = const Color(0xff333333),
+    this.image = "assets/images/ic_box.png",
+    this.checkedImage = "assets/images/ic_box_checked.png",
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,39 +31,34 @@ class YmCheckButton extends StatelessWidget {
   }
 
   Widget buildCheckButton() {
-
     return GestureDetector(
         child: Container(
             width: size.width,
             height: size.height,
-            child:Row(
-                mainAxisAlignment:MainAxisAlignment.center,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    this.checked?this.checkedImage:this.image,
-                    fit:BoxFit.fitWidth,
-                    width:size.height/2,
-                    height:size.height/2,
+                    this.checked ? this.checkedImage : this.image,
+                    fit: BoxFit.fitWidth,
+                    width: size.height / 2,
+                    height: size.height / 2,
                   ),
                   Padding(
-                      padding: EdgeInsets.only(top:0,left: 8,right: 5,bottom: 0),
+                      padding: EdgeInsets.only(top: 0, left: 8, right: 5, bottom: 0),
                       child: Text(
                         text,
-                        textAlign:TextAlign.center,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: textColor ,
+                          color: textColor,
                           fontSize: this.fontSize,
                         ),
-                      )
-                  ),
-                ]
-            )
-        ),
-        onTap:(){
+                      )),
+                ])),
+        onTap: () {
           this.checked = !this.checked;
-          onChanged(this.checked,this.value);
-        }
-    );
+          onChanged(this.checked, this.value);
+        });
   }
 }

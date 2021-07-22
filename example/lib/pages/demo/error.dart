@@ -6,7 +6,6 @@ import 'package:ym_flutter_widget/widgets/Error/ym_error.dart';
 import 'package:ym_flutter_widget/widgets/Loading/ym_loading.dart';
 
 class ErrorPage extends StatefulWidget {
-
   ErrorPage({Key? key}) : super(key: key);
 
   final String title = "Error Page";
@@ -15,74 +14,70 @@ class ErrorPage extends StatefulWidget {
   _ErrorPageState createState() => _ErrorPageState();
 }
 
-class _ErrorPageState extends State<ErrorPage> with SingleNativeStateMixin{
-
+class _ErrorPageState extends State<ErrorPage> with SingleNativeStateMixin {
   @override
   void initState() {
     super.initState();
 
     //获取name路由过来的参数
     Future.delayed(Duration.zero, () {
-      dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
+      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
         isRouteFlutter = arguments["flutter"];
-        if(!Config.isNative || isRouteFlutter){
+        if (!Config.isNative || isRouteFlutter) {
           //加载数据
         }
       }
     });
 
-
     Future.delayed(Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
       });
-
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-          body: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-
-              ///导航栏
-              Positioned(
-                top: 0,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: YmAppBar(widget.title,
-                    background:[
-                      const Color(0xFF606FFF),
-                      const Color(0xFF3446F2),
-                    ],onBackClick: goBack,textColor: Colors.white,),
+      home: Scaffold(
+        body: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            ///导航栏
+            Positioned(
+              top: 0,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: YmAppBar(
+                  widget.title,
+                  background: [
+                    const Color(0xFF606FFF),
+                    const Color(0xFF3446F2),
+                  ],
+                  onBackClick: goBack,
+                  textColor: Colors.white,
                 ),
               ),
+            ),
 
-              isLoading?Positioned(
-                  top: appBarHeight,
-                  left:0,
-                  width:  MediaQuery.of(context).size.width,
-                  height:MediaQuery.of(context).size.height - appBarHeight,
-                  child:YmLoading())
-                  :Positioned(
-                top: MediaQuery.of(context).padding.top + 56,
-                left:0,
-                width:  MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height - appBarHeight,
-                child:YmError("网络状态不佳","assets/images/ic_no_data.png")
-              ),
-
-            ],
-          ),
+            isLoading
+                ? Positioned(
+                    top: appBarHeight,
+                    left: 0,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height - appBarHeight,
+                    child: YmLoading())
+                : Positioned(
+                    top: MediaQuery.of(context).padding.top + 56,
+                    left: 0,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height - appBarHeight,
+                    child: YmError("网络状态不佳", "assets/images/ic_no_data.png")),
+          ],
         ),
-      );
+      ),
+    );
   }
-
-
 }

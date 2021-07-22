@@ -1,208 +1,148 @@
 # Ym Flutter Widget
-A Light Weight Flutter Widget
-(Including Http,AppBar,Dialog,Toast,Cascader,Loading,Button,SearchBar,Html,Image,Video and so on).
-
+A Light Weight Flutter Widget.
+一个轻量级的Flutter控件库。
 
 <p align="center" >
     <img src="https://img.shields.io/badge/flutter-2.2.3-green" />
-    <img src="https://img.shields.io/badge/ym flutter widget-0.0.9-orange" />
+    <img src="https://img.shields.io/badge/ym flutter widget-0.1.0-orange" />
     <img src="https://img.shields.io/badge/dio-4.9.0-blue" />
 </p>
   
-## Get started
+## 开发手册
 
 https://ymbok.com/book-112-159.html
 
-### Online Demo
+### 在线体验
 
 https://ymbok.com/phone-112.html
 
-### Add dependency
+### 安装控件
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.0.9
+  ym_flutter_widget: ^0.1.0
 ```
 
-### Screenshot
+### 示例截图
 
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/1.png "1.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/2.png "2.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/3.png "3.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/4.png "4.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/5.png "5.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/6.png "6.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/7.png "7.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/8.png "8.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/9.png "9.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/10.png "10.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/11.png "11.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/12.png "12.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/13.png "13.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/14.png "14.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/15.png "15.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/16.png "16.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/17.png "17.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/18.png "18.png")
-![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/19.png "19.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/1.png?z=1 "1.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/2.png?z=1 "2.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/3.png?z=1 "3.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/4.png?z=1 "4.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/5.png?z=1 "5.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/6.png?z=1 "6.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/7.png?z=1 "7.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/8.png?z=1 "8.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/9.png?z=1 "9.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/10.png?z=1 "10.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/11.png?z=1 "11.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/12.png?z=1 "12.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/13.png?z=1 "13.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/14.png?z=1 "14.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/15.png?z=1 "15.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/16.png?z=1 "16.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/17.png?z=1 "17.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/18.png?z=1 "18.png")
+![图片说明](https://raw.githubusercontent.com/ym6745476/ym_flutter_widget/master/screenshot/19.png?z=1 "19.png")
 
-### Super simple to use http
+## 使用HTTP请求  
 
+### Get请求
 ```dart
-
-///登录接口示例
-Future<void> _login() async {
-
-    String url = await Config.LOGIN_USER_URL;
-
-    //显示进度框
-    YmUiUtil.showLoading(context);
-
-    //postForm表单提交 post默认为Json方式提交
-    YmHttp().postForm(
-        url
-        ,{"user_name":_account,"password":_password}
-        ,success: (data) {
-
-            //Json转换实体类
-            UserEntity userEntity = UserEntity();
-            userEntity.fromJson(data);
-
-            if(userEntity.code == 1){
-              YmUiUtil.showToast(context,"登录成功！");
-              Config.token = userEntity.data.token;
-              Config.userId = userEntity.data.userId.toString();
-            }else{
-              YmUiUtil.showToast(context,userEntity.msg);
-            }
-        }
-        ,error: (error) {
-          print("失败：" + error.toString());
-          YmUiUtil.showToast(context,error['errorMessage']);
-        }
-        ,complete: (){
-          //关闭进度框
-          YmUiUtil.hideLoading(context);
-        }
-    );
-}
+YmHttp().postForm(url
+	,{"参数":"值","参数":"值"}
+	,success: (data) {
+		print("成功：" + data.toString());
+	}
+	,error: (error) {
+		print("失败：" + error.toString());
+	}
+	,complete: (){
+		print("完成");
+	}
+);
 ```
-
-## Super simple to use widget
-
+### Post Json请求
 ```dart
-
-//导航栏
-YmAppBar("标题",
-  background:[
-    const Color(0xFF606FFF),
-    const Color(0xFF3446F2),
-  ],onBackClick: goBack,textColor: Colors.white,
-  textAlign: TextAlign.left,
-  rightWidget: YmTextButton(
-      "右边按钮",
-      textColor:Color(0xFFFFFFFF),
-      backgroundColor: Colors.transparent,
-      pressedBackgroundColor: Color(0x50606FFF),
-      size: Size(90,40),
-      onClick:  (){
-        print("right button click");
-      }
-  ),
-),
-
-//显示进度框
-YmUiUtil.showLoading(context);
-
-//关闭进度框
-YmUiUtil.hideLoading(context);
-
-//显示Toast
-YmUiUtil.showToast(context,"a message!");
-
-//显示弹出框
-YmUiUtil.showAlertDialog(context, "确认提示", "您确定要打开弹窗吗?", "确定", "取消",onOkPressed: (){
-    print("Ok Pressed");
-});
-
-//文字按钮
-YmTextButton("Stadium", Color(0xFFFFFFFF), (){
-    print("Button Pressed");
-},outlinedBorder: StadiumBorder()),
-
-//带图标和文字的按钮
-YmImageButton("ImageButton", Color(0xFFFFFFFF), (){
-   print("Button Pressed");
-},size:Size(180,42),iconLeft:"assets/images/ic_share_down.png",outlinedBorder:StadiumBorder()),
-
-//文本框
-YmTextField([],"默认值",
-  _onTextChange,
-  fontSize: 15,
-  height: 35,
-  hintText:"基本输入框" ,
-  outlineInputBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(0),
-      borderSide: BorderSide(color: Color(0x00606FFF))
-  ),
-  focusedBorder:  OutlineInputBorder(
-      borderRadius: BorderRadius.circular(0),
-      borderSide: BorderSide(color: Color(0x003446F2))
-  ),
-),
-
-//级联选择器
-YmCascader(
-  _data,
-  currentIndex: [1],
-  onOkClick:(){
-  },
-  onCancelClick:(){
-  },
-  onChanged: (position,index,value){
-    _pickerSelected[position] = index;
-  },
-),
-
-//Tab + ListView
-YmTabPageView(_tabs,_items,
-    onItemBuilder: (index){
-      return _getListItemWidget(index);
-    },
-    onChanged:(index){
-    },
-),
-
+YmHttp().post(url
+	,{"参数":"值","参数":"值"}
+	,success: (data) {
+		print("成功：" + data.toString());
+	}
+	,error: (error) {
+		print("失败：" + error.toString());
+	}
+	,complete: (){
+		print("完成");
+	}
+);
 ```
-
-### 🎉  Widget List
-
-- export 'http/ym_http.dart';                           //网络请求框架
-- export 'widgets/AppBar/ym_app_bar.dart';              //自定义导航栏
-- export 'widgets/Button/ym_text_button.dart';          //文字按钮（形状样式）
-- export 'widgets/Button/ym_tab_button.dart';           //Tab按钮
-- export 'widgets/Button/ym_image_button.dart';         //图片按钮
-- export 'widgets/Button/ym_check_button.dart';         //选择状态按钮
-- export 'widgets/SearchBar/ym_search_bar.dart';        //搜索框
-- export 'widgets/TextField/ym_text_field.dart';        //文本框
-- export 'widgets/Toast/ym_toast.dart';                 //小提示Toast
-- export 'widgets/Dialog/ym_loading_dialog.dart';       //加载弹出框
-- export 'widgets/Dialog/ym_dialog_box.dart';           //弹出层样式包裹
-- export 'widgets/Picker/ym_cascader.dart';             //级联选择器
-- export 'widgets/Picker/ym_picker.dart';               //滚动选择器
-- export 'widgets/TextField/ym_text_marquee.dart';      //循环滚动文本
-- export 'widgets/Html/ym_html.dart';                   //Html代码解析
-- export 'widgets/Loading/ym_loading.dart';             //Loading页面样式
-- export 'widgets/Empty/ym_empty.dart';                 //空页面样式
-- export 'widgets/Error/ym_error.dart';                 //错误页面样式
-- export 'widgets/Image/ym_image_viewer.dart';          //图片弹出预览
-- export 'widgets/Video/ym_video_viewer.dart';          //视频弹出预览
-- export 'widgets/TabPageView/ym_tab_page_view.dart';   //Tab+ListView
-- export 'widgets/ListView/ym_list_view.dart';          //ListView+分页+加载更多
-- export 'utils/ym_string_util.dart';                   //字符串工具类
-- export 'utils/ym_ui_util.dart';                       //UI工具类
+### Post 表单
+```dart
+YmHttp().postForm(url
+	,{"参数":"值","参数":"值"}
+	,success: (data) {
+		print("成功：" + data.toString());
+	}
+	,error: (error) {
+		print("失败：" + error.toString());
+	}
+	,complete: (){
+		print("完成");
+	}
+);
+```
+### Post File请求
+```dart
+YmHttp().postForm(url
+	,{"file":File(".../.png"),"参数":"值"}
+	,success: (data) {
+		print("成功：" + data.toString());
+	}
+	,error: (error) {
+		print("失败：" + error.toString());
+	}
+	,complete: (){
+		print("完成");
+	}
+);
+```
+## 🎉  非常有用的小控件
+1、YmHttp 网络请求框架   
+2、YmAppBar 自定义导航栏  
+3、YmTextButton 文字按钮  
+4、YmImageButton 图片按钮  
+5、YmGradientButton 渐变色按钮  
+6、YmCheckButton 多选按钮  
+7、YmRadioButton 单选按钮  
+8、YmTabButton 标签按钮  
+9、YmTimerButton 计时按钮  
+10、YmDialogBox 弹出样式盒子  
+11、YmLoadingDialog 进度框  
+12、YmToast 小提示  
+13、YmEmpty YmError YmLoading 页面占位样式  
+14、YmHtml Html代码解析显示（代替使用WebView）  
+15、YmSearchBar 搜索框  
+16、YmTextField 文本输入框  
+17、YmTextMarquee 循环滚动文本  
+18、YmImageViewer 图像预览  
+19、YmVideoViewer 视频预览  
+20、YmListView 分页列表  
+21、YmTabPageView 标签分页列表   
+22、YmDashBorder 虚线装饰器   
+23、YmPicker 轮子选择器  
+24、YmCascader 级联选择器  
+25、YmDatePicker 日期选择器  
+26、YmFormItemInput 表单输入框  
+27、YmFormItemNumber 表单数字输入框  
+28、YmFormItemSelect 表单选择框  
+29、YmFormItemTitle 表单标题  
+30、YmStringUtil 字符串工具类  
+31、YmDateUtil 日期工具类  
+32、YmUiUtil UI工具类  
+33、YmQrcode 二维码扫描识别  
 
 # 推荐Flutter游戏开发引擎框架（超轻游戏开发引擎）
 https://github.com/ym6745476/devilf  
 
-<img src="https://raw.githubusercontent.com/ym6745476/devilf/master/screenshot/demo.gif" width="600" height="292"/>
+<img src="https://raw.githubusercontent.com/ym6745476/devilf/master/screenshot/devilf.gif" width="600" height="292"/>

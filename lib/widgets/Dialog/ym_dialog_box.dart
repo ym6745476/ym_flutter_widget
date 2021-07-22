@@ -2,23 +2,17 @@ import 'package:flutter/material.dart';
 
 /// 弹出层样式(用于包裹一个Widget,显示到任意方向上)
 class YmDialogBox extends StatelessWidget {
-
   final Widget? child;
   final Alignment alignment;
 
-  YmDialogBox(
-      {
-        Key? key,
-        this.child,
-        this.alignment = Alignment.bottomCenter,
-      }
-  ) : super(
-    key: key
-  );
+  YmDialogBox({
+    Key? key,
+    this.child,
+    this.alignment = Alignment.bottomCenter,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     Widget? current = child;
 
     if (child == null) {
@@ -35,14 +29,12 @@ class YmDialogBox extends StatelessWidget {
         decoration: BoxDecoration(color: Color(0x96000000)),
         child: GestureDetector(
           child: current,
-          onTap: (){},
+          onTap: () {},
         ),
       ),
-      onTap: (){
+      onTap: () {
         Navigator.of(context).pop();
       },
     );
-
   }
-
 }

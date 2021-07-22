@@ -6,22 +6,20 @@ class YmDashedBorder extends BoxBorder {
   final double dottedLength;
   final double dottedSpace;
 
-  YmDashedBorder(
-      {
-        this.top = BorderSide.none,
-        this.right = BorderSide.none,
-        this.bottom = BorderSide.none,
-        this.left = BorderSide.none,
-        this.dottedLength = 5,
-        this.dottedSpace = 3,
-    }
-  );
+  YmDashedBorder({
+    this.top = BorderSide.none,
+    this.right = BorderSide.none,
+    this.bottom = BorderSide.none,
+    this.left = BorderSide.none,
+    this.dottedLength = 5,
+    this.dottedSpace = 3,
+  });
 
   const YmDashedBorder.fromBorderSide(
-      BorderSide side, {
-        this.dottedLength = 5,
-        this.dottedSpace = 3,
-      })  : top = side,
+    BorderSide side, {
+    this.dottedLength = 5,
+    this.dottedSpace = 3,
+  })  : top = side,
         right = side,
         bottom = side,
         left = side;
@@ -42,10 +40,8 @@ class YmDashedBorder extends BoxBorder {
     double dottedLength = 5,
     double dottedSpace = 3,
   }) {
-    final BorderSide side =
-    BorderSide(color: color, width: width, style: BorderStyle.solid);
-    return YmDashedBorder.fromBorderSide(side,
-        dottedLength: dottedLength, dottedSpace: dottedSpace);
+    final BorderSide side = BorderSide(color: color, width: width, style: BorderStyle.solid);
+    return YmDashedBorder.fromBorderSide(side, dottedLength: dottedLength, dottedSpace: dottedSpace);
   }
 
   static YmDashedBorder merge(YmDashedBorder a, YmDashedBorder b) {
@@ -66,29 +62,22 @@ class YmDashedBorder extends BoxBorder {
   @override
   @override
   EdgeInsetsGeometry get dimensions {
-    return EdgeInsets.fromLTRB(
-        left.width, top.width, right.width, bottom.width);
+    return EdgeInsets.fromLTRB(left.width, top.width, right.width, bottom.width);
   }
 
   bool get _colorIsUniform {
     final Color topColor = top.color;
-    return right.color == topColor &&
-        bottom.color == topColor &&
-        left.color == topColor;
+    return right.color == topColor && bottom.color == topColor && left.color == topColor;
   }
 
   bool get _widthIsUniform {
     final double topWidth = top.width;
-    return right.width == topWidth &&
-        bottom.width == topWidth &&
-        left.width == topWidth;
+    return right.width == topWidth && bottom.width == topWidth && left.width == topWidth;
   }
 
   bool get _styleIsUniform {
     final BorderStyle topStyle = top.style;
-    return right.style == topStyle &&
-        bottom.style == topStyle &&
-        left.style == topStyle;
+    return right.style == topStyle && bottom.style == topStyle && left.style == topStyle;
   }
 
   @override
@@ -96,9 +85,7 @@ class YmDashedBorder extends BoxBorder {
 
   @override
   void paint(Canvas canvas, Rect rect,
-      {TextDirection? textDirection,
-        BoxShape shape = BoxShape.rectangle,
-        BorderRadius? borderRadius}) {
+      {TextDirection? textDirection, BoxShape shape = BoxShape.rectangle, BorderRadius? borderRadius}) {
     if (isUniform) {
       switch (top.style) {
         case BorderStyle.none:
@@ -106,17 +93,13 @@ class YmDashedBorder extends BoxBorder {
         case BorderStyle.solid:
           switch (shape) {
             case BoxShape.circle:
-              assert(borderRadius == null,
-              'A borderRadius can only be given for rectangular boxes.');
+              assert(borderRadius == null, 'A borderRadius can only be given for rectangular boxes.');
               final double width = top.width;
               final Paint paint = top.toPaint();
               // final double radius = (rect.shortestSide - width) / 2.0;
               Rect inner = rect.deflate(width);
               // canvas.drawCircle(rect.center, radius, paint);
-              canvas.drawPath(
-                  _buildDashPath(
-                      Path()..addOval(inner), dottedLength, dottedSpace),
-                  paint);
+              canvas.drawPath(_buildDashPath(Path()..addOval(inner), dottedLength, dottedSpace), paint);
               break;
             case BoxShape.rectangle:
               if (borderRadius != null) {
@@ -130,10 +113,7 @@ class YmDashedBorder extends BoxBorder {
                     ..strokeWidth = 0.0;
                   // canvas.drawRRect(outer, paint);
                   // print('outer');
-                  canvas.drawPath(
-                      _buildDashPath(
-                          Path()..addRRect(outer), dottedLength, dottedSpace),
-                      paint);
+                  canvas.drawPath(_buildDashPath(Path()..addRRect(outer), dottedLength, dottedSpace), paint);
                 } else {
                   final RRect inner = outer.deflate(width);
                   // canvas.drawDRRect(outer, inner, paint);
@@ -141,8 +121,7 @@ class YmDashedBorder extends BoxBorder {
                   // canvas.drawPath(Path()..addRRect(inner), paint);
                   //
                   canvas.drawPath(
-                      _buildDashPath(
-                          Path()..addRRect(inner), dottedLength, dottedSpace),
+                      _buildDashPath(Path()..addRRect(inner), dottedLength, dottedSpace),
                       paint
                         ..isAntiAlias = true
                         ..style = PaintingStyle.stroke
@@ -156,9 +135,7 @@ class YmDashedBorder extends BoxBorder {
               // canvas.drawRect(rect.deflate(width / 2.0), paint);
               // print('rect');
               canvas.drawPath(
-                  _buildDashPath(Path()..addRect(rect.deflate(width / 2.0)),
-                      dottedLength, dottedSpace),
-                  paint);
+                  _buildDashPath(Path()..addRect(rect.deflate(width / 2.0)), dottedLength, dottedSpace), paint);
               break;
           }
           return;
@@ -168,8 +145,7 @@ class YmDashedBorder extends BoxBorder {
     assert(() {
       if (borderRadius != null) {
         throw FlutterError.fromParts(<DiagnosticsNode>[
-          ErrorSummary(
-              'A borderRadius can only be given for a uniform Border.'),
+          ErrorSummary('A borderRadius can only be given for a uniform Border.'),
           ErrorDescription('The following is not uniform:'),
           if (!_colorIsUniform) ErrorDescription('BorderSide.color'),
           if (!_widthIsUniform) ErrorDescription('BorderSide.width'),
@@ -181,8 +157,7 @@ class YmDashedBorder extends BoxBorder {
     assert(() {
       if (shape != BoxShape.rectangle) {
         throw FlutterError.fromParts(<DiagnosticsNode>[
-          ErrorSummary(
-              'A Border can only be drawn as a circle if it is uniform'),
+          ErrorSummary('A Border can only be drawn as a circle if it is uniform'),
           ErrorDescription('The following is not uniform:'),
           if (!_colorIsUniform) ErrorDescription('BorderSide.color'),
           if (!_widthIsUniform) ErrorDescription('BorderSide.width'),
@@ -194,19 +169,17 @@ class YmDashedBorder extends BoxBorder {
 
     // print('paint border');
 
-    paintDottedBorder(canvas, rect,
-        top: top, right: right, bottom: bottom, left: left);
+    paintDottedBorder(canvas, rect, top: top, right: right, bottom: bottom, left: left);
   }
 
   void paintDottedBorder(
-      Canvas canvas,
-      Rect rect, {
-        BorderSide top = BorderSide.none,
-        BorderSide right = BorderSide.none,
-        BorderSide bottom = BorderSide.none,
-        BorderSide left = BorderSide.none,
-      }) {
-
+    Canvas canvas,
+    Rect rect, {
+    BorderSide top = BorderSide.none,
+    BorderSide right = BorderSide.none,
+    BorderSide bottom = BorderSide.none,
+    BorderSide left = BorderSide.none,
+  }) {
     // We draw the borders as filled shapes, unless the borders are hairline
     // borders, in which case we use PaintingStyle.stroke, with the stroke width
     // specified here.
@@ -222,8 +195,7 @@ class YmDashedBorder extends BoxBorder {
         path.lineTo(rect.right, rect.top + top.width / 2);
         paint.style = PaintingStyle.stroke;
 
-        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace),
-            paint..strokeWidth = top.width);
+        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace), paint..strokeWidth = top.width);
         break;
       case BorderStyle.none:
         break;
@@ -237,8 +209,7 @@ class YmDashedBorder extends BoxBorder {
         path.lineTo(rect.right, rect.bottom);
         paint.style = PaintingStyle.stroke;
 
-        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace),
-            paint..strokeWidth = right.width);
+        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace), paint..strokeWidth = right.width);
         break;
       case BorderStyle.none:
         break;
@@ -251,8 +222,7 @@ class YmDashedBorder extends BoxBorder {
         path.moveTo(rect.right, rect.bottom);
         path.lineTo(rect.left, rect.bottom);
         paint.style = PaintingStyle.stroke;
-        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace),
-            paint..strokeWidth = bottom.width);
+        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace), paint..strokeWidth = bottom.width);
         break;
       case BorderStyle.none:
         break;
@@ -265,8 +235,7 @@ class YmDashedBorder extends BoxBorder {
         path.moveTo(rect.left + left.width / 2, rect.bottom);
         path.lineTo(rect.left + left.width / 2, rect.top);
         paint.style = PaintingStyle.stroke;
-        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace),
-            paint..strokeWidth = left.width);
+        canvas.drawPath(_buildDashPath(path, dottedLength, dottedSpace), paint..strokeWidth = left.width);
         break;
       case BorderStyle.none:
         break;
@@ -317,5 +286,4 @@ class YmDashedBorder extends BoxBorder {
   final BorderSide bottom;
 
   final BorderSide left;
-
 }

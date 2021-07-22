@@ -11,15 +11,15 @@ class YmToast {
 
   static void show(String msg, BuildContext context,
       {int? duration = 1,
-        int? gravity = 0,
-        Color backgroundColor = const Color(0xAA000000),
-        textStyle = const TextStyle(fontSize: 15, color: Colors.white),
-        double backgroundRadius = 20,
-        bool? rootNavigator,
-        Border? border}) {
+      int? gravity = 0,
+      Color backgroundColor = const Color(0xAA000000),
+      textStyle = const TextStyle(fontSize: 15, color: Colors.white),
+      double backgroundRadius = 20,
+      bool? rootNavigator,
+      Border? border}) {
     ToastView.dismiss();
-    ToastView.createView(msg, context, duration, gravity, backgroundColor,
-        textStyle, backgroundRadius, border, rootNavigator);
+    ToastView.createView(
+        msg, context, duration, gravity, backgroundColor, textStyle, backgroundRadius, border, rootNavigator);
   }
 }
 
@@ -36,17 +36,9 @@ class ToastView {
   static OverlayEntry? _overlayEntry;
   static bool _isVisible = false;
 
-  static void createView(
-      String msg,
-      BuildContext context,
-      int? duration,
-      int? gravity,
-      Color background,
-      TextStyle textStyle,
-      double backgroundRadius,
-      Border? border,
-      bool? rootNavigator) async {
-    overlayState = Overlay.of(context, rootOverlay: rootNavigator??false);
+  static void createView(String msg, BuildContext context, int? duration, int? gravity, Color background,
+      TextStyle textStyle, double backgroundRadius, Border? border, bool? rootNavigator) async {
+    overlayState = Overlay.of(context, rootOverlay: rootNavigator ?? false);
 
     _overlayEntry = new OverlayEntry(
       builder: (BuildContext context) => ToastWidget(
@@ -70,8 +62,7 @@ class ToastView {
     );
     _isVisible = true;
     overlayState!.insert(_overlayEntry!);
-    await new Future.delayed(
-        Duration(seconds: duration == null ? YmToast.lengthShort : duration));
+    await new Future.delayed(Duration(seconds: duration == null ? YmToast.lengthShort : duration));
     dismiss();
   }
 

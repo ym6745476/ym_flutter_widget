@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 
 ///和Native进行通信示例
 class NativePage extends StatefulWidget {
-
   NativePage({Key? key}) : super(key: key);
 
   final String title = "Flutter与Native通信";
@@ -16,8 +15,7 @@ class NativePage extends StatefulWidget {
   _NativePageState createState() => _NativePageState();
 }
 
-class _NativePageState extends State<NativePage> with SingleNativeStateMixin{
-
+class _NativePageState extends State<NativePage> with SingleNativeStateMixin {
   String _resultMessage = "";
 
   @override
@@ -26,35 +24,34 @@ class _NativePageState extends State<NativePage> with SingleNativeStateMixin{
 
     //获取name路由过来的参数
     Future.delayed(Duration.zero, () {
-      dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
+      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
         isRouteFlutter = arguments["flutter"];
-        if(!Config.isNative || isRouteFlutter){
-           //加载数据
+        if (!Config.isNative || isRouteFlutter) {
+          //加载数据
         }
       }
     });
   }
 
   ///Flutter调用原生
-  Future<void> _callNative() async{
-      try {
-        Map<String, dynamic> message = {'message': 'flutter'};
-        String result = await flutterChannel.invokeMethod('callNative', message);
-        setState(() {
-          _resultMessage = result;
-        });
-      } on PlatformException catch (e) {
-        setState(() {
-          _resultMessage = "Failed: '${e.message}'.";
-        });
-      }
+  Future<void> _callNative() async {
+    try {
+      Map<String, dynamic> message = {'message': 'flutter'};
+      String result = await flutterChannel.invokeMethod('callNative', message);
+      setState(() {
+        _resultMessage = result;
+      });
+    } on PlatformException catch (e) {
+      setState(() {
+        _resultMessage = "Failed: '${e.message}'.";
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -65,25 +62,24 @@ class _NativePageState extends State<NativePage> with SingleNativeStateMixin{
           children: <Widget>[
             //按钮
             Padding(
-              padding: EdgeInsets.only(top:10,left: 16,right: 16,bottom: 10),
+              padding: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 10),
               child: Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    children: [
-                      ElevatedButton(
-                        child: Text('调用Native'),
-                        onPressed: _callNative,
-                      ),
-                    ],
+                spacing: 5,
+                runSpacing: 5,
+                children: [
+                  ElevatedButton(
+                    child: Text('调用Native'),
+                    onPressed: _callNative,
                   ),
+                ],
               ),
+            ),
 
-              //结果
-              Padding(
-                padding: EdgeInsets.only(top:5,left: 0,right: 0,bottom: 0),
-                child:  Text(_resultMessage),
-              ),
-
+            //结果
+            Padding(
+              padding: EdgeInsets.only(top: 5, left: 0, right: 0, bottom: 0),
+              child: Text(_resultMessage),
+            ),
           ],
         ),
       ),

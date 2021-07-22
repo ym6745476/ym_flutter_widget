@@ -27,32 +27,27 @@ import 'pages/hello.dart';
 /// Pub没法显示图片，所以请到github查看演示效果
 /// https://github.com/ym6745476/ym_flutter_widget
 ///
-void main(){
+void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Ym Flutter Widget',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      //home: HelloPage(title: 'Home Page'),
+      /// home: HelloPage(title: 'Home Page'),
       routes: MyRouter.routes,
-      initialRoute: MyRouter.helloPage,   //初始页面路由可代替home
-
+      initialRoute: MyRouter.helloPage, //初始页面路由可代替home
     );
   }
-
 }
 
 class MyRouter {
-
-  //Name方式路由页面
+  /// Name方式路由页面
   static final helloPage = '/';
   static final nativePage = '/demo/native';
   static final httpPage = '/demo/http';
@@ -76,11 +71,10 @@ class MyRouter {
   static final qrCodePage = '/demo/qrcode';
   static final dateTimePickerPage = '/demo/datetimepicker';
 
-
-  //
-  // 路由代码
-  // Navigator.of(context).pushNamed('/demo/native', arguments: {'flutter': true});
-  //
+  ///
+  /// 路由代码
+  /// Navigator.of(context).pushNamed('/demo/native', arguments: {'flutter': true});
+  ///
   static final Map<String, WidgetBuilder> routes = {
     helloPage: (ctx) => HelloPage(),
     nativePage: (ctx) => NativePage(),
@@ -106,5 +100,3 @@ class MyRouter {
     dateTimePickerPage: (ctx) => DateTimePickerPage(),
   };
 }
-
-

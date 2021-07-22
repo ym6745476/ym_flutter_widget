@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 ///加载框
 class YmLoadingDialog extends Dialog {
-
   ///点击背景是否能够退出
   final bool canceledOnTouchOutside;
 
@@ -13,27 +11,28 @@ class YmLoadingDialog extends Dialog {
   Widget build(BuildContext context) {
     return Center(
       child: new Material(
+
           ///背景透明
           color: Colors.transparent,
+
           ///保证控件居中效果
           child: Stack(
             children: <Widget>[
               GestureDetector(
                 ///点击事件
-                onTap: (){
-                  if(canceledOnTouchOutside){
+                onTap: () {
+                  if (canceledOnTouchOutside) {
                     Navigator.pop(context);
                   }
                 },
               ),
               _dialog()
             ],
-          )
-      ),
+          )),
     );
   }
 
-  Widget _dialog(){
+  Widget _dialog() {
     return new Center(
       ///弹框大小
       child: new SizedBox(

@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 /// 滚动选择器
 class YmPicker extends StatefulWidget {
-
-
   //数据格式：{"label": "请选择", "value": ""}
   final List<Map> data;
 
@@ -22,26 +20,22 @@ class YmPicker extends StatefulWidget {
   final Color backgroundColor;
 
   YmPicker(
-      this.data,
-      {
-        Key? key,
-        this.label = "",
-        this.currentIndex = 0,
-        this.itemHeight = 36,
-        this.backgroundColor = const Color(0xffffffff),
-        this.height = 150,
-        this.width = 150,
-        required this.onChanged,
-      }
-      ): super(key: key);
+    this.data, {
+    Key? key,
+    this.label = "",
+    this.currentIndex = 0,
+    this.itemHeight = 36,
+    this.backgroundColor = const Color(0xffffffff),
+    this.height = 150,
+    this.width = 150,
+    required this.onChanged,
+  }) : super(key: key);
 
   @override
   YmPickerState createState() => YmPickerState();
-
 }
 
 class YmPickerState extends State<YmPicker> {
-
   //设置防抖周期为300毫秒
   Duration _durationTime = const Duration(milliseconds: 300);
   Timer _timer = Timer(Duration(milliseconds: 300), () {});
@@ -68,11 +62,11 @@ class YmPickerState extends State<YmPicker> {
     _timer = new Timer(_durationTime, () {
       // 触发回调函数
       print("values长度：" + widget.data.length.toString() + "-----" + index.toString());
-      widget.onChanged(index,widget.data[index]["value"]);
+      widget.onChanged(index, widget.data[index]["value"]);
     });
   }
 
-  Widget _getItemWidget(int index,List<Map> items){
+  Widget _getItemWidget(int index, List<Map> items) {
     return Container(
       alignment: Alignment.center,
       height: widget.itemHeight,
@@ -94,36 +88,38 @@ class YmPickerState extends State<YmPicker> {
       height: widget.height,
       width: widget.width,
       child: CupertinoPageScaffold(
-
         child: Container(
           height: widget.height,
           color: Colors.white,
           child: Stack(
             alignment: Alignment.center,
             children: [
-              widget.label != "" ? Positioned(
-                top: widget.height / 2 - (widget.itemHeight / 2),
-                left: 18.0,
-                child: Container(
-                  alignment: Alignment.center,
-                  height: widget.itemHeight,
-                  child: Text(
-                    widget.label,
-                    style: TextStyle(
-                      color: Color(0xff333333),
-                      fontSize: 15,
-                      height: 1.2,
-                      fontWeight: FontWeight.w500,
+              widget.label != ""
+                  ? Positioned(
+                      top: widget.height / 2 - (widget.itemHeight / 2),
+                      left: 18.0,
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: widget.itemHeight,
+                        child: Text(
+                          widget.label,
+                          style: TextStyle(
+                            color: Color(0xff333333),
+                            fontSize: 15,
+                            height: 1.2,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    )
+                  : Offstage(
+                      offstage: true,
                     ),
-                  ),
-                ),
-              ) : Offstage(offstage: true,),
-
               CupertinoPicker.builder(
-                magnification: 1.0,                   // 整体放大率
-                scrollController:_controller,
-                itemExtent: widget.itemHeight,        // 所有子节点统一高度
-                useMagnifier: true,                   // 是否使用放大效果
+                magnification: 1.0, // 整体放大率
+                scrollController: _controller,
+                itemExtent: widget.itemHeight, // 所有子节点统一高度
+                useMagnifier: true, // 是否使用放大效果
                 backgroundColor: Colors.transparent,
                 childCount: widget.data.length,
                 onSelectedItemChanged: (int index) {
@@ -134,7 +130,7 @@ class YmPickerState extends State<YmPicker> {
                   }
                 },
                 itemBuilder: (BuildContext context, int index) {
-                  return _getItemWidget(index,widget.data);
+                  return _getItemWidget(index, widget.data);
                 },
               ),
             ],

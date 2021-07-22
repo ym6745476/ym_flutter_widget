@@ -5,7 +5,6 @@ import 'package:ym_flutter_widget/widgets/Picker/ym_picker.dart';
 
 /// 级联选择器（多级）
 class YmCascader extends StatelessWidget {
-
   //数据
   final List<List<Map>> data;
   //默认值
@@ -18,26 +17,23 @@ class YmCascader extends StatelessWidget {
   final double itemHeight;
 
   YmCascader(
-      this.data,
-      {
-        Key? key,
-        required this.onChanged,
-        required this.onOkClick,
-        required this.onCancelClick,
-        this.itemHeight = 36,
-        this.backgroundColor = const Color(0xffffffff),
-        this.currentIndex = const [0,0,0,0,0],
-      }
-  ): super(key: key);
+    this.data, {
+    Key? key,
+    required this.onChanged,
+    required this.onOkClick,
+    required this.onCancelClick,
+    this.itemHeight = 36,
+    this.backgroundColor = const Color(0xffffffff),
+    this.currentIndex = const [0, 0, 0, 0, 0],
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    double pickerItemWidth = (MediaQuery.of(context).size.width)/this.data.length;
+    double pickerItemWidth = (MediaQuery.of(context).size.width) / this.data.length;
     List<YmPicker> pickerList = [];
 
     return Container(
-      height:220,
+      height: 220,
       decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,33 +45,45 @@ class YmCascader extends StatelessWidget {
             thickness: 1,
           ),
           Container(
-            height:39,
+            height: 39,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  YmTextButton("取消", textColor:Color(0xFF666666), onClick: (){
-                    this.onCancelClick();
-                  },size: Size(80,40),backgroundColor: Colors.transparent,pressedBackgroundColor:Color(0xFFEFEFEF) ,),
-
-                  YmTextButton("确定", textColor:Color(0xFF3446F2), onClick:(){
+                  YmTextButton(
+                    "取消",
+                    textColor: Color(0xFF666666),
+                    onClick: () {
+                      this.onCancelClick();
+                    },
+                    size: Size(80, 40),
+                    backgroundColor: Colors.transparent,
+                    pressedBackgroundColor: Color(0xFFEFEFEF),
+                  ),
+                  YmTextButton("确定", textColor: Color(0xFF3446F2), onClick: () {
                     this.onOkClick();
-                  },size:Size(80,40),backgroundColor: Colors.transparent,pressedBackgroundColor:Color(0xFFEFEFEF)),
-                ]
-            ),
+                  },
+                      size: Size(80, 40),
+                      backgroundColor: Colors.transparent,
+                      pressedBackgroundColor: Color(0xFFEFEFEF)),
+                ]),
           ),
-
           Row(
-            children:List.generate(this.data.length, (position) {
+            children: List.generate(this.data.length, (position) {
               YmPicker picker = YmPicker(
                 this.data[position],
                 currentIndex: this.currentIndex[position],
                 width: pickerItemWidth,
                 itemHeight: 40,
                 height: 180,
-                onChanged: (index,val) {
-                  print("Picker onChanged  position=" + position.toString() + ",index=" + index.toString() + ",val=" + val);
-                  this.onChanged(position,index,val);
+                onChanged: (index, val) {
+                  print("Picker onChanged  position=" +
+                      position.toString() +
+                      ",index=" +
+                      index.toString() +
+                      ",val=" +
+                      val);
+                  this.onChanged(position, index, val);
                 },
               );
               pickerList.add(picker);
@@ -86,5 +94,4 @@ class YmCascader extends StatelessWidget {
       ),
     );
   }
-
 }

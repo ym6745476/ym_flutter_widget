@@ -6,7 +6,6 @@ import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_router.dart';
 import 'package:ym_flutter_widget/widgets/Image/ym_image_viewer.dart';
 
 class ImagePage extends StatefulWidget {
-
   ImagePage({Key? key}) : super(key: key);
 
   final String title = "Image";
@@ -15,91 +14,79 @@ class ImagePage extends StatefulWidget {
   _ImagePageState createState() => _ImagePageState();
 }
 
-class _ImagePageState extends State<ImagePage> with SingleNativeStateMixin{
-
+class _ImagePageState extends State<ImagePage> with SingleNativeStateMixin {
   @override
   void initState() {
     super.initState();
 
     //获取name路由过来的参数
     Future.delayed(Duration.zero, () {
-      dynamic  arguments = ModalRoute.of(context)!.settings.arguments;
+      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
       print("路由传递过来的参数：" + arguments.toString());
       if (arguments != null) {
         isRouteFlutter = arguments["flutter"];
-        if(!Config.isNative || isRouteFlutter){
+        if (!Config.isNative || isRouteFlutter) {
           //加载数据
         }
       }
     });
   }
 
-
-  void _itemOnClick(String  path){
-    Navigator.push(context, YmDialogRouter(
-        YmImageViewer(context, path, false)
-      )
-    );
+  void _itemOnClick(String path) {
+    Navigator.push(context, YmDialogRouter(YmImageViewer(context, path, false)));
   }
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       home: Scaffold(
         body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-
             ///导航栏
             Positioned(
               top: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: YmAppBar(widget.title,
-                  background:[
+                child: YmAppBar(
+                  widget.title,
+                  background: [
                     const Color(0xFF606FFF),
                     const Color(0xFF3446F2),
-                  ],onBackClick: goBack,textColor: Colors.white,),
+                  ],
+                  onBackClick: goBack,
+                  textColor: Colors.white,
+                ),
               ),
             ),
 
             Positioned(
               top: appBarHeight,
-              left:0,
-              width:  MediaQuery.of(context).size.width,
-              child:Padding(
-                padding: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 16),
-                child:Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    children: [
-                      GestureDetector(
+              left: 0,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                  padding: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 16),
+                  child: Wrap(spacing: 5, runSpacing: 5, children: [
+                    GestureDetector(
                         child: Column(
-                          mainAxisAlignment:MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network(
                               "https://ymbok.com/static/ym_flutter_widget/screenshot/pic2.png",
-                              fit:BoxFit.fitWidth,
-                              width:(MediaQuery.of(context).size.width - 30)/3,
+                              fit: BoxFit.fitWidth,
+                              width: (MediaQuery.of(context).size.width - 30) / 3,
                             ),
                           ],
                         ),
-                        onTap: (){
+                        onTap: () {
                           this._itemOnClick("https://ymbok.com/static/ym_flutter_widget/screenshot/pic2.png");
-                        }
-                      ),
-                    ]
-                )
-              ),
+                        }),
+                  ])),
             ),
-
           ],
         ),
       ),
     );
   }
-
-
 }

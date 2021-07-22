@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 
 /// 带图标和文字的按钮
 class YmImageButton extends StatelessWidget {
-
   final String text;
   final Color textColor;
   final Function() onClick;
@@ -24,7 +23,8 @@ class YmImageButton extends StatelessWidget {
   //StadiumBorder 两端是半圆的边框
   final OutlinedBorder outlinedBorder;
 
-  YmImageButton(this.text,{
+  YmImageButton(
+    this.text, {
     this.iconLeft = "",
     this.iconRight = "",
     this.textColor = const Color(0xFFFFFFFF),
@@ -36,7 +36,7 @@ class YmImageButton extends StatelessWidget {
     this.borderColor = const Color(0xFF3446F2),
     this.pressedBackgroundColor = const Color(0xFF606FFF),
     this.backgroundColor = const Color(0xFF3446F2),
-    this.outlinedBorder =  const RoundedRectangleBorder(),
+    this.outlinedBorder = const RoundedRectangleBorder(),
     this.mainAxisAlignment = MainAxisAlignment.center,
   });
 
@@ -49,15 +49,14 @@ class YmImageButton extends StatelessWidget {
     if (isOutlined) {
       return OutlinedButton(
         style: ButtonStyle(
-          padding:MaterialStateProperty.all(EdgeInsets.zero),
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
           shadowColor: MaterialStateProperty.resolveWith(
-                (states) {
+            (states) {
               return Colors.transparent;
             },
           ),
           foregroundColor: MaterialStateProperty.resolveWith(
-                (states) {
-
+            (states) {
               if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
                 //获取焦点和按下时的颜色
                 return pressedBackgroundColor;
@@ -69,14 +68,14 @@ class YmImageButton extends StatelessWidget {
 
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             //设置按下时的背景颜色
-            if (states.contains(MaterialState.focused) ||  states.contains(MaterialState.pressed)) {
+            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
               return pressedBackgroundColor;
-            }else{
+            } else {
               return Colors.transparent;
             }
           }),
 
-          side:MaterialStateProperty.all(BorderSide(color:borderColor)),
+          side: MaterialStateProperty.all(BorderSide(color: borderColor)),
           //设置按钮最小的大小
           //minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
@@ -85,35 +84,35 @@ class YmImageButton extends StatelessWidget {
         child: Container(
           width: this.size.width,
           height: this.size.height,
-          padding:EdgeInsets.only(top:0,left: 1,right: 1,bottom: 0),
-          child: Row(
-              mainAxisAlignment:mainAxisAlignment,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                  this.iconLeft.isNotEmpty?Image.asset(
+          padding: EdgeInsets.only(top: 0, left: 1, right: 1, bottom: 0),
+          child: Row(mainAxisAlignment: mainAxisAlignment, crossAxisAlignment: CrossAxisAlignment.center, children: [
+            this.iconLeft.isNotEmpty
+                ? Image.asset(
                     this.iconLeft,
-                    fit:BoxFit.fitHeight,
-                    height:this.size.height * 0.6,
-                  ):Container(),
-                  Padding(
-                    padding: EdgeInsets.only(top:0,left: 5,right: 5,bottom: 0),
-                    child: Text(text,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: textColor,
-                        fontSize: fontSize,
-                        fontWeight: fontWeight,
-                      ),
-                    ),
-                  ),
-
-                  this.iconRight.isNotEmpty?Image.asset(
+                    fit: BoxFit.fitHeight,
+                    height: this.size.height * 0.6,
+                  )
+                : Container(),
+            Padding(
+              padding: EdgeInsets.only(top: 0, left: 5, right: 5, bottom: 0),
+              child: Text(
+                text,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
+                ),
+              ),
+            ),
+            this.iconRight.isNotEmpty
+                ? Image.asset(
                     iconRight,
-                    fit:BoxFit.fitHeight,
-                    height:this.size.height * 0.6,
-                  ):Container(),
-              ]
-          ),
+                    fit: BoxFit.fitHeight,
+                    height: this.size.height * 0.6,
+                  )
+                : Container(),
+          ]),
         ),
         onPressed: () {
           onClick();
@@ -122,15 +121,14 @@ class YmImageButton extends StatelessWidget {
     } else {
       return ElevatedButton(
         style: ButtonStyle(
-          padding:MaterialStateProperty.all(EdgeInsets.zero),
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
           shadowColor: MaterialStateProperty.resolveWith(
-                (states) {
+            (states) {
               return Colors.transparent;
             },
           ),
           foregroundColor: MaterialStateProperty.resolveWith(
-                (states) {
-
+            (states) {
               if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
                 //获取焦点和按下时的颜色
                 return pressedBackgroundColor;
@@ -142,9 +140,9 @@ class YmImageButton extends StatelessWidget {
 
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             //设置按下时的背景颜色
-            if (states.contains(MaterialState.focused) ||  states.contains(MaterialState.pressed)) {
+            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
               return pressedBackgroundColor;
-            }else{
+            } else {
               return backgroundColor;
             }
           }),
@@ -152,42 +150,40 @@ class YmImageButton extends StatelessWidget {
           //minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
           shape: MaterialStateProperty.all(outlinedBorder),
-
         ),
-        child:Container(
+        child: Container(
           width: this.size.width,
           height: this.size.height,
-          padding:EdgeInsets.only(top:0,left: 1,right: 1,bottom: 0),
-          child: Row(
-              mainAxisAlignment:mainAxisAlignment,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                this.iconLeft.isNotEmpty?Image.asset(
-                  this.iconLeft,
-                  fit:BoxFit.fitHeight,
-                  height:this.size.height * 0.6,
-                ):Container(),
-                Padding(
-                  padding: EdgeInsets.only(top:0,left: 5,right: 5,bottom: 0),
-                  child: Text(text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: textColor,
-                      fontSize: fontSize,
-                      fontWeight: fontWeight,
-                    ),
-                  ),
+          padding: EdgeInsets.only(top: 0, left: 1, right: 1, bottom: 0),
+          child: Row(mainAxisAlignment: mainAxisAlignment, crossAxisAlignment: CrossAxisAlignment.center, children: [
+            this.iconLeft.isNotEmpty
+                ? Image.asset(
+                    this.iconLeft,
+                    fit: BoxFit.fitHeight,
+                    height: this.size.height * 0.6,
+                  )
+                : Container(),
+            Padding(
+              padding: EdgeInsets.only(top: 0, left: 5, right: 5, bottom: 0),
+              child: Text(
+                text,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
                 ),
-
-                this.iconRight.isNotEmpty?Image.asset(
-                  iconRight,
-                  fit:BoxFit.fitHeight,
-                  height:this.size.height * 0.6,
-                ):Container(),
-              ]
-          ),
+              ),
+            ),
+            this.iconRight.isNotEmpty
+                ? Image.asset(
+                    iconRight,
+                    fit: BoxFit.fitHeight,
+                    height: this.size.height * 0.6,
+                  )
+                : Container(),
+          ]),
         ),
-
         onPressed: () {
           onClick();
         },

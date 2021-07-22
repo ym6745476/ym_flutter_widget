@@ -1,7 +1,5 @@
-
 /// 日期时间工具类
 class YmDateUtil {
-
   /// 字符串转换DateTime
   /// 2019-06-20 15:32:41
   static DateTime formatDateTime(String value) {
@@ -17,8 +15,17 @@ class YmDateUtil {
     int hour = dateTime.hour;
     int minute = dateTime.minute;
     int second = dateTime.second;
-    return format2Number(year.toString()) + "-" + format2Number(month.toString()) + "-" + format2Number(day.toString())
-        + " " +  format2Number(hour.toString()) + ":" +format2Number(minute.toString()) + ":" + format2Number(second.toString());
+    return format2Number(year.toString()) +
+        "-" +
+        format2Number(month.toString()) +
+        "-" +
+        format2Number(day.toString()) +
+        " " +
+        format2Number(hour.toString()) +
+        ":" +
+        format2Number(minute.toString()) +
+        ":" +
+        format2Number(second.toString());
   }
 
   /// 当前日期时间DateTime
@@ -46,8 +53,17 @@ class YmDateUtil {
     int hour = dateTime.hour;
     int minute = dateTime.minute;
     int second = dateTime.second;
-    return format2Number(year.toString()) + "-" + format2Number(month.toString()) + "-" + format2Number(day.toString())
-        + " " +  format2Number(hour.toString()) + ":" +format2Number(minute.toString()) + ":" + format2Number(second.toString());
+    return format2Number(year.toString()) +
+        "-" +
+        format2Number(month.toString()) +
+        "-" +
+        format2Number(day.toString()) +
+        " " +
+        format2Number(hour.toString()) +
+        ":" +
+        format2Number(minute.toString()) +
+        ":" +
+        format2Number(second.toString());
   }
 
   /// 当前日期时间毫秒数
@@ -88,5 +104,4 @@ class YmDateUtil {
       return value;
     }
   }
-
 }

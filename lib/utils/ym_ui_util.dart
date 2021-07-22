@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_box.dart';
 import 'package:ym_flutter_widget/widgets/Dialog/ym_dialog_router.dart';
@@ -7,18 +6,17 @@ import 'package:ym_flutter_widget/widgets/Toast/ym_toast.dart';
 
 /// UI工具类
 class YmUiUtil {
-
   static bool _isLoading = false;
 
   ///toast提示
-  static showToast(BuildContext context,String message) {
-    YmToast.show(message, context, duration: YmToast.lengthShort, gravity:  YmToast.center);
+  static showToast(BuildContext context, String message) {
+    YmToast.show(message, context, duration: YmToast.lengthShort, gravity: YmToast.center);
   }
 
   ///显示loading
-  static showLoading(BuildContext context){
+  static showLoading(BuildContext context) {
     Future.delayed(Duration.zero, () {
-      if(!_isLoading){
+      if (!_isLoading) {
         print("showLoading showLoading showLoading");
         Navigator.push(context, YmDialogRouter(YmLoadingDialog(false)));
         _isLoading = true;
@@ -27,8 +25,8 @@ class YmUiUtil {
   }
 
   ///隐藏loading
-  static hideLoading(BuildContext context){
-    if(_isLoading){
+  static hideLoading(BuildContext context) {
+    if (_isLoading) {
       Navigator.pop(context);
       _isLoading = false;
       print("hideLoading hideLoading hideLoading");
@@ -36,37 +34,38 @@ class YmUiUtil {
   }
 
   ///显示弹出框
-  static showAlertDialog(BuildContext context,String title,String message,String okText,String cancelText,{onOkPressed,onCancelPressed,okCloseDialog = true}){
+  static showAlertDialog(BuildContext context, String title, String message, String okText, String cancelText,
+      {onOkPressed, onCancelPressed, okCloseDialog = true}) {
     showDialog<Null>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return  AlertDialog(
-          title:  Text(title),
-          content:  SingleChildScrollView(
-            child:  ListBody(
+        return AlertDialog(
+          title: Text(title),
+          content: SingleChildScrollView(
+            child: ListBody(
               children: <Widget>[
-                 Text(message),
+                Text(message),
               ],
             ),
           ),
           actions: <Widget>[
-             TextButton(
-              child:  Text(cancelText),
+            TextButton(
+              child: Text(cancelText),
               onPressed: () {
-                if(null != onCancelPressed){
+                if (null != onCancelPressed) {
                   onCancelPressed();
                 }
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child:  Text(okText),
+              child: Text(okText),
               onPressed: () {
-                if(null != onOkPressed){
+                if (null != onOkPressed) {
                   onOkPressed();
                 }
-                if(null != okCloseDialog && okCloseDialog){
+                if (null != okCloseDialog && okCloseDialog) {
                   Navigator.of(context).pop();
                 }
               },
@@ -80,16 +79,15 @@ class YmUiUtil {
   }
 
   ///显示底部弹出框
-  static showBottomDialog(BuildContext context,Widget child){
+  static showBottomDialog(BuildContext context, Widget child) {
     showDialog<Null>(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return  YmDialogBox(child:child);
+        return YmDialogBox(child: child);
       },
     ).then((val) {
       print(val);
     });
   }
-
 }

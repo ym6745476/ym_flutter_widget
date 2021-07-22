@@ -8,7 +8,6 @@ import 'package:ym_flutter_widget/widgets/Loading/ym_loading.dart';
 import 'config.dart';
 
 mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
-
   bool isRouteFlutter = false;
   bool isLoading = true;
   bool isError = false;
@@ -29,7 +28,6 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
 
     //传值 设置监听
     nativeChannel.setMethodCallHandler(nativeCallHandler);
-
   }
 
   ///在build里第一行设置UI属性
@@ -40,11 +38,11 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
   }
 
   ///请求数据
-  Future<void> onStart() async{
-    YmHttp().setHeader({'sign':"123456"});
+  Future<void> onStart() async {
+    YmHttp().setHeader({'sign': "123456"});
   }
 
-  Widget getLoadingWidget(String title){
+  Widget getLoadingWidget(String title) {
     return MaterialApp(
       home: Scaffold(
         body: Stack(
@@ -55,19 +53,24 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
               top: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: YmAppBar(title,
-                  background:[
-                  const Color(0xFF606FFF),
-                  const Color(0xFF3446F2),
-                ],onBackClick: goBack,textColor: Colors.white,),
+                child: YmAppBar(
+                  title,
+                  background: [
+                    const Color(0xFF606FFF),
+                    const Color(0xFF3446F2),
+                  ],
+                  onBackClick: goBack,
+                  textColor: Colors.white,
+                ),
               ),
             ),
+
             ///Loading
             Positioned(
                 top: appBarHeight,
-                left:0,
+                left: 0,
                 width: MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height - appBarHeight,
+                height: MediaQuery.of(context).size.height - appBarHeight,
                 child: YmLoading())
           ],
         ),
@@ -93,8 +96,8 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
   }
 
   ///Flutter调用原生
-  Future<void> flutterCallNative(Map<String, dynamic> arguments) async{
-    if(Config.isNative) {
+  Future<void> flutterCallNative(Map<String, dynamic> arguments) async {
+    if (Config.isNative) {
       try {
         print('Flutter调用Native:flutterCallNative');
         String result = await flutterChannel.invokeMethod('callNative', arguments);
@@ -104,12 +107,11 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
   }
 
   ///返回
-  Future<void> goBack() async{
-    if(isRouteFlutter){
-
-      if(Navigator.canPop(context)){
-        Navigator.pop(context,"");
-        if(Config.isNative) {
+  Future<void> goBack() async {
+    if (isRouteFlutter) {
+      if (Navigator.canPop(context)) {
+        Navigator.pop(context, "");
+        if (Config.isNative) {
           try {
             print('Flutter调用Native:onBack');
             Map<String, dynamic> arguments = {'message': 'onBack'};
@@ -117,8 +119,8 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
             print('Flutter调用Native onBack:' + result);
           } on PlatformException catch (e) {}
         }
-      }else{
-        if(Config.isNative) {
+      } else {
+        if (Config.isNative) {
           try {
             print('Flutter调用Native:onFinish');
             Map<String, dynamic> arguments = {'message': 'onFinish'};
@@ -129,8 +131,7 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
           }
         }
       }
-
-    }else{
+    } else {
       try {
         print('Flutter调用Native:onFinish');
         Map<String, dynamic> arguments = {'message': 'onFinish'};
@@ -141,5 +142,4 @@ mixin SingleNativeStateMixin<T extends StatefulWidget> on State<T> {
       }
     }
   }
-
 }
