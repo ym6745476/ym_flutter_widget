@@ -76,7 +76,17 @@ class YmHttp {
     late Response response;
     try {
       print('请求Header: ' + _dio.options.headers.toString());
-      print('请求参数: ' + params.toString());
+      if(params.toString().length > 600){
+        print('请求参数1-1: ' + params.toString().substring(0,600));
+        if(params.toString().length > 1200){
+          print('请求参数1-2: ' + params.toString().substring(600,1200));
+          print('请求参数1-3: ' + params.toString().substring(1200));
+        }else{
+          print('请求参数1-2: ' + params.toString().substring(600));
+        }
+      }else{
+        print('请求参数: ' + params.toString());
+      }
 
       if (method == 'get') {
         if (params.length > 0) {
@@ -131,9 +141,14 @@ class YmHttp {
 
       if (error.response != null) {
         String dataStr = json.encode(error.response!.data);
-        Map<String, dynamic> dataMap = json.decode(dataStr);
-        print("Http请求出错：" + dataMap.toString());
-        errorCallBack({'errorCode': dataMap['status'], 'errorMessage': dataMap['message'].toString()});
+        print("Http请求出错：" + dataStr);
+        if(error.response!.statusCode == 502){
+          errorCallBack({'errorCode': 502, 'errorMessage': "服务器连接失败"});
+        }else{
+          Map<String, dynamic> dataMap = json.decode(dataStr);
+          errorCallBack({'errorCode': dataMap['status'], 'errorMessage': dataMap['message'].toString()});
+        }
+
       } else {
         errorCallBack({'errorCode': 600, 'errorMessage': errorMessage});
       }
