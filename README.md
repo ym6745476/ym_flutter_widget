@@ -10,11 +10,11 @@ A Light Weight Flutter Widget.
   
 ## 开发手册
 
-https://ymbok.com/book-112-159.html
+https://ymbok.com/book/ym_flutter_widget.html
 
 ### 在线体验
 
-https://ymbok.com/phone-112.html
+https://ymbok.com/example/ym_flutter_widget.html
 
 ### 安装控件
 
