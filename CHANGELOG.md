@@ -1,3 +1,6 @@
+## [0.1.1] - 2021/08/17.
+* Optimization Widget
+
 ## [0.1.0] - 2021/07/22.
 * Add Timer Button Widget and Sample
 * Optimization Widget

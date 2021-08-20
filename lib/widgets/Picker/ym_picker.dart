@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 /// 滚动选择器
 class YmPicker extends StatefulWidget {
-  //数据格式：{"label": "请选择", "value": ""}
+  /// 数据格式：{"label": "请选择", "value": ""}
   final List<Map> data;
 
-  //默认值
+  /// 默认值
   final int currentIndex;
 
-  //前方文字
+  /// 前方文字
   final String label;
   final double width;
   final double height;
@@ -51,17 +51,16 @@ class YmPickerState extends State<YmPicker> {
   @override
   void didUpdateWidget(YmPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
-    //更新数据
+    /// 更新数据
     _controller.jumpToItem(widget.currentIndex);
     print("YmPickerState didUpdateWidget default index :" + widget.currentIndex.toString());
   }
 
-  // 触发值改变
+  /// 触发值改变
   void _valueChanged(index) {
     _timer.cancel();
     _timer = new Timer(_durationTime, () {
-      // 触发回调函数
-      print("values长度：" + widget.data.length.toString() + "-----" + index.toString());
+      /// 触发回调函数
       widget.onChanged(index, widget.data[index]["value"]);
     });
   }
@@ -74,7 +73,7 @@ class YmPickerState extends State<YmPicker> {
         items.elementAt(index)["label"],
         style: TextStyle(
           color: Color(0xff333333),
-          fontSize: 15,
+          fontSize: 14,
           height: 1.2,
           fontWeight: FontWeight.w400,
         ),
@@ -105,7 +104,7 @@ class YmPickerState extends State<YmPicker> {
                           widget.label,
                           style: TextStyle(
                             color: Color(0xff333333),
-                            fontSize: 15,
+                            fontSize: 14,
                             height: 1.2,
                             fontWeight: FontWeight.w500,
                           ),
@@ -123,9 +122,9 @@ class YmPickerState extends State<YmPicker> {
                 backgroundColor: Colors.transparent,
                 childCount: widget.data.length,
                 onSelectedItemChanged: (int index) {
-                  // 当选项改变时的回调
+                  /// 当选项改变时的回调
                   if (mounted) {
-                    print('onSelectedItemChanged:$index');
+                    /// print('onSelectedItemChanged:$index');
                     _valueChanged(index);
                   }
                 },

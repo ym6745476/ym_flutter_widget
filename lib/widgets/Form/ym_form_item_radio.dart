@@ -50,7 +50,7 @@ class _YmFormItemState extends State<YmFormItemRadio>{
       ),
       width: widget.size.width,
       height: widget.size.height,
-      padding: EdgeInsets.only(top: 0, left: 16, right: 0, bottom: 0),
+      padding: EdgeInsets.only(top: 0, left: 16, right: 16, bottom: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -70,7 +70,7 @@ class _YmFormItemState extends State<YmFormItemRadio>{
                 widget.labels.length,
                 (index) => YmCheckButton(
                   value: widget.values[index],
-                  checked: currentValue ==  widget.values[index],
+                  checked: widget.value ==  widget.values[index],
                   onChanged: (bool checked, dynamic value) {
                     if (checked) {
                       setState(() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:ym_flutter_widget/widgets/TextField/ym_text_field.dart';
 
 /// 表单-输入控件
@@ -11,7 +12,10 @@ class YmFormItemInput extends StatelessWidget {
   Color labelTextColor;
   double fontSize;
   final Size size;
+  FocusNode? focusNode;
+  final bool required;
   final Function(String text) onTextChanged;
+  final List<TextInputFormatter> inputFormatters;
 
   YmFormItemInput(
     this.text, {
@@ -22,6 +26,9 @@ class YmFormItemInput extends StatelessWidget {
     this.fontSize = 14,
     this.textColor = const Color(0xff666666),
     this.labelTextColor = const Color(0xff333333),
+    this.inputFormatters = const [],
+    this.required = false,
+    this.focusNode,
   });
 
   @override
@@ -48,14 +55,23 @@ class YmFormItemInput extends StatelessWidget {
               fontSize: 14,
             ),
           ),
+          required?Text(
+            "*",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFFFF0000),
+            ),
+          ):Container(),
           Expanded(
             child: YmTextField(
-              [],
+              inputFormatters,
               this.text,
               onTextChanged,
               fontSize: 14,
               textAlign: TextAlign.right,
               hintText: this.hintText,
+              focusNode: this.focusNode,
               outlineInputBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(0), borderSide: BorderSide(color: Color(0x00606FFF))),
               focusedBorder: OutlineInputBorder(

@@ -33,8 +33,8 @@ class YmCheckButton extends StatelessWidget {
   Widget buildCheckButton() {
     return GestureDetector(
         child: Container(
-            width: size.width,
             height: size.height,
+            padding: EdgeInsets.only(top: 0, left: 1, right: 1, bottom: 0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +46,7 @@ class YmCheckButton extends StatelessWidget {
                     height: size.height / 2,
                   ),
                   Padding(
-                      padding: EdgeInsets.only(top: 0, left: 8, right: 5, bottom: 0),
+                      padding: EdgeInsets.only(top: 0, left: 5, right: 5, bottom: 0),
                       child: Text(
                         text,
                         textAlign: TextAlign.center,

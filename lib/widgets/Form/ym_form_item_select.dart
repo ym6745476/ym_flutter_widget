@@ -74,7 +74,7 @@ class YmFormItemSelect extends StatelessWidget {
                               width: 20,
                             ),
                           )
-                        : Container(),
+                        : Container(width: 1,),
                   ]),
               onTap: onClick,
             ),

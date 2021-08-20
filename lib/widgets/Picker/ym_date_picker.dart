@@ -80,27 +80,41 @@ class YmDatePickerState extends State<YmDatePicker> {
       //生成月的数据
       var _dataMonth = (List.generate(
           12, (index) => {"label": YmDateUtil.format2Number((index + 1).toString()), "value": (index + 1).toString()}));
+
+      _data[1] = _dataMonth;
+      _currentIndex[1] = _currentIndex[1] > _data[1].length - 1 ? _data[1].length - 1 : _currentIndex[1];
+
       var _dataDay = (List.generate(
           YmDateUtil.getDateCount(
               int.parse(_data[0][_currentIndex[0]]['value']), int.parse(_data[1][_currentIndex[1]]['value'])),
           (index) => {"label": YmDateUtil.format2Number((index + 1).toString()), "value": (index + 1).toString()}));
 
       setState(() {
+
         _data[1] = _dataMonth;
         _currentIndex[1] = _currentIndex[1] > _data[1].length - 1 ? _data[1].length - 1 : _currentIndex[1];
+
         _data[2] = _dataDay;
         _currentIndex[2] = _currentIndex[2] > _data[2].length - 1 ? _data[2].length - 1 : _currentIndex[2];
       });
     } else if (position == 1) {
-      //生成日的数据
+      /// 生成日的数据
       var _dataDay = (List.generate(
           YmDateUtil.getDateCount(
               int.parse(_data[0][_currentIndex[0]]['value']), int.parse(_data[1][_currentIndex[1]]['value'])),
           (index) => {"label": YmDateUtil.format2Number((index + 1).toString()), "value": (index + 1).toString()}));
-      print(_dataDay);
+      print("日的数据:" + _dataDay.toString());
+
+      int dayIndex = _currentIndex[2] > _data[2].length - 1 ? _data[2].length - 1 : _currentIndex[2];
       setState(() {
         _data[2] = _dataDay;
-        _currentIndex[2] = _currentIndex[2] > _data[2].length - 1 ? _data[2].length - 1 : _currentIndex[2];
+        _currentIndex[2] = dayIndex-1;
+      });
+
+      Future.delayed(Duration(milliseconds: 100),(){
+        setState(() {
+          _currentIndex[2] = dayIndex;
+        });
       });
     }
   }
