@@ -44,7 +44,9 @@ class _TimerButtonState extends State<YmTimerButton> {
           second = widget.second;
           text = widget.hintText;
         });
-        timer!.cancel();
+        if(timer != null){
+          timer!.cancel();
+        }
         timer = null;
         widget.onTimeout();
       } else {
