@@ -38,8 +38,8 @@ class YmHttp {
     //请求header的配置
     _dio.options.headers = {};
 
-    _dio.options.connectTimeout = 5000;
-    _dio.options.receiveTimeout = 3000;
+    _dio.options.connectTimeout = 10000;
+    _dio.options.receiveTimeout = 10000;
 
     _dio.interceptors.add(LogInterceptor(responseBody: false)); //是否开启请求日志
     _dio.interceptors.add(CookieManager(CookieJar())); //缓存相关类

@@ -80,6 +80,7 @@ class YmUiUtil {
 
   ///显示底部弹出框
   static showBottomDialog(BuildContext context, Widget child) {
+    FocusScope.of(context).unfocus();
     showDialog<Null>(
       context: context,
       barrierDismissible: true,
