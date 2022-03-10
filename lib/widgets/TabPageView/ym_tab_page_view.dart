@@ -109,6 +109,7 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
           Padding(
             padding: EdgeInsets.only(top: 5, left: 0, right: 0, bottom: 0),
             child: YmListView(widget.items, _scrollController,
+                textColor: widget.selectedTextColor,
                 size: Size(widget.size.width, widget.size.height - widget.tabBarHeight - 5),
                 hasMoreData: widget.hasMoreData,
                 loadMoreText: widget.loadMoreText, onItemBuilder: (index) {

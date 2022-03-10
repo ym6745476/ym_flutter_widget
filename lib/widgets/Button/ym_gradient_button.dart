@@ -11,7 +11,7 @@ class YmGradientButton extends StatelessWidget {
   final Size size;
   final Color pressedBackgroundColor;
   final Color borderColor;
-  final LinearGradient gradient;
+  final Gradient gradient;
 
   //BeveledRectangleBorder 带斜角的长方形边框
   //CircleBorder 圆形边框

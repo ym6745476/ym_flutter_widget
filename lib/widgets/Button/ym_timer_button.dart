@@ -11,6 +11,8 @@ class YmTimerButton extends StatefulWidget {
   final String hintText;
   final int second;
   final Size size;
+  final Color pressedBackgroundColor;
+  final Color backgroundColor;
   final void Function() onClick;
   final void Function() onTimeout;
   Function startTimer = () {};
@@ -25,6 +27,8 @@ class YmTimerButton extends StatefulWidget {
     this.size = const Size(120, 42),
     this.fontWeight = FontWeight.normal,
     this.textColor = const Color(0xFF666666),
+    this.pressedBackgroundColor = const Color(0xFF606FFF),
+    this.backgroundColor = const Color(0xFF3446F2),
   });
 
   @override
@@ -71,6 +75,8 @@ class _TimerButtonState extends State<YmTimerButton> {
         textColor: Color(0xFFFFFFFF),
         size: widget.size,
         fontSize: widget.fontSize,
+        backgroundColor: widget.backgroundColor,
+        pressedBackgroundColor: widget.pressedBackgroundColor,
         fontWeight: widget.fontWeight, onClick: () {
       if (second == widget.second) {
         widget.onClick();

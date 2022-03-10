@@ -1,6 +1,6 @@
 name: ym_flutter_widget
 description: A Light Weight Flutter Widget.
-version: 0.1.1
+version: 0.1.3
 homepage: https://github.com/ym6745476/ym_flutter_widget
 
 environment:
@@ -15,7 +15,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   url_launcher: ^6.0.6
-  dio: ^4.0.0
+  http: ^0.13.4
+  dio: ^4.0.4
+  http_parser: ^4.0.0
+  path: ^1.8.0
   #网络库-cookie
   cookie_jar: ^3.0.1
   #网络库-cookieManager

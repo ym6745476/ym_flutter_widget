@@ -76,7 +76,7 @@ class YmTextButton extends StatelessWidget {
                 return pressedBackgroundColor;
               }
               //默认状态使用的颜色
-              return Colors.transparent;
+              return backgroundColor;
             },
           ),
 
@@ -85,7 +85,7 @@ class YmTextButton extends StatelessWidget {
             if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
               return pressedBackgroundColor;
             } else {
-              return Colors.transparent;
+              return backgroundColor;
             }
           }),
 

@@ -181,16 +181,13 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
   ///构建搜索图标与显示文本
   Row buildRow() {
     return Row(
-      ///左对齐
-      mainAxisAlignment: MainAxisAlignment.start,
-
-      ///居左
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         ///左侧的搜索图标
         Icon(
           Icons.search,
-          color: Colors.pink,
+          color: Colors.blue,
           size: 24.0,
           semanticLabel: 'Text to announce in accessibility modes',
         ),

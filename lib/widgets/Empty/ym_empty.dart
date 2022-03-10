@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 /// 自定义空页面
 class YmEmpty extends StatelessWidget {
   // 文本名称
-  final String message;
-  final String image;
+  String message;
+  String image;
+  final Color textColor;
 
   //构造方法
-  YmEmpty(this.message, this.image);
+  YmEmpty(
+      this.message,
+      this.image,{
+      this.textColor = const Color(0xFF606FFF),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +33,8 @@ class YmEmpty extends StatelessWidget {
               child: Text(
                 message,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color(0xFF606FFF),
+                style: TextStyle(
+                  color: textColor,
                   fontSize: 14,
                 ),
               ))

@@ -77,7 +77,8 @@ class YmImageButton extends StatelessWidget {
 
           side: MaterialStateProperty.all(BorderSide(color: borderColor)),
           //设置按钮最小的大小
-          //minimumSize: MaterialStateProperty.all(size),
+          maximumSize:MaterialStateProperty.all(size),
+          minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
           shape: MaterialStateProperty.all(outlinedBorder),
         ),
@@ -147,7 +148,8 @@ class YmImageButton extends StatelessWidget {
             }
           }),
           //设置按钮最小的大小
-          //minimumSize: MaterialStateProperty.all(size),
+          maximumSize:MaterialStateProperty.all(size),
+          minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
           shape: MaterialStateProperty.all(outlinedBorder),
         ),

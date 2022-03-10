@@ -14,6 +14,7 @@ class YmFormItemSelect extends StatelessWidget {
   final Size size;
   String? rightImage;
   final Function() onClick;
+  final bool required;
 
   YmFormItemSelect(
     this.text, {
@@ -25,6 +26,7 @@ class YmFormItemSelect extends StatelessWidget {
     this.textColor = const Color(0xff666666),
     this.labelTextColor = const Color(0xff333333),
     this.rightImage,
+    this.required = false,
   });
 
   @override
@@ -51,6 +53,14 @@ class YmFormItemSelect extends StatelessWidget {
               fontSize: 14,
             ),
           ),
+          required?Text(
+            "*",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFFFF0000),
+            ),
+          ):Container(),
           Expanded(
             child: GestureDetector(
               child: Row(

@@ -1,3 +1,10 @@
+## [0.1.3] - 2022/03/10.
+* Compatible with Web
+* Optimization Widget
+
+## [0.1.2] - 2021/11/19.
+* Optimization Widget  
+
 ## [0.1.1] - 2021/09/26.
 * Update Flutter 2.5.0  
 * Optimization Widget  

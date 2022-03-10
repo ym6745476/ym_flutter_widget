@@ -1,9 +1,13 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
+import 'package:ym_flutter_widget/http/ym_form_data.dart';
 
 /// 网络请求管理类
 class YmHttp {
@@ -69,12 +73,96 @@ class YmHttp {
     _requestHttp(url, "postForm", params, success, error, complete);
   }
 
+  ///上传文件 web
+  postFile(String url,Map<String, dynamic> params,String filePath,Uint8List fileBytes,Stream stream,
+      {required Function success, required Function error, required Function complete}) async {
+    _postFile(url, params,filePath,fileBytes ,stream,success, error, complete);
+  }
+
+  ///上传文件 web
+  _postFile(String url,Map<String, dynamic> params,String filePath,Uint8List fileBytes,Stream stream,
+      Function successCallBack,Function errorCallBack, Function completeCallBack) async {
+
+    late Response response;
+    try {
+      print('请求Header: ' + _dio.options.headers.toString());
+
+      var byteStream =  new http.ByteStream(stream.cast());
+      int length = fileBytes.length;
+      print("filePath：" + filePath);
+      String fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
+      if(fileName.indexOf(".")==-1){
+        /// 查mimetype表进行设置
+        if(params["mediaSubType"] == "jpeg"){
+          fileName += ".jpg";
+        }else{
+          fileName += "." + params["mediaSubType"] ;
+        }
+      }
+
+      http.MultipartFile file = new http.MultipartFile(
+          "file",
+          byteStream,
+          length,
+          filename: fileName,
+          contentType:MediaType(params["mediaType"], params["mediaSubType"]), //mediaType=image,mediaSubType=jpeg
+      );
+      params.remove("mediaType");
+      params.remove("mediaSubType");
+      params["file"] = file;
+
+      print("参数：" + params.toString());
+
+      response = await _dio.post(url, data: YmFormData.fromMap(params));
+
+      if (response.data is String) {
+        print("请求成功：" + response.data);
+        successCallBack(json.decode(response.data));
+      } else {
+        String responseStr = json.encode(response.data);
+        print("请求成功：" + responseStr);
+        successCallBack(response.data);
+      }
+
+    } on DioError catch (error) {
+      // 请求错误处理
+      String errorMessage = error.message;
+      // 请求超时
+      if (error.type == DioErrorType.connectTimeout) {
+        errorMessage = "请求超时";
+      }
+      // 服务器错误
+      else if (error.type == DioErrorType.receiveTimeout) {
+        errorMessage = "接收超时";
+      } else if (error.type == DioErrorType.other) {
+        errorMessage = "网络不稳定";
+      }
+
+      if (error.response != null) {
+        String dataStr = json.encode(error.response!.data);
+        print("Http请求出错：" + dataStr);
+        if(error.response!.statusCode == 502){
+          errorCallBack({'errorCode': 502, 'errorMessage': "服务器连接失败"});
+        }else{
+          Map<String, dynamic> dataMap = json.decode(dataStr);
+          errorCallBack({'errorCode': dataMap['status'], 'errorMessage': dataMap['message'].toString()});
+        }
+
+      } else {
+        errorCallBack({'errorCode': 600, 'errorMessage': errorMessage});
+      }
+    } finally {
+      completeCallBack();
+    }
+  }
+
   ///_requestHttp
   _requestHttp(String url, String method, Map<String, dynamic> params, Function successCallBack, Function errorCallBack,
       Function completeCallBack) async {
     late Response response;
     try {
       print('请求Header: ' + _dio.options.headers.toString());
+
       if(params.toString().length > 600){
         print('请求参数1-1: ' + params.toString().substring(0,600));
         if(params.toString().length > 1200){
@@ -103,14 +191,19 @@ class YmHttp {
         if (params.length > 0) {
           params.forEach((key, value) {
             if (value is File) {
-              //print(value.path);
-              MultipartFile file = MultipartFile.fromFileSync(value.path,
-                  filename: value.path.substring(value.path.lastIndexOf("/") + 1));
+              String fileName = value.path.substring(value.path.lastIndexOf("/") + 1);
+              if(fileName.indexOf(".")==-1){
+                fileName += ".unknown";
+              }
+              print('fileName: ' + fileName);
+              // 用http.MultipartFile 兼容web 上传图片用postFile函数
+              MultipartFile file = MultipartFile.fromFileSync(value.path,filename: fileName);
               params[key] = file;
             }
           });
-          print(params);
-          response = await _dio.post(url, data: FormData.fromMap(params));
+          print("提交参数：" + params.toString());
+          YmFormData formData =  YmFormData.fromMap(params);
+          response = await _dio.post(url, data: formData);
         } else {
           response = await _dio.post(url);
         }
@@ -155,4 +248,6 @@ class YmHttp {
       completeCallBack();
     }
   }
+
+
 }

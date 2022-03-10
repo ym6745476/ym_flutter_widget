@@ -30,6 +30,9 @@ class _YmTextMarqueeState extends State<YmTextMarquee> with WidgetsBindingObserv
 
     widgetsBinding!.addPostFrameCallback((callback) {
       Timer.periodic(new Duration(seconds: 3), (timer) {
+        if(_controller.hasClients){
+          return;
+        }
         if (currentScrollOffset == widget.initialScrollOffset) {
           _controller.jumpTo(widget.initialScrollOffset);
         }
