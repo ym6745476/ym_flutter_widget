@@ -74,7 +74,7 @@ class YmImageButton extends StatelessWidget {
               return Colors.transparent;
             }
           }),
-
+          elevation: MaterialStateProperty.all(0),
           side: MaterialStateProperty.all(BorderSide(color: borderColor)),
           //设置按钮最小的大小
           maximumSize:MaterialStateProperty.all(size),
@@ -147,6 +147,7 @@ class YmImageButton extends StatelessWidget {
               return backgroundColor;
             }
           }),
+          elevation: MaterialStateProperty.all(0),
           //设置按钮最小的大小
           maximumSize:MaterialStateProperty.all(size),
           minimumSize: MaterialStateProperty.all(size),

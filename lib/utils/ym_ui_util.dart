@@ -78,6 +78,39 @@ class YmUiUtil {
     });
   }
 
+  ///显示确认弹出框
+  static showConfirmDialog(BuildContext context,String message, String okText,
+      {onOkPressed}) {
+    showDialog<Null>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(message),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(okText),
+              onPressed: () {
+                if (null != onOkPressed) {
+                  onOkPressed();
+                }
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    ).then((val) {
+      print(val);
+    });
+  }
+
   ///显示底部弹出框
   static showBottomDialog(BuildContext context, Widget child) {
     FocusScope.of(context).unfocus();

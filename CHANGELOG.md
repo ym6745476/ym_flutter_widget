@@ -1,3 +1,8 @@
+
+## [0.1.4] - 2022/03/14.  
+* YmNetworkImage: Support cross domain access  
+* YmFormData: The Dio extension supports uploading files on the web  
+
 ## [0.1.3] - 2022/03/10.
 * Compatible with Web
 * Optimization Widget

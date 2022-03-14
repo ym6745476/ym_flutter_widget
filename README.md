@@ -4,8 +4,8 @@ A Light Weight Flutter Widget.
 
 <p align="center" >
     <img src="https://img.shields.io/badge/flutter-2.2.5-green" />
-    <img src="https://img.shields.io/badge/ym flutter widget-0.1.2-orange" />
-    <img src="https://img.shields.io/badge/dio-4.9.0-blue" />
+    <img src="https://img.shields.io/badge/ym flutter widget-0.1.4-orange" />
+    <img src="https://img.shields.io/badge/dio-4.0.4-blue" />
 </p>
   
 ## 开发手册
@@ -20,7 +20,7 @@ https://ymbok.com/example/ym_flutter_widget.html
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.1.3
+  ym_flutter_widget: ^0.1.4
 ```
 
 ### 示例截图
@@ -107,6 +107,21 @@ YmHttp().postForm(url
 	}
 );
 ```
+
+### 支持跨域显示网络图片，支持Web  
+```dart
+YmNetworkImage(
+  size: Size(100,100),
+  url: "http://",
+  isCross: true,
+  backgroundImage: "assets/images/background.png",
+  chooseIcon: "assets/images/choose.png",
+  onClick: () {
+
+  },
+),
+```
+
 ## 🎉  非常有用的小控件
 1、YmHttp 网络请求框架   
 2、YmAppBar 自定义导航栏  
@@ -136,13 +151,13 @@ YmHttp().postForm(url
 26、YmFormItemInput 表单输入框  
 27、YmFormItemNumber 表单数字输入框  
 28、YmFormItemSelect 表单选择框  
-29、YmFormItemTitle 表单标题  
-30、YmStringUtil 字符串工具类  
-31、YmDateUtil 日期工具类  
-32、YmUiUtil UI工具类  
-33、YmQrcode 二维码扫描识别  
+29、YmFormItemRadio 表单单选按钮
+30、YmFormItemText 表单正文  
+31、YmFormItemTitle 表单标题
+32、YmStringUtil 字符串工具类  
+33、YmDateUtil 日期工具类  
+34、YmUiUtil UI工具类  
+35、YmQrcode 二维码扫描识别  
 
-# 推荐Flutter游戏开发引擎框架（超轻游戏开发引擎）
+# 推荐Flutter游戏开发引擎框架
 https://github.com/ym6745476/devilf  
-
-<img src="https://raw.githubusercontent.com/ym6745476/devilf/master/screenshot/devilf.gif" width="600" height="292"/>
