@@ -76,7 +76,7 @@ class YmGradientButton extends StatelessWidget {
             return Colors.transparent;
           }
         }),
-
+        elevation: MaterialStateProperty.all(0),
         //设置按钮的最小尺寸
         //minimumSize: MaterialStateProperty.all(size),
         //外边框装饰

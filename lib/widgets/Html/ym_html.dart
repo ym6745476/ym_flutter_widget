@@ -44,25 +44,26 @@ class YmHtml extends StatelessWidget {
                   ),
                 ))));
       } else if (tag.name == "img") {
-        widgetList.add(Image.network(
-          tag.src,
-          fit: BoxFit.fitWidth,
-          width: width,
-          loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-            if (loadingProgress == null) {
-              return child;
-            }
-            return Center(
-              child: Padding(
-                padding: EdgeInsets.all(30),
-                child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                        : null),
-              ),
-            );
-          },
-        ));
+        widgetList.add(
+            Image.network(
+              tag.src,
+              fit: BoxFit.fitWidth,
+              width: width,
+              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(30),
+                    child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                            : null),
+                  ),
+                );
+              },
+            ));
       }
     }
 
