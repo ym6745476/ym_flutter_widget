@@ -118,7 +118,7 @@ class YmUiUtil {
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return YmDialogBox(child: child);
+        return YmDialogBox(child: child,onClick: (){},);
       },
     ).then((val) {
       print(val);

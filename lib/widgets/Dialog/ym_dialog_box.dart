@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 class YmDialogBox extends StatelessWidget {
   final Widget? child;
   final Alignment alignment;
+  final Function() onClick;
 
   YmDialogBox({
     Key? key,
     this.child,
+    required this.onClick,
     this.alignment = Alignment.bottomCenter,
+
   }) : super(key: key);
 
   @override
@@ -33,7 +36,7 @@ class YmDialogBox extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.of(context).pop();
+        onClick();
       },
     );
   }

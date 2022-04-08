@@ -7,8 +7,11 @@ class YmHtml extends StatelessWidget {
   String html;
   final double width;
   final List<HtmlTag> tagList = [];
+  Color textColor;
 
-  YmHtml(this.html, this.width);
+  YmHtml(this.html, this.width,{
+    this.textColor = const Color(0xff666666),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,7 @@ class YmHtml extends StatelessWidget {
                   tag.text,
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                    color: Color(0xff222222),
+                    color: this.textColor,
                     fontSize: 14,
                   ),
                 ))));

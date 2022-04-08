@@ -116,6 +116,7 @@ class _DialogPageState extends State<DialogPage> with SingleNativeStateMixin {
                     width: MediaQuery.of(context).size.width,
                     child: YmDialogBox(
                       alignment: Alignment.topLeft,
+                      onClick: (){},
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         color: Colors.white,

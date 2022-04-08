@@ -1,3 +1,5 @@
+## [0.1.5] - 2022/04/08.
+* Optimization Widget
 
 ## [0.1.4] - 2022/03/14.  
 * YmNetworkImage: Support cross domain access  

@@ -9,6 +9,8 @@ class YmTextField extends StatelessWidget {
   final double fontSize;
   final double height;
   final String hintText;
+  final Color textColor;
+  final Color hintTextColor;
   final TextAlign textAlign;
   final FocusNode? focusNode;
   final int maxLines;
@@ -21,6 +23,8 @@ class YmTextField extends StatelessWidget {
       {this.fontSize = 30,
       this.height = 30,
       this.hintText = "",
+      this.textColor = const Color(0xff666666),
+      this.hintTextColor = const Color(0xff999999),
       this.maxLines = 1,
       this.focusNode,
       this.textAlign = TextAlign.left,
@@ -59,6 +63,7 @@ class YmTextField extends StatelessWidget {
           },
           decoration: InputDecoration(
             hintText: hintText,
+            hintStyle: TextStyle(fontSize: fontSize, color: hintTextColor),
             contentPadding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
             border: outlineInputBorder,
             enabledBorder: outlineInputBorder,

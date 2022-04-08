@@ -187,7 +187,7 @@ class SearchTextFieldBarState extends State<YmSearchBar> {
         ///左侧的搜索图标
         Icon(
           Icons.search,
-          color: Colors.blue,
+          color: Colors.black45,
           size: 24.0,
           semanticLabel: 'Text to announce in accessibility modes',
         ),

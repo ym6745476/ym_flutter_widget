@@ -23,18 +23,18 @@ class _YmTextMarqueeState extends State<YmTextMarquee> with WidgetsBindingObserv
 
   @override
   void initState() {
-    _controller = new ScrollController(initialScrollOffset: widget.initialScrollOffset);
+    _controller = ScrollController(initialScrollOffset: widget.initialScrollOffset);
 
     //来监听 节点是否build完成
     WidgetsBinding? widgetsBinding = WidgetsBinding.instance;
 
     widgetsBinding!.addPostFrameCallback((callback) {
-      Timer.periodic(new Duration(seconds: 3), (timer) {
-        if(_controller.hasClients){
+      Timer.periodic(new Duration(seconds: 2), (timer) {
+        if(!_controller.hasClients){
           return;
         }
         if (currentScrollOffset == widget.initialScrollOffset) {
-          _controller.jumpTo(widget.initialScrollOffset);
+            _controller.jumpTo(widget.initialScrollOffset);
         }
         //滚动到底部从头开始
         if (_key.currentContext != null) {

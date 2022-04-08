@@ -72,7 +72,6 @@ class YmTabButton extends StatelessWidget {
                 ])),
         onTap: () {
           onClick();
-          //this._updateList(_selectedTypeTabIndex);
         });
   }
 }
