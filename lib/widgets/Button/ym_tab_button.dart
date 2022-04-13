@@ -41,12 +41,12 @@ class YmTabButton extends StatelessWidget {
   Widget buildTabButton() {
     BoxDecoration boxDecorationTabNormal = BoxDecoration(
         color: backgroundColor,
-        border: Border.all(width: 0.5, style: BorderStyle.solid, color: borderColor),
+        border: Border.all(width: 1, style: BorderStyle.solid, color: borderColor),
         borderRadius: borderRadius);
 
     BoxDecoration boxDecorationTabSelected = BoxDecoration(
         color: selectedBackgroundColor,
-        border: Border.all(width: 0.5, style: BorderStyle.solid, color: selectedBorderColor),
+        border: Border.all(width: 1, style: BorderStyle.solid, color: selectedBorderColor),
         borderRadius: borderRadius);
 
     return GestureDetector(

@@ -11,6 +11,7 @@ class YmRadioButton extends StatelessWidget {
   Color color;
   final Function(dynamic value) onChanged;
   final Size size;
+  final Size radioSize;
 
   YmRadioButton({
     required this.value,
@@ -18,6 +19,7 @@ class YmRadioButton extends StatelessWidget {
     required this.onChanged,
     this.text = "",
     this.size = const Size(140, 40),
+    this.radioSize = const Size(24, 24),
     this.fontSize = 14,
     this.textColor = const Color(0xff333333),
     this.color = Colors.indigo,
@@ -33,26 +35,33 @@ class YmRadioButton extends StatelessWidget {
         width: size.width,
         height: size.height,
         child:
-            Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Radio(
-            value: this.value,
-            groupValue: this.groupValue,
-            onChanged: (value) {
-              this.onChanged(value);
-            },
-            activeColor: this.color,
-            toggleable: true,
-          ),
-          Padding(
-              padding: EdgeInsets.only(top: 0, left: 5, right: 5, bottom: 0),
-              child: Text(
-                text,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: this.fontSize,
+        Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              Container(
+                width: radioSize.width,
+                height: radioSize.height,
+                child: Radio(
+                  value: this.value,
+                  groupValue: this.groupValue,
+                  onChanged: (value) {
+                    this.onChanged(value);
+                  },
+                  activeColor: this.color,
+                  toggleable: true,
                 ),
-              )),
-        ]));
+              ),
+
+              Padding(
+                  padding: EdgeInsets.only(top: 0, left: 5, right: 5, bottom: 0),
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: this.fontSize,
+                    ),
+                  )),
+            ]));
   }
 }

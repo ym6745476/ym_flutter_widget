@@ -63,6 +63,7 @@ class YmTextButton extends StatelessWidget {
     if (isOutlined) {
       return OutlinedButton(
         style: ButtonStyle(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           padding: MaterialStateProperty.all(EdgeInsets.zero),
           shadowColor: MaterialStateProperty.resolveWith(
             (states) {
@@ -109,6 +110,7 @@ class YmTextButton extends StatelessWidget {
     } else {
       return ElevatedButton(
         style: ButtonStyle(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           padding: MaterialStateProperty.all(EdgeInsets.zero),
           shadowColor: MaterialStateProperty.resolveWith(
             (states) {

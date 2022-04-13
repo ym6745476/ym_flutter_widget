@@ -158,7 +158,10 @@ class YmImageButton extends StatelessWidget {
           width: this.size.width,
           height: this.size.height,
           padding: EdgeInsets.only(top: 0, left: 1, right: 1, bottom: 0),
-          child: Row(mainAxisAlignment: mainAxisAlignment, crossAxisAlignment: CrossAxisAlignment.center, children: [
+          child: Row(
+              mainAxisAlignment: mainAxisAlignment,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
             this.iconLeft.isNotEmpty
                 ? Image.asset(
                     this.iconLeft,
@@ -167,7 +170,7 @@ class YmImageButton extends StatelessWidget {
                   )
                 : Container(),
             Padding(
-              padding: EdgeInsets.only(top: 0, left: 5, right: 5, bottom: 0),
+              padding: EdgeInsets.only(top: 0, left: 5, right: 5, bottom: 1),
               child: Text(
                 text,
                 textAlign: TextAlign.center,
