@@ -4,7 +4,7 @@ A Light Weight Flutter Widget.
 
 <p align="center" >
     <img src="https://img.shields.io/badge/flutter-2.2.5-green" />
-    <img src="https://img.shields.io/badge/ym flutter widget-0.1.5-orange" />
+    <img src="https://img.shields.io/badge/ym flutter widget-0.1.6-orange" />
     <img src="https://img.shields.io/badge/dio-4.0.4-blue" />
 </p>
   
@@ -20,7 +20,7 @@ https://ymbok.com/example/ym_flutter_widget.html
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.1.4
+  ym_flutter_widget: ^0.1.6
 ```
 
 ### 示例截图
