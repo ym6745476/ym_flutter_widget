@@ -34,24 +34,48 @@ class YmUiUtil {
   }
 
   ///显示弹出框
-  static showAlertDialog(BuildContext context, String title, String message, String okText, String cancelText,
+  static showAlertDialog(BuildContext context, String? title, String message, String okText, String cancelText,
       {onOkPressed, onCancelPressed, okCloseDialog = true}) {
     showDialog<Null>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(title),
+          titlePadding: EdgeInsets.only(top:16,left: 16, right: 16,bottom: 2),
+          title: title!=null ?Container(
+            height: 40,
+            child: Text(title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+              color: Color(0xff333333),
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),),
+          ):null,
+          contentPadding:const EdgeInsets.fromLTRB(16, 0, 16, 0),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(message),
+                Text(message, style: TextStyle(
+                  color: Color(0xff555555),
+                  fontSize: 14,
+                )),
               ],
             ),
           ),
+          buttonPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          actionsPadding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
           actions: <Widget>[
             TextButton(
-              child: Text(cancelText),
+              style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(50, 26)),
+                padding: MaterialStateProperty.all(EdgeInsets.zero),
+                backgroundColor: MaterialStateProperty.all(Colors.transparent),
+              ),
+              child: Text(cancelText, style: TextStyle(
+                color: Color(0xff555555),
+                fontSize: 14,
+              )),
               onPressed: () {
                 if (null != onCancelPressed) {
                   onCancelPressed();
@@ -60,7 +84,15 @@ class YmUiUtil {
               },
             ),
             TextButton(
-              child: Text(okText),
+              style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(50, 26)),
+                padding: MaterialStateProperty.all(EdgeInsets.zero),
+                backgroundColor: MaterialStateProperty.all(Colors.transparent),
+              ),
+              child: Text(okText, style: TextStyle(
+                color: Color(0xff3446F2),
+                fontSize: 14,
+              )),
               onPressed: () {
                 if (null != onOkPressed) {
                   onOkPressed();
@@ -79,8 +111,7 @@ class YmUiUtil {
   }
 
   ///显示确认弹出框
-  static showConfirmDialog(BuildContext context,String message, String okText,
-      {onOkPressed}) {
+  static showConfirmDialog(BuildContext context, String message, String okText, {onOkPressed}) {
     showDialog<Null>(
       context: context,
       barrierDismissible: false,
@@ -97,10 +128,11 @@ class YmUiUtil {
             TextButton(
               child: Text(okText),
               onPressed: () {
+                Navigator.of(context).pop();
                 if (null != onOkPressed) {
                   onOkPressed();
                 }
-                Navigator.of(context).pop();
+
               },
             ),
           ],
@@ -118,7 +150,10 @@ class YmUiUtil {
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return YmDialogBox(child: child,onClick: (){},);
+        return YmDialogBox(
+          child: child,
+          onClick: () {},
+        );
       },
     ).then((val) {
       print(val);
