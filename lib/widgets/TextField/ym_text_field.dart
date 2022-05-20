@@ -56,7 +56,7 @@ class YmTextField extends StatelessWidget {
           focusNode: this.focusNode,
           textAlign: this.textAlign, //文本对齐方式
           maxLines: maxLines, //最大行数
-          style: TextStyle(fontSize: fontSize, color: Colors.black87, fontWeight: FontWeight.w500), //输入文本的样式
+          style: TextStyle(fontSize: fontSize, color: textColor, fontWeight: FontWeight.w500), //输入文本的样式
           inputFormatters: this.inputFormatters, //允许的输入格式
           onChanged: (text) {
             onTextChanged(text);
