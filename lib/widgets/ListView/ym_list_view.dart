@@ -12,6 +12,7 @@ class YmListView extends StatefulWidget {
   bool hasMoreData;
   late String loadMoreText;
   final Color textColor;
+  final Color emptyTextColor;
 
   YmListView(
     this.items,
@@ -21,6 +22,7 @@ class YmListView extends StatefulWidget {
     this.hasMoreData = true,
     this.loadMoreText = "没有更多了~",
     this.textColor = const Color(0xFF606FFF),
+    this.emptyTextColor = const Color(0xFF606FFF),
     required this.onItemBuilder,
     required this.onLoadMore,
 
@@ -99,7 +101,7 @@ class _YmListViewState extends State<YmListView> with SingleTickerProviderStateM
       return Container(
         width: widget.size.width,
         height: widget.size.height - 50,
-        child: YmEmpty("暂无数据", "assets/images/ic_no_data.png",textColor:widget.textColor),
+        child: YmEmpty("暂无数据", "assets/images/ic_no_data.png",textColor:widget.emptyTextColor),
       );
     }
   }

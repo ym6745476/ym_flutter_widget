@@ -16,6 +16,7 @@ class YmTabPageView extends StatefulWidget {
   final double fontSize;
   final Color textColor;
   final Color selectedTextColor;
+  final Color emptyTextColor;
   final Size size;
   final double tabBarHeight;
   bool hasMoreData;
@@ -30,6 +31,7 @@ class YmTabPageView extends StatefulWidget {
     this.selectedIndex = 0,
     this.textColor = const Color(0xff666666),
     this.selectedTextColor = const Color(0xff606FFF),
+    this.emptyTextColor = const Color(0xff606FFF),
     this.hasMoreData = true,
     this.loadMoreText = "没有更多了~",
     required this.onChanged,
@@ -110,6 +112,7 @@ class _YmTabPageViewState extends State<YmTabPageView> with SingleTickerProvider
             padding: EdgeInsets.only(top: 5, left: 0, right: 0, bottom: 0),
             child: YmListView(widget.items, _scrollController,
                 textColor: widget.selectedTextColor,
+                emptyTextColor: widget.emptyTextColor,
                 size: Size(widget.size.width, widget.size.height - widget.tabBarHeight - 5),
                 hasMoreData: widget.hasMoreData,
                 loadMoreText: widget.loadMoreText, onItemBuilder: (index) {
