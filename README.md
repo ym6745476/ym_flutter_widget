@@ -3,8 +3,8 @@ A Light Weight Flutter Widget.
 一个轻量级的Flutter控件库。  
 
 <p align="center" >
-    <img src="https://img.shields.io/badge/flutter-2.2.5-green" />
-    <img src="https://img.shields.io/badge/ym flutter widget-0.1.6-orange" />
+    <img src="https://img.shields.io/badge/flutter-3.0.1-green" />
+    <img src="https://img.shields.io/badge/ym flutter widget-0.1.7-orange" />
     <img src="https://img.shields.io/badge/dio-4.0.4-blue" />
 </p>
   
@@ -20,7 +20,7 @@ https://ymbok.com/example/ym_flutter_widget.html
 
 ```yaml
 dependencies:
-  ym_flutter_widget: ^0.1.6
+  ym_flutter_widget: ^0.1.7
 ```
 
 ### 示例截图

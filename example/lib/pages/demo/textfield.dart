@@ -29,18 +29,6 @@ class _TextFieldPageState extends State<TextFieldPage> with SingleNativeStateMix
   @override
   void initState() {
     super.initState();
-
-    //获取name路由过来的参数
-    Future.delayed(Duration.zero, () {
-      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
-      print("路由传递过来的参数：" + arguments.toString());
-      if (arguments != null) {
-        isRouteFlutter = arguments["flutter"];
-        if (!Config.isNative || isRouteFlutter) {
-          //加载数据
-        }
-      }
-    });
   }
 
   void onNameTextChange(text) {

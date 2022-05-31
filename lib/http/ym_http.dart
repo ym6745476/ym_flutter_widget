@@ -249,5 +249,11 @@ class YmHttp {
     }
   }
 
+  cancelRequest(){
+    try {
+      _dio.close(force: true);
+    }on DioError catch (error) {
+    }
+  }
 
 }

@@ -83,7 +83,7 @@ class YmImageViewer extends Dialog {
             width: MediaQuery.of(context).size.width * 0.8,
             alignment: AlignmentDirectional.bottomEnd,
             child: IconButton(
-                icon: Image.asset('assets/images/ic_close.png'),
+                icon: Image.asset('assets/images/ic_close_white.png'),
                 iconSize: 30.0,
                 onPressed: () {
                   closeDialog();

@@ -23,23 +23,6 @@ class _DateTimePickerPageState extends State<DateTimePickerPage> with SingleNati
   @override
   void initState() {
     super.initState();
-
-    //获取name路由过来的参数
-    Future.delayed(Duration.zero, () {
-      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
-      print("路由传递过来的参数：" + arguments.toString());
-      if (arguments != null) {
-        isRouteFlutter = arguments["flutter"];
-        if (!Config.isNative || isRouteFlutter) {
-          onStart();
-        }
-      }
-    });
-  }
-
-  @override
-  Future<void> onStart() async {
-    super.onStart();
   }
 
   @override

@@ -25,12 +25,13 @@ class _HttpPageState extends State<HttpPage> with SingleNativeStateMixin {
   @override
   void initState() {
     super.initState();
-    onStart();
   }
 
   @override
-  Future<void> onStart() async {
-    super.onStart();
+  Future<void> onStart(Map<String, dynamic>? arguments) async{
+    super.onStart(arguments);
+    //加载数据
+    print("HttpPage onStart");
   }
 
   void onTextChangeAccount(text) {

@@ -25,18 +25,6 @@ class _ButtonPageState extends State<ButtonPage> with SingleNativeStateMixin {
   void initState() {
     super.initState();
 
-    //获取name路由过来的参数
-    Future.delayed(Duration.zero, () {
-      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
-      print("路由传递过来的参数：" + arguments.toString());
-      if (arguments != null) {
-        isRouteFlutter = arguments["flutter"];
-        if (!Config.isNative || isRouteFlutter) {
-          //加载数据
-        }
-      }
-    });
-
     /// 倒计时按钮
     _timerButton = YmTimerButton("获取验证码", hintText: "获取验证码", second: 60, size: Size(100, 40), onClick: () {
       startTimer();

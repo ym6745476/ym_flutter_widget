@@ -15,21 +15,17 @@ class AppBarPage extends StatefulWidget {
 }
 
 class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin {
+
   @override
   void initState() {
     super.initState();
+  }
 
-    //获取name路由过来的参数
-    Future.delayed(Duration.zero, () {
-      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
-      print("路由传递过来的参数：" + arguments.toString());
-      if (arguments != null) {
-        isRouteFlutter = arguments["flutter"];
-        if (!Config.isNative || isRouteFlutter) {
-          //加载数据
-        }
-      }
-    });
+  @override
+  Future<void> onStart(Map<String, dynamic>? arguments) async{
+    super.onStart(arguments);
+    //加载数据
+    print("AppBarPage onStart");
   }
 
   @override
@@ -39,7 +35,7 @@ class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin {
         body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-            ///导航栏1
+            ///导航栏
             Positioned(
               top: 0,
               child: Container(
@@ -85,4 +81,5 @@ class _AppBarPageState extends State<AppBarPage> with SingleNativeStateMixin {
       ),
     );
   }
+
 }

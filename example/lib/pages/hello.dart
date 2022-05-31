@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../my_router.dart';
 
-
 class HelloPage extends StatefulWidget {
   HelloPage({Key? key}) : super(key: key);
 
@@ -43,6 +42,7 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin {
       {'text': 'ListView', 'path': MyRouter.listViewPage},
       {'text': 'QrCode', 'path': MyRouter.qrCodePage},
       {'text': '下拉刷新', 'path': MyRouter.pullRefreshPage},
+      {'text': '表单', 'path': MyRouter.formPage},
       {'text': 'Stream', 'path': MyRouter.streamPage},
       {'text': 'String工具类', 'path': ''},
       {'text': 'UI工具类', 'path': ''},
@@ -52,7 +52,7 @@ class _HelloPageState extends State<HelloPage> with SingleNativeStateMixin {
       return ElevatedButton(
         child: Text(buttons[index]['text']),
         onPressed: () {
-          Navigator.of(context).pushNamed(buttons[index]['path'], arguments: {'flutter': true});
+          Navigator.of(context).pushNamed(buttons[index]['path'], arguments: {'flutter': "hello ym"});
         },
       );
     });

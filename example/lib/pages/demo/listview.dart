@@ -28,47 +28,36 @@ class _ListViewPageState extends State<ListViewPage> with SingleNativeStateMixin
     super.initState();
 
     _scrollController = ScrollController();
-
-    //获取name路由过来的参数
-    Future.delayed(Duration.zero, () {
-      dynamic arguments = ModalRoute.of(context)!.settings.arguments;
-      print("路由传递过来的参数：" + arguments.toString());
-      if (arguments != null) {
-        isRouteFlutter = arguments["flutter"];
-        if (!Config.isNative || isRouteFlutter) {
-          //加载数据
-          onStart();
-        }
-      }
-    });
   }
 
   @override
-  Future<void> onStart() async {
+  Future<void> onStart(Map<String, dynamic>? arguments) async{
+    super.onStart(arguments);
+    //加载数据
+    print("ListViewPage onStart");
     _loadList();
   }
+
 
   Future<void> _loadList() async {
     Future.delayed(Duration(seconds: 2), () {
       if (_pageNumber == 1) {
         _items.clear();
       }
-      setState(() {
-        for (int i = 0; i < 20; i++) {
-          _items.add("第" + _pageNumber.toString() + "页,第" + i.toString() + "行");
-        }
-        _pageNumber = _pageNumber + 1;
-      });
 
-      setState(() {
-        isLoading = false;
-      });
+      for (int i = 0; i < 20; i++) {
+        _items.add("第" + _pageNumber.toString() + "页,第" + i.toString() + "行");
+      }
+      _pageNumber = _pageNumber + 1;
+      isLoading = false;
 
       if (_pageNumber == 5) {
-        setState(() {
           _hasMoreData = false;
-        });
       }
+
+      setState(() {
+
+      });
     });
   }
 

@@ -51,7 +51,11 @@ class YmStringUtil {
   /// 去掉金额的.00
   static String toStringMoney(double money) {
     String moneyNew = money.toStringAsFixed(2);
-    return moneyNew.replaceAll(".00", "");
+    moneyNew = moneyNew.replaceAll(".00", "");
+    if(moneyNew.indexOf(".")!=-1 && moneyNew.endsWith("0")){
+      return moneyNew.substring(0,moneyNew.length-1);
+    }
+    return moneyNew;
   }
 
   /// 每3位加逗号

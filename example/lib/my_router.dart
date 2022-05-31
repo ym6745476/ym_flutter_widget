@@ -6,6 +6,7 @@ import 'package:example/pages/demo/datetimepicker.dart';
 import 'package:example/pages/demo/dialog.dart';
 import 'package:example/pages/demo/empty.dart';
 import 'package:example/pages/demo/error.dart';
+import 'package:example/pages/demo/form.dart';
 import 'package:example/pages/demo/html.dart';
 import 'package:example/pages/demo/http.dart';
 import 'package:example/pages/demo/image.dart';
@@ -48,6 +49,7 @@ class MyRouter {
   static final qrCodePage = '/demo/qrcode';
   static final dateTimePickerPage = '/demo/datetimepicker';
   static final pullRefreshPage = '/demo/pull_refresh';
+  static final formPage = '/demo/form';
   static final streamPage = '/demo/stream';
 
   ///
@@ -78,6 +80,7 @@ class MyRouter {
     qrCodePage: (ctx) => QRCodePage(),
     dateTimePickerPage: (ctx) => DateTimePickerPage(),
     pullRefreshPage: (ctx) => PullRefreshPage(),
+    formPage: (ctx) => FormPage(),
     streamPage: (ctx) => StreamPage(),
   };
 }

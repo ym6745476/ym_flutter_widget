@@ -116,11 +116,13 @@ class _YmQRCodeState extends State<YmQRCode> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
-      Barcode? result = scanData;
-      print("扫描得到的二维码：" + result.code);
-      if (!_stopScan) {
-        _stopScan = true;
-        Navigator.pop(context, result.code);
+      Barcode result = scanData;
+      if(result.code != null){
+        print("扫描得到的二维码：" + result.code!);
+        if (!_stopScan) {
+          _stopScan = true;
+          Navigator.pop(context, result.code);
+        }
       }
     });
   }

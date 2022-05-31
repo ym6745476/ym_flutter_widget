@@ -26,9 +26,9 @@ class _YmTextMarqueeState extends State<YmTextMarquee> with WidgetsBindingObserv
     _controller = ScrollController(initialScrollOffset: widget.initialScrollOffset);
 
     //来监听 节点是否build完成
-    WidgetsBinding? widgetsBinding = WidgetsBinding.instance;
+    WidgetsBinding widgetsBinding = WidgetsBinding.instance;
 
-    widgetsBinding!.addPostFrameCallback((callback) {
+    widgetsBinding.addPostFrameCallback((callback) {
       Timer.periodic(new Duration(seconds: 2), (timer) {
         if(!_controller.hasClients){
           return;
