@@ -92,7 +92,7 @@ class YmTextButton extends StatelessWidget {
           elevation: MaterialStateProperty.all(0),
           side: MaterialStateProperty.all(BorderSide(color: borderColor)),
           //设置按钮最小的大小
-          //minimumSize: MaterialStateProperty.all(size),
+          minimumSize: MaterialStateProperty.all(size),
           //外边框装饰
           shape: MaterialStateProperty.all(outlinedBorder),
         ),
