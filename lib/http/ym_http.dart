@@ -17,6 +17,8 @@ class YmHttp {
   //工厂构造函数
   factory YmHttp() => _getInstance();
 
+
+
   // 私有构造函数
   YmHttp._internal() {
     // 初始化
@@ -33,6 +35,8 @@ class YmHttp {
 
   //Dio
   late Dio _dio;
+
+  CancelToken? _cancelToken = null;
 
   ///构造
   init() {
@@ -161,6 +165,9 @@ class YmHttp {
       Function completeCallBack) async {
     late Response response;
     try {
+
+      _cancelToken = CancelToken();
+
       print('请求Header: ' + _dio.options.headers.toString());
 
       if(params.toString().length > 600){
@@ -177,13 +184,13 @@ class YmHttp {
 
       if (method == 'get') {
         if (params.length > 0) {
-          response = await _dio.get(url, queryParameters: params);
+          response = await _dio.get(url,cancelToken: _cancelToken, queryParameters: params);
         } else {
           response = await _dio.get(url);
         }
       } else if (method == 'post') {
         if (params.length > 0) {
-          response = await _dio.post(url, data: params);
+          response = await _dio.post(url,cancelToken: _cancelToken, data: params);
         } else {
           response = await _dio.post(url);
         }
@@ -203,9 +210,9 @@ class YmHttp {
           });
           print("提交参数：" + params.toString());
           YmFormData formData =  YmFormData.fromMap(params);
-          response = await _dio.post(url, data: formData);
+          response = await _dio.post(url,cancelToken: _cancelToken,  data: formData);
         } else {
-          response = await _dio.post(url);
+          response = await _dio.post(url,cancelToken: _cancelToken);
         }
       }
 
@@ -251,7 +258,7 @@ class YmHttp {
 
   cancelRequest(){
     try {
-      _dio.close(force: true);
+      _cancelToken?.cancel("cancel");
     }on DioError catch (error) {
     }
   }
