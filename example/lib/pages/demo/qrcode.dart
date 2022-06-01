@@ -27,7 +27,7 @@ class _QRCodePageState extends State<QRCodePage> with SingleNativeStateMixin {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: YmQRCode(
-              flashImage: ["assets/images/ic_flash_on.png", "assets/images/ic_flash_off.png"],
+              flashImage: ["assets/images/yf_flash_on.png", "assets/images/yf_flash_off.png"],
             ),
           ),
         ),

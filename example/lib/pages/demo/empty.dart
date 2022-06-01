@@ -64,7 +64,7 @@ class _EmptyPageState extends State<EmptyPage> with SingleNativeStateMixin {
                     left: 0,
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height - appBarHeight,
-                    child: YmEmpty("暂无数据", "assets/images/ic_no_data.png")),
+                    child: YmEmpty("暂无数据", "assets/images/yf_no_data.png")),
           ],
         ),
       ),

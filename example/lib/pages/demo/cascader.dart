@@ -39,6 +39,7 @@ class _CascaderPageState extends State<CascaderPage> with SingleNativeStateMixin
   @override
   void initState() {
     super.initState();
+    _initData(0,0);
   }
 
   ///初始化数据

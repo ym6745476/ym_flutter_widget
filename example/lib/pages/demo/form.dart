@@ -73,7 +73,7 @@ class _FormPageState extends State<FormPage> with SingleNativeStateMixin {
                       "表单标题",
                       fontSize: 14,
                       textColor: Color(0xFF333333),
-                      iconLeft: "assets/images/logo.png",
+                      iconLeft: "assets/images/yf_logo.png",
                       size: Size(MediaQuery.of(context).size.width, 44),
                     ),
 
@@ -85,7 +85,7 @@ class _FormPageState extends State<FormPage> with SingleNativeStateMixin {
                       onClick: () {
                         //_showSelectDialog();
                       },
-                      rightImage: "assets/images/ic_right.png",
+                      rightImage: "assets/images/yf_right.png",
                       hintText: "请选择",
                       // required: true,
                     ),
@@ -128,8 +128,8 @@ class _FormPageState extends State<FormPage> with SingleNativeStateMixin {
                             },
                             text: "选中1",
                             fontSize: 12,
-                            image: "assets/images/ic_box.png",
-                            checkedImage: "assets/images/ic_box_checked.png",
+                            image: "assets/images/yf_box.png",
+                            checkedImage: "assets/images/yf_box_checked.png",
                           ),
                           YmCheckButton(
                             value: 1,
@@ -139,8 +139,8 @@ class _FormPageState extends State<FormPage> with SingleNativeStateMixin {
                             },
                             text: "选中2",
                             fontSize: 12,
-                            image: "assets/images/ic_box.png",
-                            checkedImage: "assets/images/ic_box_checked.png",
+                            image: "assets/images/yf_box.png",
+                            checkedImage: "assets/images/yf_box_checked.png",
                           ),
                         ],
                       ),

@@ -101,7 +101,7 @@ class _YmListViewState extends State<YmListView> with SingleTickerProviderStateM
       return Container(
         width: widget.size.width,
         height: widget.size.height - 50,
-        child: YmEmpty("暂无数据", "assets/images/ic_no_data.png",textColor:widget.emptyTextColor),
+        child: YmEmpty("暂无数据", "assets/images/yf_no_data.png",textColor:widget.emptyTextColor),
       );
     }
   }

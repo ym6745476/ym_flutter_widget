@@ -62,7 +62,7 @@ class _ErrorPageState extends State<ErrorPage> with SingleNativeStateMixin {
                     left: 0,
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height - appBarHeight,
-                    child: YmError("网络状态不佳", "assets/images/ic_no_data.png")),
+                    child: YmError("网络状态不佳", "assets/images/yf_no_data.png")),
           ],
         ),
       ),

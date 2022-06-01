@@ -83,8 +83,8 @@ class _CheckButtonPageState extends State<CheckButtonPage> with SingleNativeStat
                             _checkedSingleButton(checked, value);
                           },
                           text: "单选1",
-                          image: "assets/images/ic_radio.png",
-                          checkedImage: "assets/images/ic_radio_checked.png",
+                          image: "assets/images/yf_radio.png",
+                          checkedImage: "assets/images/yf_radio_checked.png",
                         ),
                         YmCheckButton(
                           value: 1,
@@ -93,8 +93,8 @@ class _CheckButtonPageState extends State<CheckButtonPage> with SingleNativeStat
                             _checkedSingleButton(checked, value);
                           },
                           text: "单选2",
-                          image: "assets/images/ic_radio.png",
-                          checkedImage: "assets/images/ic_radio_checked.png",
+                          image: "assets/images/yf_radio.png",
+                          checkedImage: "assets/images/yf_radio_checked.png",
                         ),
                       ],
                     ),

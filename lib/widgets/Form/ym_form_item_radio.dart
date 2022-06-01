@@ -82,8 +82,8 @@ class _YmFormItemState extends State<YmFormItemRadio>{
                     }
                   },
                   text: widget.labels[index],
-                  image: "assets/images/ic_radio.png",
-                  checkedImage: "assets/images/ic_radio_checked.png",
+                  image: "assets/images/yf_radio.png",
+                  checkedImage: "assets/images/yf_radio_checked.png",
                 ),
               ),
             ),

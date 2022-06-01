@@ -21,8 +21,8 @@ class YmCheckButton extends StatelessWidget {
     this.size = const Size(80, 40),
     this.fontSize = 14,
     this.textColor = const Color(0xff333333),
-    this.image = "assets/images/ic_box.png",
-    this.checkedImage = "assets/images/ic_box_checked.png",
+    this.image = "assets/images/yf_box.png",
+    this.checkedImage = "assets/images/yf_box_checked.png",
   });
 
   @override
