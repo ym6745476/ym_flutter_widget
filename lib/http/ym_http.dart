@@ -1,24 +1,26 @@
-import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:ym_flutter_widget/http/ym_form_data.dart';
-import 'package:ym_flutter_widget/compatible/ym_compatible_io.dart' if (dart.library.html) 'dart:io' as io;
+import '../compatible/ym_constants.dart';
+import 'package:ym_flutter_widget/compatible/ym_compatible_io.dart' if (dart.library.io) 'dart:io' as io;
 
 /// 网络请求管理类
 class YmHttp {
+
+  // 平台
+  YmPlatform platform = kIsWeb ? YmPlatform.web : (io.Platform.isAndroid ? YmPlatform.android : YmPlatform.ios);
+
   // 单例模式
   static var _instance;
 
   //工厂构造函数
   factory YmHttp() => _getInstance();
-
-
 
   // 私有构造函数
   YmHttp._internal() {
@@ -37,25 +39,24 @@ class YmHttp {
   //Dio
   late Dio _dio;
 
-  CancelToken? _cancelToken = null;
+  CancelToken? _cancelToken;
 
   ///构造
   init() {
+
     print('YmHttp init~');
-
-    //ios失信名单 不对ios进行支持
-    if(!io.Platform.isIOS){
+    if (platform != YmPlatform.ios) {
       _dio = new Dio();
-
-      //请求header的配置
-      _dio.options.headers = {};
-
-      _dio.options.connectTimeout = 10000;
-      _dio.options.receiveTimeout = 10000;
-
-      _dio.interceptors.add(LogInterceptor(responseBody: false)); //是否开启请求日志
-      _dio.interceptors.add(CookieManager(CookieJar())); //缓存相关类
     }
+
+    //请求header的配置
+    _dio.options.headers = {};
+
+    _dio.options.connectTimeout = 10000;
+    _dio.options.receiveTimeout = 10000;
+
+    _dio.interceptors.add(LogInterceptor(responseBody: false)); //是否开启请求日志
+    _dio.interceptors.add(CookieManager(CookieJar())); //缓存相关类
   }
 
   /// 设置公共请求头
@@ -202,7 +203,7 @@ class YmHttp {
       } else if (method == 'postForm') {
         if (params.length > 0) {
           params.forEach((key, value) {
-            if (value is File) {
+            if (value is io.File) {
               String fileName = value.path.substring(value.path.lastIndexOf("/") + 1);
               if(fileName.indexOf(".")==-1){
                 fileName += ".unknown";
