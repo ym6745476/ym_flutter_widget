@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:ym_flutter_widget/http/ym_form_data.dart';
+import 'package:ym_flutter_widget/compatible/ym_compatible_io.dart' if (dart.library.html) 'dart:io' as io;
 
 /// 网络请求管理类
 class YmHttp {
@@ -41,16 +42,20 @@ class YmHttp {
   ///构造
   init() {
     print('YmHttp init~');
-    _dio = new Dio();
 
-    //请求header的配置
-    _dio.options.headers = {};
+    //ios失信名单 不对ios进行支持
+    if(!io.Platform.isIOS){
+      _dio = new Dio();
 
-    _dio.options.connectTimeout = 10000;
-    _dio.options.receiveTimeout = 10000;
+      //请求header的配置
+      _dio.options.headers = {};
 
-    _dio.interceptors.add(LogInterceptor(responseBody: false)); //是否开启请求日志
-    _dio.interceptors.add(CookieManager(CookieJar())); //缓存相关类
+      _dio.options.connectTimeout = 10000;
+      _dio.options.receiveTimeout = 10000;
+
+      _dio.interceptors.add(LogInterceptor(responseBody: false)); //是否开启请求日志
+      _dio.interceptors.add(CookieManager(CookieJar())); //缓存相关类
+    }
   }
 
   /// 设置公共请求头
