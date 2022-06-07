@@ -45,10 +45,8 @@ class YmHttp {
   init() {
 
     print('YmHttp init~');
-    if (platform != YmPlatform.ios) {
-      _dio = new Dio();
-    }
-
+    _dio = new Dio();
+    
     //请求header的配置
     _dio.options.headers = {};
 
