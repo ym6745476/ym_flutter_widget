@@ -143,6 +143,26 @@ class YmUiUtil {
     });
   }
 
+  ///显示Widget弹出框
+  static showBoxDialog(BuildContext context, Widget child,Alignment alignment) {
+    FocusScope.of(context).unfocus();
+    showDialog<Null>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return YmDialogBox(
+          child: child,
+          alignment: alignment,
+          onClick: () {
+            //Navigator.pop(context);
+          },
+        );
+      },
+    ).then((val) {
+      print(val);
+    });
+  }
+
   ///显示底部弹出框
   static showBottomDialog(BuildContext context, Widget child) {
     FocusScope.of(context).unfocus();
@@ -152,7 +172,9 @@ class YmUiUtil {
       builder: (BuildContext context) {
         return YmDialogBox(
           child: child,
-          onClick: () {},
+          onClick: () {
+            //Navigator.pop(context);
+          },
         );
       },
     ).then((val) {

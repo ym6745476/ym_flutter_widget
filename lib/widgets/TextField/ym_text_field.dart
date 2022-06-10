@@ -12,6 +12,7 @@ class YmTextField extends StatelessWidget {
   final Color textColor;
   final Color hintTextColor;
   final TextAlign textAlign;
+  final EdgeInsets contentPadding;
   final FocusNode? focusNode;
   final int maxLines;
   late OutlineInputBorder outlineInputBorder;
@@ -20,16 +21,21 @@ class YmTextField extends StatelessWidget {
 
   ///[FilteringTextInputFormatter.digitsOnly,FilteringTextInputFormatter.allow(RegExp("[0-9.]")]
   YmTextField(this.inputFormatters, this.text, this.onTextChanged,
-      {this.fontSize = 30,
-      this.height = 30,
-      this.hintText = "",
-      this.textColor = const Color(0xff666666),
-      this.hintTextColor = const Color(0xff999999),
-      this.maxLines = 1,
-      this.focusNode,
-      this.textAlign = TextAlign.left,
-      this.outlineInputBorder = const OutlineInputBorder(),
-      this.focusedBorder = const OutlineInputBorder()});
+      {
+        this.fontSize = 30,
+        this.height = 30,
+        this.hintText = "",
+        this.textColor = const Color(0xff666666),
+        this.hintTextColor = const Color(0xff999999),
+        this.maxLines = 1,
+        this.focusNode,
+        this.textAlign = TextAlign.left,
+        this.outlineInputBorder = const OutlineInputBorder(),
+        this.focusedBorder = const OutlineInputBorder(),
+        this.contentPadding = const EdgeInsets.symmetric(horizontal: 5, vertical: 2)
+      }
+  );
+
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +70,7 @@ class YmTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(fontSize: fontSize, color: hintTextColor),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+            contentPadding: this.contentPadding,
             border: outlineInputBorder,
             enabledBorder: outlineInputBorder,
             focusedBorder: focusedBorder,

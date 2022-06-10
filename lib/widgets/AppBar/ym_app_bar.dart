@@ -8,12 +8,14 @@ class YmAppBar extends StatelessWidget {
   final double barHeight = 56; // 标题栏高度
   final Function() onBackClick; // 返回
   final Color textColor; // 文本标题的颜色
+  final double fontSize; // 文本标题大小
   final Widget? rightWidget; //右边内容
 
   ///构造方法传入标题栏
   YmAppBar(
     this.title, {
     this.textColor = Colors.black,
+    this.fontSize = 20,
     this.background = const [
       const Color(0xFF606FFF),
       const Color(0xFF3446F2),
@@ -55,7 +57,7 @@ class YmAppBar extends StatelessWidget {
                 textAlign: this.textAlign,
                 style: TextStyle(
                   color: this.textColor,
-                  fontSize: 20,
+                  fontSize: this.fontSize,
                   fontWeight: FontWeight.w400, //字体宽度
                 ),
               ),
